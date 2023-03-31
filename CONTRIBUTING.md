@@ -2,6 +2,11 @@
 
 Ultra utilities is a collection of tools to help developers build on the Ultra blockchain.
 
+# Table of Contents
+
+- [Packages](#packages)
+- [Set up a new package](#set-up-a-new-package)
+
 ## Scripts
 
 You may use the following [npm scripts](https://docs.npmjs.com/cli/v9/using-npm/scripts).
@@ -37,7 +42,7 @@ Runs `Jest` in [watch mode](https://jestjs.io/docs/cli#watch), runs on changed f
 
 This command doesn't support `--scope`, but you can narrow the test run by adding filename (path) filters in as many `...args` that follow (e.g., `npm test core/src`).
 
-### coverage
+### `coverage`
 
 Runs `Jest` in [coverage mode](https://jestjs.io/docs/cli#coverage), dumping coverage results in ./coverage and showing a text summary in the console output.
 

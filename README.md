@@ -23,11 +23,11 @@ Ultra Utilities is a collection of tools to help developers build on the Ultra b
 ## Contributing
 
 We welcome contributions from the community!
-Please read our [contributing guidelines]("./CONTRIBUTING.md") to get started.
+Please read our [contributing guidelines](./CONTRIBUTING.md) to get started.
 
 ## License
 
-Ultra Utilities is licensed under the [Apache License 2.0](./LICENSE).
+Ultra Utilities is licensed under the [MIT](./LICENSE).
 
 ## Community
 

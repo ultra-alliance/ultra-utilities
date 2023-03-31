@@ -16,14 +16,14 @@ Ultra Utilities is a collection of tools to help developers build on the Ultra b
 
 ## Packages
 
-- [ui-kit](soon): Ultra UI Kit theme based on [Material UI](https://mui.com/).
+- [uikit](soon): Ultra UI Kit theme based on [Material UI](https://mui.com/).
 - [ultra-sdk](soon): Ultra Typescript SDK to interact with the Ultra blockchain.
 - [react-ultra](soon): A react version of the SDK to build Ultra react dApps
 
 ## Contributing
 
 We welcome contributions from the community!
-Please read our [contributing guidelines](./CONTRIBUTING.md) to get started.
+Please read our [contributing guidelines](./docs/CONTRIBUTING.md) to get started.
 
 ## License
 

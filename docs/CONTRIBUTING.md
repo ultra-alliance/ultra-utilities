@@ -54,7 +54,7 @@ Runs [commitizen](http://commitizen.github.io/cz-cli/) commit wizard, ensuring t
 
 Use the [`git commit`](https://git-scm.com/docs/git-commit) command directly with the [`-n`, `--no-verify` option](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--n) to bypasses the pre-commit and commit-msg hooks.
 
-## 📦 Set up a new package
+📦 ## Set up a new package
 
 When we setup a new package you just need to create a new folder in `packages`.
 Then do `npm init` and `tsc --init`, and in the tsconfig paste:

@@ -1,0 +1,21 @@
+{
+  "name": "ultra-sdk",
+  "version": "0.0.1",
+  "description": "Ultra Typescript SDK to interact with the Ultra blockchain",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "clean": "cd ../.. && npx rimraf packages/ultra-sdk/dist",
+    "lint": "cd ../.. && eslint packages/ultra-sdk/src/**/*.ts",
+    "check-types": "yarn build -- --noEmit",
+    "prebuild": "yarn clean",
+    "build": "cd ../.. && tsc -p packages/ultra-sdk/tsconfig.json && tsc -p packages/ultra-sdk/tsconfig.json --module esnext --outDir ./packages/ultra-sdk/dist/cjs",
+    "test": "cd ../.. && yarn test packages/ultra-sdk",
+    "cover": "cd ../.. && yarn cover packages/ultra-sdk",
+    "commit": "cd ../.. && yarn commit",
+    "prepublishOnly": "yarn build"
+  },
+  "author": "",
+  "license": "ISC"
+}

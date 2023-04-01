@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+
+:root {
+  --color-lilalLuster: #C5ABFF;
+  --color-orchidHaze: #A481F0;
+  --color-royalAmethyst: #7A52D1;
+  --color-midnightAshes:#3C3846;
+}
+
+:root[data-theme="dark"] {
+    --color-background: #3C3846;
+    --color-background-secondary: #3C3846;
+    --color-accent: #ffffff26;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+a {
+  color: var(--color-orchidHaze);
+}
+

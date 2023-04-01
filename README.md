@@ -1,18 +1,11 @@
 # Ultra Utilities
 
-Ultra Utilities is a collection of tools to help developers build on the Ultra blockchain.
+Ultra Utilities is a collection of tools to help developers build on the Ultra
+blockchain.
 
-```ultra
-            __    __                              
-           /  |  /  |                             
- __    __  ᕫᕫ | _ᕫᕫ |_      ________   ________        
-/  |  /  | ᕫᕫ |/ ᕫᕫ   |    /        \ /        \       
-ᕫᕫ |  ᕫᕫ |ᕫᕫ |ᕫᕫᕫᕫᕫᕫ/  /ᕫᕫᕫᕫᕫᕫᕫ |ᕫᕫᕫᕫᕫᕫ |      
-ᕫᕫ |  ᕫᕫ |ᕫᕫ |  ᕫᕫ | __ ᕫᕫ |  ᕫᕫ/ /      ᕫᕫ |      
-ᕫᕫ \__ᕫᕫ |ᕫᕫ |  ᕫᕫ |/  |ᕫᕫ |      /ᕫᕫᕫᕫᕫᕫᕫ |      
-ᕫᕫ    ᕫᕫ/ ᕫᕫ |  ᕫᕫ  ᕫᕫ/ ᕫᕫ |     ᕫᕫ     ᕫᕫ |      
- ᕫᕫᕫᕫᕫᕫ/  ᕫᕫ/   ᕫᕫᕫᕫ/   ᕫᕫ/       ᕫᕫᕫᕫᕫᕫ/       
-```
+<img alt="Ultra Tech alliance" src="https://github.com/ultra-alliance/.github/blob/main/assets/uta-logo-purple.png" width="64">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Inter&duration=2000&pause=500&color=7A52D1&multiline=true&width=150&lines=Just+use+Ultra!)](https://git.io/typing-svg)
 
 ## Packages
 
@@ -22,8 +15,8 @@ Ultra Utilities is a collection of tools to help developers build on the Ultra b
 
 ## Contributing
 
-We welcome contributions from the community!
-Please read our [contributing guidelines](./docs/CONTRIBUTING.md) to get started.
+We welcome contributions from the community! Please read our
+[contributing guidelines](./CONTRIBUTING.md) to get started.
 
 ## License
 
@@ -32,4 +25,5 @@ Ultra Utilities is licensed under the [MIT](./LICENSE).
 ## Community
 
 Join the Utra community on [Discord](https://discord.com/invite/WfJCN6YbGk)!
-Connect with other developers, ask questions, and get involved in the conversation.
+Connect with other developers, ask questions, and get involved in the
+conversation.

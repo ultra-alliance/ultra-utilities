@@ -8,14 +8,21 @@
   "scripts": {
     "clean": "cd ../.. && npx rimraf packages/ultra-sdk/dist",
     "lint": "cd ../.. && eslint packages/ultra-sdk/src/**/*.ts",
-    "check-types": "yarn build -- --noEmit",
-    "prebuild": "yarn clean",
+    "check-types": "npm run build -- --noEmit",
+    "prebuild": "npm run clean",
     "build": "cd ../.. && tsc -p packages/ultra-sdk/tsconfig.json && tsc -p packages/ultra-sdk/tsconfig.json --module esnext --outDir ./packages/ultra-sdk/dist/cjs",
-    "test": "cd ../.. && yarn test packages/ultra-sdk",
-    "cover": "cd ../.. && yarn cover packages/ultra-sdk",
-    "commit": "cd ../.. && yarn commit",
-    "prepublishOnly": "yarn build"
+    "test": "cd ../.. && npm run test packages/ultra-sdk",
+    "cover": "cd ../.. && npm run cover packages/ultra-sdk",
+    "commit": "cd ../.. && npm run commit",
+    "prepublishOnly": "npm run build"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "numeral": "^2.0.6"
+  },
+  "devDependencies": {
+    "@types/numeral": "^2.0.2"
+  }
 }

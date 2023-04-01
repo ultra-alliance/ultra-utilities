@@ -18,7 +18,8 @@
     "release:check": "lerna changed",
     "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
     "release:canary": "lerna publish --canary --ignore-scripts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "make:docs": "npx typedoc --out docs packages/ultra-sdk/src/index.ts"
   },
   "workspaces": [
     "packages/*"
@@ -65,10 +66,12 @@
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.3",
     "jest": "^29.5.0",
+    "jest-watch-typeahead": "^2.2.2",
     "lerna": "^6.6.1",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
     "ts-jest": "^29.0.5",
+    "typedoc": "^0.23.28",
     "typescript": "^5.0.3",
     "xo": "^0.53.1"
   }

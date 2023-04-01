@@ -50,8 +50,8 @@ const getTableRows = async ({
       table,
       scope,
       json: json ?? true,
-      lower_bound: lowerBound ?? '',
-      upper_bound: upperBound ?? '',
+      lower_bound: lowerBound,
+      upper_bound: upperBound,
     },
   });
 

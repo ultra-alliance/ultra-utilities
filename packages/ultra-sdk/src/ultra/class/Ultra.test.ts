@@ -1,346 +1,232 @@
 import {
-  type tGetBlockOutput,
-  type tGetAbiOutput,
-  type tGetAccountOutput,
-  type tGetTableByScopeOutput,
-  type tGetTableRowsOutput,
-  type tGetInfoOutput,
+  DEFAULT_BP_API_ENDPOINT,
+  getAbi,
+  getAccount,
+  getBlock,
+  getCurrencyBalance,
+  getInfo,
+  getTableByScope,
+  getTableRows,
 } from '../../apis';
 import Ultra from './index';
 
-jest.mock('../../apis', () => ({
-  getAbi: jest.fn(),
-  getAccount: jest.fn(),
-  getBlock: jest.fn(),
-  getCurrencyBalance: jest.fn(),
-  getInfo: jest.fn(),
-  getTableByScope: jest.fn(),
-  getTableRows: jest.fn(),
-  DEFAULT_BP_API_ENDPOINT: 'https://api.example.com',
-}));
+jest.mock('../../apis');
 
 describe('Ultra', () => {
-  beforeAll(() => {
-    jest.spyOn(console, 'error').mockImplementation(() => {
-      // do nothing
-    });
-  });
-
-  afterAll(() => {
-    jest.restoreAllMocks();
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+  const bpApiEndpoint = 'https://api.ultrain.io';
+  const ultra = new Ultra({ bpApiEndpoint });
 
   describe('constructor', () => {
-    it('should set the bpApiEndpoint to the default value if not provided', () => {
-      const ultra = new Ultra({});
-      expect(ultra.bpApiEndpoint).toEqual('https://api.example.com');
+    it('should set the bpApiEndpoint', () => {
+      expect(ultra.bpApiEndpoint).toEqual(bpApiEndpoint);
     });
-
-    it('should set the bpApiEndpoint to the provided value', () => {
-      const ultra = new Ultra({
-        bpApiEndpoint: 'https://custom-api.example.com',
-      });
-      expect(ultra.bpApiEndpoint).toEqual('https://custom-api.example.com');
-    });
-  });
-
-  describe('getBlock', () => {
-    it('should call getBlock with the correct parameters and return the result', async () => {
+    it('should set the default bpApiEndpoint if none is provided', () => {
       const ultra = new Ultra({});
-      const params = { blockNumOrId: 12323213124213 };
-      const expectedResult = {
-        block_num: 12323213124213,
-      };
-
-      // Spy on the getBlock function
-      const spyGetBlock = jest.spyOn(ultra, 'getBlock');
-      spyGetBlock.mockResolvedValueOnce(expectedResult as tGetBlockOutput);
-
-      const result = await ultra.getBlock(params);
-
-      // Assert that the getBlock function was called with the correct parameters
-      expect(spyGetBlock).toHaveBeenCalledWith(params);
-
-      // Assert that the result is equal to the expected result
-      expect(result).toEqual(expectedResult);
-
-      // Restore the original implementation of getBlock
-      spyGetBlock.mockRestore();
-    });
-
-    it('should throw an error if the block does not exist', async () => {
-      const ultra = new Ultra({});
-      const params = { blockNumOrId: 12323213124213 };
-      // Spy on the getBlock function
-      const spyGetBlock = jest.spyOn(ultra, 'getBlock');
-      spyGetBlock.mockRejectedValueOnce(new Error('Block does not exist'));
-
-      await expect(ultra.getBlock(params)).rejects.toThrowError(
-        'Block does not exist',
-      );
-
-      // Restore the original implementation of getBlock
-      spyGetBlock.mockRestore();
+      expect(ultra.bpApiEndpoint).toEqual(DEFAULT_BP_API_ENDPOINT);
     });
   });
 
   describe('getAbi', () => {
-    it('should call getAbi with the correct parameters and return the result', async () => {
-      const ultra = new Ultra({});
-      const params = { accountName: 'ultra' };
-      const expectedResult = {
-        account_name: 'ultra',
-      };
+    it('should call getAbi with the correct parameters', async () => {
+      const accountName = 'testaccount';
+      const abi = {};
+      (getAbi as jest.Mock).mockResolvedValueOnce(abi);
 
-      // Spy on the getAbi function
-      const spyGetAbi = jest.spyOn(ultra, 'getAbi');
-      spyGetAbi.mockResolvedValueOnce(expectedResult as tGetAbiOutput);
+      await ultra.getAbi({ accountName });
 
-      const result = await ultra.getAbi(params);
-      // Assert that the getAbi function was called with the correct parameters
-      expect(spyGetAbi).toHaveBeenCalledWith(params);
-
-      // Assert that the result is equal to the expected result
-      expect(result.account_name).toEqual('ultra');
-
-      // Restore the original implementation of getAbi
-      spyGetAbi.mockRestore();
+      expect(getAbi).toHaveBeenCalledWith({
+        accountName,
+        bpApiEndpoint,
+      });
     });
 
-    it('should throw an error if the account does not exist', async () => {
-      const ultra = new Ultra({});
-      const params = { accountName: 'accountName' };
-      // Spy on the getAbi function
-      const spyGetAbi = jest.spyOn(ultra, 'getAbi');
-      spyGetAbi.mockRejectedValueOnce(new Error('Account does not exist'));
+    it('should throw an error if getAbi returns null', async () => {
+      (getAbi as jest.Mock).mockResolvedValueOnce(null);
 
-      await expect(ultra.getAbi(params)).rejects.toThrowError(
-        'Account does not exist',
-      );
-
-      // Restore the original implementation of getAbi
-      spyGetAbi.mockRestore();
+      await expect(
+        ultra.getAbi({ accountName: 'nonexistingaccount' }),
+      ).rejects.toThrow('Account nonexistingaccount not found');
     });
   });
 
   describe('getAccount', () => {
-    it('should call getAccount with the correct parameters and return the result', async () => {
-      const ultra = new Ultra({});
-      const params = { accountName: 'ultra' };
-      const expectedResult = {
-        account_name: 'ultra',
-      };
+    it('should call getAccount with the correct parameters', async () => {
+      const accountName = 'testaccount';
+      const account = {};
+      (getAccount as jest.Mock).mockResolvedValueOnce(account);
 
-      // Spy on the getAccount function
-      const spyGetAccount = jest.spyOn(ultra, 'getAccount');
-      spyGetAccount.mockResolvedValueOnce(expectedResult as tGetAccountOutput);
+      await ultra.getAccount({ accountName });
 
-      const result = await ultra.getAccount(params);
-      // Assert that the getAccount function was called with the correct parameters
-      expect(spyGetAccount).toHaveBeenCalledWith(params);
-
-      // Assert that the result is equal to the expected result
-      expect(result.account_name).toEqual('ultra');
-
-      // Restore the original implementation of getAccount
-      spyGetAccount.mockRestore();
+      expect(getAccount).toHaveBeenCalledWith({
+        accountName,
+        bpApiEndpoint,
+      });
     });
 
-    it('should throw an error if the account does not exist', async () => {
-      const ultra = new Ultra({});
-      const params = { accountName: 'accountName' };
-      // Spy on the getAccount function
-      const spyGetAccount = jest.spyOn(ultra, 'getAccount');
-      spyGetAccount.mockRejectedValueOnce(new Error('Account does not exist'));
+    it('should throw an error if getAccount returns null', async () => {
+      (getAccount as jest.Mock).mockResolvedValueOnce(null);
 
-      await expect(ultra.getAccount(params)).rejects.toThrowError(
-        'Account does not exist',
-      );
-
-      // Restore the original implementation of getAccount
-      spyGetAccount.mockRestore();
+      await expect(
+        ultra.getAccount({ accountName: 'nonexistingaccount' }),
+      ).rejects.toThrow('Account nonexistingaccount not found');
     });
   });
 
-  describe('getTableByScope', () => {
-    it('should call getTableByScope with the correct parameters and return the result', async () => {
-      const ultra = new Ultra({});
-      const params = { code: 'ultra', table: 'accounts', limit: 2 };
-      const expectedResult = {
-        rows: [
-          {
-            code: 'ultra',
-            scope: '1000000000.0000 ULTRA',
-          },
-        ],
-      };
+  describe('getBlock', () => {
+    it('should call getBlock with the correct parameters', async () => {
+      const blockNumOrId = 123;
+      const block = {};
+      (getBlock as jest.Mock).mockResolvedValueOnce(block);
 
-      // Spy on the getTableByScope function
-      const spyGetTableByScope = jest.spyOn(ultra, 'getTableByScope');
-      spyGetTableByScope.mockResolvedValueOnce(
-        expectedResult as tGetTableByScopeOutput,
-      );
+      await ultra.getBlock({ blockNumOrId });
 
-      const result = await ultra.getTableByScope(params);
-      // Assert that the getTableByScope function was called with the correct parameters
-      expect(spyGetTableByScope).toHaveBeenCalledWith(params);
-
-      // Assert that the result is equal to the expected result
-      expect(result.rows[0].code).toEqual('ultra');
-      // Restore the original implementation of getTableByScope
-      spyGetTableByScope.mockRestore();
+      expect(getBlock).toHaveBeenCalledWith({
+        blockNumOrId,
+        bpApiEndpoint,
+      });
     });
 
-    it('should throw an error if the table does not exist', async () => {
-      const ultra = new Ultra({});
-      const params = { code: 'ultra', table: 'accounts', limit: 2 };
-      // Spy on the getTableByScope function
-      const spyGetTableByScope = jest.spyOn(ultra, 'getTableByScope');
-      spyGetTableByScope.mockRejectedValueOnce(
-        new Error('Table does not exist'),
+    it('should throw an error if getBlock returns null', async () => {
+      (getBlock as jest.Mock).mockResolvedValueOnce(null);
+
+      await expect(ultra.getBlock({ blockNumOrId: 12312 })).rejects.toThrow(
+        'Block 12312 not found',
       );
-
-      await expect(ultra.getTableByScope(params)).rejects.toThrowError(
-        'Table does not exist',
-      );
-
-      // Restore the original implementation of getTableByScope
-      spyGetTableByScope.mockRestore();
-    });
-  });
-
-  describe('getTableRows', () => {
-    it('should call getTableRows with the correct parameters and return the result', async () => {
-      const ultra = new Ultra({});
-      const params = {
-        code: 'ultra',
-        table: 'accounts',
-        scope: '1000000000.0000 ULTRA',
-        limit: 2,
-        json: true,
-      };
-      const expectedResult = {
-        rows: [
-          {
-            id: 0,
-            asset_manager: 'ultra',
-          },
-        ],
-      };
-
-      // Spy on the getTableRows function
-      const spyGetTableRows = jest.spyOn(ultra, 'getTableRows');
-      spyGetTableRows.mockResolvedValueOnce(
-        expectedResult as tGetTableRowsOutput,
-      );
-
-      const result = await ultra.getTableRows(params);
-      // Assert that the getTableRows function was called with the correct parameters
-      expect(spyGetTableRows).toHaveBeenCalledWith(params);
-
-      // Assert that the result is equal to the expected result
-      expect(result.rows[0].asset_manager).toEqual('ultra');
-
-      // Restore the original implementation of getTableRows
-      spyGetTableRows.mockRestore();
-    });
-
-    it('should throw an error if the table does not exist', async () => {
-      const ultra = new Ultra({});
-      const params = {
-        code: 'ultra',
-        table: 'accounts',
-        limit: 2,
-        json: true,
-        scope: 'scope',
-      };
-      // Spy on the getTableRows function
-      const spyGetTableRows = jest.spyOn(ultra, 'getTableRows');
-      spyGetTableRows.mockRejectedValueOnce(new Error('Table does not exist'));
-
-      await expect(ultra.getTableRows(params)).rejects.toThrowError(
-        'Table does not exist',
-      );
-
-      // Restore the original implementation of getTableRows
-      spyGetTableRows.mockRestore();
     });
   });
 
   describe('getCurrencyBalance', () => {
-    it('should call getCurrencyBalance with the correct parameters and return the result', async () => {
-      const ultra = new Ultra({});
-      const params = { code: 'ultra', account: 'ultra', symbol: 'ULTRA' };
-      const expectedResult = ['1000000000.0000 ULTRA'];
+    it('should call getCurrencyBalance with the correct parameters', async () => {
+      const account = 'testaccount';
+      const symbol = 'UTN';
+      const code = 'utrio.token';
+      const balance = {};
+      (getCurrencyBalance as jest.Mock).mockResolvedValueOnce(balance);
 
-      // Spy on the getCurrencyBalance function
-      const spyGetCurrencyBalance = jest.spyOn(ultra, 'getCurrencyBalance');
-      spyGetCurrencyBalance.mockResolvedValueOnce(expectedResult);
+      await ultra.getCurrencyBalance({ account, symbol, code });
 
-      const result = await ultra.getCurrencyBalance(params);
-      // Assert that the getCurrencyBalance function was called with the correct parameters
-      expect(spyGetCurrencyBalance).toHaveBeenCalledWith(params);
-
-      // Assert that the result is equal to the expected result
-      expect(result[0]).toEqual('1000000000.0000 ULTRA');
-
-      // Restore the original implementation of getCurrencyBalance
-      spyGetCurrencyBalance.mockRestore();
+      expect(getCurrencyBalance).toHaveBeenCalledWith({
+        account,
+        symbol,
+        code,
+        bpApiEndpoint,
+      });
     });
 
-    it('should throw an error if the account does not exist', async () => {
-      const ultra = new Ultra({});
-      const params = { code: 'ultra', account: 'account', symbol: 'ULTRA' };
-      // Spy on the getCurrencyBalance function
-      const spyGetCurrencyBalance = jest.spyOn(ultra, 'getCurrencyBalance');
-      spyGetCurrencyBalance.mockRejectedValueOnce(
-        new Error('Account does not exist'),
-      );
+    it('should throw an error if getCurrencyBalance returns null', async () => {
+      (getCurrencyBalance as jest.Mock).mockResolvedValueOnce(null);
 
-      await expect(ultra.getCurrencyBalance(params)).rejects.toThrowError(
-        'Account does not exist',
-      );
+      await expect(
+        ultra.getCurrencyBalance({
+          account: 'nonexistingaccount',
+          symbol: 'UTN',
+          code: 'ultra.io',
+        }),
+      ).rejects.toThrow('Account nonexistingaccount not found');
+    });
+  });
+  describe('getInfo', () => {
+    it('should call getInfo with the correct parameters', async () => {
+      const info = {};
+      (getInfo as jest.Mock).mockResolvedValueOnce(info);
 
-      // Restore the original implementation of getCurrencyBalance
-      spyGetCurrencyBalance.mockRestore();
+      await ultra.getInfo();
+
+      expect(getInfo).toHaveBeenCalledWith({
+        bpApiEndpoint,
+      });
+    });
+
+    it('should throw an error if getInfo returns null', async () => {
+      (getInfo as jest.Mock).mockResolvedValueOnce(null);
+
+      await expect(ultra.getInfo()).rejects.toThrow('Info not found');
     });
   });
 
-  describe('getInfo', () => {
-    it('should call getInfo with the correct parameters and return the result', async () => {
-      const ultra = new Ultra({});
-      const expectedResult = {
-        head_block_num: 1,
-      };
+  describe('getTableByScope', () => {
+    it('should call getTableByScope with the correct parameters', async () => {
+      const code = 'testaccount';
+      const limit = 10;
+      const upperBound = 'testtable';
+      const lowerBound = 'testtable';
+      const tableByScope = {};
+      (getTableByScope as jest.Mock).mockResolvedValueOnce(tableByScope);
 
-      // Spy on the getInfo function
-      const spyGetInfo = jest.spyOn(ultra, 'getInfo');
-      spyGetInfo.mockResolvedValueOnce(expectedResult as tGetInfoOutput);
+      await ultra.getTableByScope({ code, limit, upperBound, lowerBound });
 
-      const result = await ultra.getInfo();
-      // Assert that the getInfo function was called with the correct parameters
-      expect(spyGetInfo).toHaveBeenCalledWith();
-
-      // Assert that the result is equal to the expected result
-      expect(result.head_block_num).toEqual(1);
-
-      // Restore the original implementation of getInfo
-      spyGetInfo.mockRestore();
+      expect(getTableByScope).toHaveBeenCalledWith({
+        code,
+        limit,
+        upperBound,
+        lowerBound,
+        bpApiEndpoint,
+      });
     });
-    it('should throw an error if the getInfo function fails', async () => {
-      const ultra = new Ultra({});
-      // Spy on the getInfo function
-      const spyGetInfo = jest.spyOn(ultra, 'getInfo');
-      spyGetInfo.mockRejectedValueOnce(new Error('Error'));
 
-      await expect(ultra.getInfo()).rejects.toThrowError('Error');
+    it('should throw an error if getTableByScope returns null', async () => {
+      (getTableByScope as jest.Mock).mockResolvedValueOnce(null);
 
-      // Restore the original implementation of getInfo
-      spyGetInfo.mockRestore();
+      await expect(
+        ultra.getTableByScope({
+          code: 'nonexistingaccount',
+          limit: 10,
+          upperBound: 'testtable',
+          lowerBound: 'testtable',
+        }),
+      ).rejects.toThrow('Scope nonexistingaccount not found');
+    });
+  });
+
+  describe('getTableRows', () => {
+    it('should call getTableRows with the correct parameters', async () => {
+      const code = 'testaccount';
+      const table = 'testtable';
+      const scope = 'testscope';
+      const limit = 10;
+      const upperBound = 'testtable';
+      const lowerBound = 'testtable';
+      const tableRows = {};
+      const json = true;
+
+      (getTableRows as jest.Mock).mockResolvedValueOnce(tableRows);
+
+      await ultra.getTableRows({
+        code,
+        json,
+        table,
+        scope,
+        limit,
+        upperBound,
+        lowerBound,
+      });
+
+      expect(getTableRows).toHaveBeenCalledWith({
+        code,
+        json,
+        table,
+        scope,
+        limit,
+        upperBound,
+        lowerBound,
+        bpApiEndpoint,
+      });
+    });
+
+    it('should throw an error if getTableRows returns null', async () => {
+      (getTableRows as jest.Mock).mockResolvedValueOnce(null);
+
+      await expect(
+        ultra.getTableRows({
+          code: 'nonexistingaccount',
+          table: 'testtable',
+          limit: 10,
+          upperBound: 'testtable',
+          lowerBound: 'testtable',
+          json: true,
+          scope: 'testscope',
+        }),
+      ).rejects.toThrow('Table testtable not found');
     });
   });
 });

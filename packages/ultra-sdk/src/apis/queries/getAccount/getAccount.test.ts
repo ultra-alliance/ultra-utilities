@@ -41,4 +41,18 @@ describe('getAccount', () => {
       }),
     ).rejects.toThrowError();
   });
+  it("should use default endpoint if it's not provided", async () => {
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({
+        ok: true,
+        json: async () => Promise.resolve(expectedResult),
+      }),
+    ) as jest.Mock;
+    const result = await getAccount({
+      accountName,
+    });
+    // assert that the result matches the expected result
+    expect(result.account_name).toEqual(accountName);
+    expect(result.core_liquid_balance).toBeDefined();
+  });
 });

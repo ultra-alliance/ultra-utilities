@@ -17,8 +17,8 @@ import numeral from 'numeral';
  * ```
  */
 
-function formatUosBalance(balance: string | undefined = '0'): string {
-  return numeral(Math.floor(parseFloat(balance ?? '0'))).format('(0.00 a)');
+function formatUosBalance(balance: string): string {
+  return numeral(Math.floor(parseFloat(balance))).format('(0.00 a)');
 }
 
 export default formatUosBalance;

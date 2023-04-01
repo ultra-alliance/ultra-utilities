@@ -42,4 +42,18 @@ describe('getTableByScope', () => {
       }),
     ).rejects.toThrowError();
   });
+  it("should use default endpoint if it's not provided", async () => {
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({
+        ok: true,
+        json: async () => Promise.resolve(expectedResult),
+      }),
+    ) as jest.Mock;
+    const result = await getTableByScope({
+      ...body,
+    });
+    // assert that the result matches the expected result
+    expect(result.more).toBeDefined();
+    expect(result.rows.length).toBeGreaterThan(0);
+  });
 });

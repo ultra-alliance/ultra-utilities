@@ -15,8 +15,8 @@ import numeral from 'numeral';
  * ```
  */
 
-function formatComputeUnit(quota?: number): string {
-  return numeral(Math.floor(quota ?? 0)).format('0.00 b');
+function formatComputeUnit(quota: number): string {
+  return numeral(Math.floor(quota)).format('0.00 b');
 }
 
 export default formatComputeUnit;

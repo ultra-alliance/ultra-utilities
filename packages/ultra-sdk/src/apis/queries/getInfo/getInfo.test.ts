@@ -33,4 +33,17 @@ describe('getInfo', () => {
       }),
     ).rejects.toThrowError();
   });
+  it("should use default endpoint if it's not provided", async () => {
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({
+        ok: true,
+        json: async () => Promise.resolve(expectedResult),
+      }),
+    ) as jest.Mock;
+    const result = await getInfo({});
+    // assert that the result matches the expected result
+    expect(result.server_version).toBeDefined();
+    expect(result.chain_id).toBeDefined();
+    expect(result.head_block_num).toBeDefined();
+  });
 });

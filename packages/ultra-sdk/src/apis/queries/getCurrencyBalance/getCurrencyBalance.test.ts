@@ -25,4 +25,12 @@ describe('getCurrencyBalance', () => {
       }),
     ).rejects.toThrowError();
   });
+  it("should use default endpoint if it's not provided", async () => {
+    const result = await getCurrencyBalance({
+      ...body,
+    });
+    // assert that the result matches the expected result
+    expect(result.length).toEqual(1);
+    expect(result[0]).toBeDefined();
+  });
 });

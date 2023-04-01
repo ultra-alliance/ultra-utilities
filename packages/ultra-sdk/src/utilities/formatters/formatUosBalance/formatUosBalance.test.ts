@@ -12,10 +12,8 @@ describe('formatUosBalance', () => {
   });
 
   it('returns 0 balance if the balance is undefined or not a number', () => {
-    const balance1 = undefined;
     const balance2 = 'not a number';
 
-    expect(formatUosBalance(balance1)).toEqual('0.00 ');
     expect(formatUosBalance(balance2)).toEqual('0.00 ');
   });
 });

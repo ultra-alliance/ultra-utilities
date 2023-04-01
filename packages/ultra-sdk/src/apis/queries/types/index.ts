@@ -35,8 +35,8 @@ export type tGetTableRows = tUltraQuery & {
   code: string;
   scope: string;
   table: string;
-  json: boolean;
   limit: number;
+  json?: boolean;
   lowerBound?: tValidInput;
   upperBound?: tValidInput;
 };

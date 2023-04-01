@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export { default as getAbi } from './getAbi';
 export { default as getAccount } from './getAccount';
 export { default as getBlock } from './getBlock';

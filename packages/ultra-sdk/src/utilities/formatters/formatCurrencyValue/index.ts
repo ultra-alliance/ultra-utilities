@@ -28,7 +28,7 @@ function formatCurrencyValue({ value, ticker }: tFormatCurrencyValue): string {
     formattedValue = ticker + ' ';
   }
 
-  formattedValue += numeral(value ?? 0).format('0,0.00');
+  formattedValue += numeral(value).format('0,0.00');
   return formattedValue;
 }
 

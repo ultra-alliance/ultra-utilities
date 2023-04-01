@@ -21,8 +21,12 @@ import { type tFormatName } from '../../interfaces';
  * ```
  */
 
-function formatName({ name = '', num = 3 }: tFormatName): string {
+function formatName({ name, num = 3 }: tFormatName): string {
   const formattedAccountName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  if (num === 0) {
+    return formattedAccountName;
+  }
 
   if (formattedAccountName.length <= num * 2) {
     return formattedAccountName;

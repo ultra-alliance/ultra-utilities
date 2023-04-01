@@ -6,7 +6,6 @@ import {
   getInfo,
   getTableByScope,
   getTableRows,
-  handleUltraError,
   DEFAULT_BP_API_ENDPOINT,
   type tGetAbi,
   type tGetBlock,
@@ -51,12 +50,10 @@ class Ultra implements tUltra {
   }
 
   public async getAbi(params: tGetAbi): Promise<tGetAbiOutput> {
-    const data = await handleUltraError(
-      getAbi({
-        ...params,
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getAbi({
+      ...params,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
     if (!data) {
       throw new Error(`Account ${params.accountName} not found`);
     }
@@ -65,12 +62,10 @@ class Ultra implements tUltra {
   }
 
   public async getAccount(params: tGetAccount): Promise<tGetAccountOutput> {
-    const data = await handleUltraError(
-      getAccount({
-        ...params,
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getAccount({
+      ...params,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
     if (!data) {
       throw new Error(`Account ${params.accountName} not found`);
     }
@@ -79,12 +74,10 @@ class Ultra implements tUltra {
   }
 
   public async getBlock(params: tGetBlock): Promise<tGetBlockOutput> {
-    const data = await handleUltraError(
-      getBlock({
-        ...params,
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getBlock({
+      ...params,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
     if (!data) {
       throw new Error(`Block ${params.blockNumOrId} not found`);
     }
@@ -95,12 +88,11 @@ class Ultra implements tUltra {
   public async getCurrencyBalance(
     params: tGetCurrencyBalance,
   ): Promise<tGetCurrencyBalanceOutput> {
-    const data = await handleUltraError(
-      getCurrencyBalance({
-        ...params,
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getCurrencyBalance({
+      ...params,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
+
     if (!data) {
       throw new Error(`Account ${params.account} not found`);
     }
@@ -109,11 +101,9 @@ class Ultra implements tUltra {
   }
 
   public async getInfo(): Promise<tGetInfoOutput> {
-    const data = await handleUltraError(
-      getInfo({
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getInfo({
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
     if (!data) {
       throw new Error(`Info not found`);
     }
@@ -124,12 +114,10 @@ class Ultra implements tUltra {
   public async getTableByScope(
     params: tGetTableByScope,
   ): Promise<tGetTableByScopeOutput> {
-    const data = await handleUltraError(
-      getTableByScope({
-        ...params,
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getTableByScope({
+      ...params,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
     if (!data) {
       throw new Error(`Scope ${params.code} not found`);
     }
@@ -140,12 +128,10 @@ class Ultra implements tUltra {
   public async getTableRows(
     params: tGetTableRows,
   ): Promise<tGetTableRowsOutput> {
-    const data = await handleUltraError(
-      getTableRows({
-        ...params,
-        bpApiEndpoint: this.bpApiEndpoint,
-      }),
-    );
+    const data = await getTableRows({
+      ...params,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
     if (!data) {
       throw new Error(`Table ${params.table} not found`);
     }

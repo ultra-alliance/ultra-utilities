@@ -34,6 +34,7 @@ async function http<T>({ path, config }: tHttp): Promise<T> {
   }
 
   const body = (await response.json()) as T;
+
   return body;
 }
 

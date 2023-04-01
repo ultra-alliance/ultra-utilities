@@ -44,8 +44,8 @@ const getTableByScope = async ({
     body: {
       code,
       limit,
-      lower_bound: lowerBound ?? '',
-      upper_bound: upperBound ?? '',
+      lower_bound: lowerBound,
+      upper_bound: upperBound,
     },
   });
 

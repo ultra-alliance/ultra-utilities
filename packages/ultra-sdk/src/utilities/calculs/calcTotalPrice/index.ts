@@ -24,7 +24,7 @@ import { type tCalcTotalPrice } from '../../interfaces';
  */
 
 const calcTotalPrice = ({ balance, basePrice }: tCalcTotalPrice): number => {
-  return Number(parseFloat(balance?.toString())) * Number(basePrice ?? 1);
+  return Number(parseFloat(balance.toString())) * Number(basePrice ?? 1);
 };
 
 export default calcTotalPrice;

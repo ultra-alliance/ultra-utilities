@@ -8,11 +8,11 @@
   "scripts": {
     "clean": "cd ../.. && npx rimraf packages/ultra-sdk/dist",
     "lint": "cd ../.. && eslint packages/ultra-sdk/src/**/*.ts",
-    "check-types": "npm run build -- --noEmit",
+    "check:types": "npm run build -- --noEmit",
     "prebuild": "npm run clean",
     "build": "cd ../.. && tsc -p packages/ultra-sdk/tsconfig.json && tsc -p packages/ultra-sdk/tsconfig.json --module esnext --outDir ./packages/ultra-sdk/dist/cjs",
     "test": "cd ../.. && npm run test packages/ultra-sdk",
-    "cover": "cd ../.. && npm run cover packages/ultra-sdk",
+    "coverage": "cd ../.. && npm run coverage packages/ultra-sdk",
     "commit": "cd ../.. && npm run commit",
     "prepublishOnly": "npm run build"
   },

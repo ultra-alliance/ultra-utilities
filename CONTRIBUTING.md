@@ -91,13 +91,13 @@ your package name.
  "scripts": {
     "clean": "cd ../.. && npx rimraf packages/YOUR_PACKAGE_NAME/dist",
     "lint": "cd ../.. && eslint packages/YOUR_PACKAGE_NAME/src/**/*.ts",
-    "check-types": "yarn build -- --noEmit",
-    "prebuild": "yarn clean",
+    "check-types": "npm run build -- --noEmit",
+    "prebuild": "npm run clean",
     "build": "cd ../.. && tsc -p packages/YOUR_PACKAGE_NAME/tsconfig.json && tsc -p packages/YOUR_PACKAGE_NAME/tsconfig.json --module esnext --outDir ./packages/YOUR_PACKAGE_NAME/dist/cjs",
-    "test": "cd ../.. && yarn test packages/YOUR_PACKAGE_NAME",
-    "cover": "cd ../.. && yarn cover packages/YOUR_PACKAGE_NAME",
-    "commit": "cd ../.. && yarn commit",
-    "prepublishOnly": "yarn build"
+    "test": "cd ../.. && npm run test packages/YOUR_PACKAGE_NAME",
+    "cover": "cd ../.. && npm run cover packages/YOUR_PACKAGE_NAME",
+    "commit": "cd ../.. && npm run commit",
+    "prepublishOnly": "npm run build"
   },
 ```
 

@@ -4,12 +4,12 @@
   "license": "MIT",
   "scripts": {
     "install:all": "lerna bootstrap",
-    "clean": "rimraf coverage && lerna run clean",
-    "lint": "lerna run lint",
-    "lint:fix": "lerna run lint -- --fix",
+    "clean": "rimraf coverage && lerna exec npm run clean",
+    "lint": "lerna exec npm run lint",
+    "lint:fix": "lerna exec npm run lint -- --fix",
     "lint:staged": "lint-staged",
-    "check:types": "lerna run check-types",
-    "build": "lerna run build",
+    "check:types": "lerna exec npm run check:types",
+    "build": "lerna exec npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage:pre": "rimraf coverage",
@@ -18,7 +18,6 @@
     "release:check": "lerna changed",
     "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
     "release:canary": "lerna publish --canary --ignore-scripts",
-    "prepare": "husky install",
     "make:docs": "npx typedoc --out docs packages/ultra-sdk/src/index.ts"
   },
   "workspaces": [

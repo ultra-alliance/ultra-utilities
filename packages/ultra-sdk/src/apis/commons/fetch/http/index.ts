@@ -29,7 +29,7 @@ import { type tHttp } from '../../types/commons';
 
 async function http<T>({ path, config }: tHttp): Promise<T> {
   const response = await fetch(path, config);
-  if (!response.ok) {
+  if (!response?.ok) {
     throw new Error(`${response.statusText}`);
   }
 

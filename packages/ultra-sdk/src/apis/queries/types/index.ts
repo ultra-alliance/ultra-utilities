@@ -40,3 +40,15 @@ export type tGetTableRows = tUltraQuery & {
   lowerBound?: tValidInput;
   upperBound?: tValidInput;
 };
+
+export type tGetUniqOwned = tUltraQuery & {
+  account: string;
+};
+
+export type tGetUosBalance = tUltraQuery & {
+  account: string;
+};
+
+export type tGetUniqDetail = tUltraQuery & {
+  uniqId: number;
+};

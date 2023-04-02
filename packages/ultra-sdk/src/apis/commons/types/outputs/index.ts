@@ -1,4 +1,9 @@
-import { type tAbi, type tTableRow } from '../commons';
+import {
+  type tAbi,
+  type tTableRow,
+  type tTokenA,
+  type tListedUniq,
+} from '../commons';
 
 export type tGetAccountOutput = {
   account_name: string;
@@ -97,6 +102,18 @@ export type tGetTableByScopeOutput = {
 
 export type tGetTableRowsOutput = {
   rows: tTableRow[];
+  more: boolean;
+  next_key: string;
+};
+
+export type tGetUniqOwnedOutput = {
+  rows: tTokenA[];
+  more: boolean;
+  next_key: string;
+};
+
+export type tGetListedUniqsOutput = {
+  rows: tListedUniq[];
   more: boolean;
   next_key: string;
 };

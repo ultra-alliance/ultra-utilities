@@ -31,7 +31,7 @@ describe('getUniqDetail', () => {
     expect(result).toBeDefined();
   });
 
-  it('should return an error if fails', async () => {
+  it('should return an error if rows length == 0', async () => {
     global.fetch = jest.fn(async () =>
       Promise.resolve({
         ok: true,
@@ -43,6 +43,19 @@ describe('getUniqDetail', () => {
       'Uniq not found',
     );
   });
+
+  it('should return an error if fails to get a response', async () => {
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({
+        ok: true,
+        json: async () => Promise.resolve(undefined),
+      }),
+    ) as jest.Mock;
+    await expect(getUniqDetail({ uniqId: 1, bpApiEndpoint })).rejects.toThrow(
+      'Uniq not found',
+    );
+  });
+
   it("should use default endpoint if it's not provided", async () => {
     global.fetch = jest.fn(async () =>
       Promise.resolve({

@@ -6,6 +6,9 @@ import {
   getInfo,
   getTableByScope,
   getTableRows,
+  getUosBalance,
+  getUniqsOwned,
+  getUniqDetail,
   DEFAULT_BP_API_ENDPOINT,
   type tGetAbi,
   type tGetBlock,
@@ -30,7 +33,7 @@ import { type tUltra, type tUltraOptions } from '../types';
  * @description Ultra class
  * @example
  * ```typescript
- * import { Ultra } from '@ultra-alliance/ultra-sdk';
+ * import { Ultra, getUniqsOwned } from '@ultra-alliance/ultra-sdk';
  *
  * const ultra = new Ultra({
  *     bpApiEndpoint: 'https://api.ultrain.io',
@@ -134,6 +137,39 @@ class Ultra implements tUltra {
     });
     if (!data) {
       throw new Error(`Table ${params.table} not found`);
+    }
+
+    return data;
+  }
+
+  public async getUosBalance(account: string) {
+    const data = await getUosBalance({
+      account,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
+    if (!data) {
+      throw new Error(`Account ${account} not found`);
+    }
+
+    return data;
+  }
+
+  public async getUniqsOwned(account: string) {
+    const data = await getUniqsOwned({
+      account,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
+    if (!data) {
+      throw new Error(`Account ${account} not found`);
+    }
+
+    return data;
+  }
+
+  public async getUniqDetail(uniqId: number) {
+    const data = await getUniqDetail({ uniqId });
+    if (!data) {
+      throw new Error(`Uniq ${uniqId} not found`);
     }
 
     return data;

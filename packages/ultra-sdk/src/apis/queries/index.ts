@@ -7,7 +7,7 @@ export { default as getCurrencyBalance } from './getCurrencyBalance';
 export { default as getInfo } from './getInfo';
 export { default as getTableByScope } from './getTableByScope';
 export { default as getTableRows } from './getTableRows';
-export { default as getUniqOwned } from './getUniqsOwned';
+export { default as getUniqsOwned } from './getUniqsOwned';
 export { default as getUosBalance } from './getUosBalance';
 export { default as getUniqDetail } from './getUniqDetail';
 

@@ -1,0 +1,174 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from '../assets/code-brackets.svg';
+import Colors from '../assets/colors.svg';
+import Comments from '../assets/comments.svg';
+import Direction from '../assets/direction.svg';
+import Flow from '../assets/flow.svg';
+import Plugin from '../assets/plugin.svg';
+import Repo from '../assets/repo.svg';
+import StackAlt from '../assets/stackalt.svg';
+import {ultraColors} from "../../packages/uikit/src";
+
+<Meta title="About Material UI" />
+
+<style>
+  {`
+    .subheading {
+      --mediumdark: '#999999';
+      font-weight: 900;
+      font-size: 13px;
+      color: #fff;
+      letter-spacing: 6px;
+      line-height: 24px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      margin-top: 40px;
+    }
+    a {
+      color: ${ultraColors.lilacLuster};
+    }
+
+    .link-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      row-gap: 10px;
+    }
+
+    @media (min-width: 620px) {
+      .link-list {
+        row-gap: 20px;
+        column-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media all and (-ms-high-contrast:none) {
+    .link-list {
+        display: -ms-grid;
+        -ms-grid-columns: 1fr 1fr;
+        -ms-grid-rows: 1fr 1fr;
+      }
+    }
+
+    .link-item {
+      display: block;
+      padding: 20px 30px 20px 15px;
+      border: 1px solid ${ultraColors.irishEnchantment
+};
+      border-radius: 5px;
+      transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+      color: white;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .link-item:hover {
+      border-color: ${ultraColors.royalAmethyst};
+      transform: translate3d(0, -3px, 0);
+      box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+    }
+
+    .link-item:active {
+      border-color: ${ultraColors.orchidHaze};
+      transform: translate3d(0, 0, 0);
+    }
+
+    .link-item strong {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .link-item img {
+      height: 40px;
+      width: 40px;
+      margin-right: 15px;
+      flex: none;
+    }
+
+    .link-item span {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .tip {
+      display: inline-block;
+      border-radius: 1em;
+      font-size: 11px;
+      line-height: 12px;
+      font-weight: 700;
+      background: #E7FDD8;
+      color: #66BF3C;
+      padding: 4px 12px;
+      margin-right: 10px;
+      vertical-align: top;
+    }
+
+    .tip-wrapper {
+      font-size: 13px;
+      line-height: 20px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .tip-wrapper code {
+      font-size: 12px;
+      display: inline-block;
+    }
+  `}
+</style>
+
+# About Material UI
+
+[**Material UI (or MUI)**](https://mui.com) is a popular UI component library for React. It provides a collection of customizable and reusable UI components that follow Google's Material Design guidelines.
+
+<div className="subheading">Documentation</div>
+
+<a className="link-item" href="https://discord.gg/storybook" target="_blank">
+  <img src={"https://mui.com/static/logo.png"} alt="comments" />
+  <span>
+    <strong>Official MUI Documentation</strong>
+    Learn how to use Material UI components in your React application.
+  </span>
+</a>
+
+## Why MUI?
+
+Material UI offers several benefits that make it a great choice for building web applications:
+1. **Consistent UI**: Material UI components follow Google's Material Design guidelines, which means that they are consistent and predictable. This makes it easy for users to learn and use your application.
+
+2. **Customizable**: Material UI components are customizable, which means that you can change their appearance and behavior to suit your needs. This makes it easy to build a consistent look and feel for your application.
+
+3. **Reusable**: Material UI components are reusable, which means that you can use them in multiple places in your application. This makes it easy to build a consistent look and feel for your application.
+
+4. **Accessible**: Material UI components are accessible, which means that they are usable by people with disabilities. This makes it easy to build a consistent look and feel for your application.
+
+5. **Community Support**: Material UI has a large community of users and contributors, which means that you can get help when you need it. This makes it easy to build a consistent look and feel for your application.
+
+## Getting Started with Material UIs
+
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+Once you've installed the library, you can import any of its components into your React application and start using them.
+
+```jsx
+import { Button } from "@material-ui/core";
+
+function MyButton() {
+  return (
+    <Button variant="contained" color="primary">
+      Click me!
+    </Button>
+  );
+}
+```
+
+### Conclusion
+
+Material UI is a powerful and flexible UI component library that can help you build beautiful and accessible web applications quickly and easily. With its comprehensive documentation and active community, it's a great choice for any React developer looking to streamline their development process.
+
+
+

@@ -34,7 +34,6 @@ async function getUniqDetail({
     upperBound: uniqId,
     limit: 1000,
   });
-  console.log('result', result);
 
   if (!result || result.rows.length === 0) {
     throw new Error('Uniq not found');

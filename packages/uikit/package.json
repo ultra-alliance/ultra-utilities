@@ -1,0 +1,33 @@
+{
+  "name": "uikit",
+  "version": "0.0.1",
+  "description": "Mui based them kit for Ultra dApps",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "ignore": [
+    "**/.*.test.tsx"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "clean": "cd ../.. && npx rimraf packages/uikit/dist",
+    "lint": "cd ../.. && eslint packages/uikit/src/**/*.ts",
+    "check:types": "npm run build -- --noEmit",
+    "prebuild": "npm run clean",
+    "build": "cd ../.. && tsc -p packages/uikit/tsconfig.json && tsc -p packages/uikit/tsconfig.json --module esnext --outDir ./packages/uikit/dist/cjs",
+    "test": "cd ../.. && npm run test packages/uikit",
+    "coverage": "cd ../.. && npm run coverage packages/uikit",
+    "commit": "cd ../.. && npm run commit",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "",
+  "peerDependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/inter": "^4.5.15",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

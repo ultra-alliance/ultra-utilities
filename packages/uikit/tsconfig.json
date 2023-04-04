@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "./dist/esm",
+    "lib": ["esnext", "dom"]
+    // "types": [
+    //   "@testing-library/jest-dom",
+    //   "@testing-library/react"
+    // ]
+  }
+}

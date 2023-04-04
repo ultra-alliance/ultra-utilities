@@ -38,7 +38,8 @@
     "emitDecoratorMetadata": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "preserve"
   },
   "exclude": [
     "node_modules",

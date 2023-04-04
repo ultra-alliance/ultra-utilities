@@ -7,6 +7,9 @@ import {
   getInfo,
   getTableByScope,
   getTableRows,
+  getUosBalance,
+  getUniqDetail,
+  getUniqsOwned,
 } from '../../apis';
 import Ultra from './index';
 
@@ -227,6 +230,86 @@ describe('Ultra', () => {
           scope: 'testscope',
         }),
       ).rejects.toThrow('Table testtable not found');
+    });
+  });
+  describe('getUosBalance', () => {
+    it('should call getUosBalance with the correct parameters', async () => {
+      const account = 'ultra.io';
+
+      (getUosBalance as jest.Mock).mockResolvedValueOnce(['10 UOS']);
+
+      await ultra.getUosBalance(account);
+
+      expect(getUosBalance).toHaveBeenCalledWith({
+        account,
+        bpApiEndpoint,
+      });
+    });
+
+    it('should throw an error if getUosBalance returns null', async () => {
+      (getUosBalance as jest.Mock).mockResolvedValueOnce(null);
+      const account = 'ultra.io';
+
+      await expect(ultra.getUosBalance(account)).rejects.toThrow(
+        `Account ${account} not found`,
+      );
+    });
+  });
+  describe('getUniqsOwned', () => {
+    it('should call getUniqsOwned with the correct parameters', async () => {
+      const account = 'ultra.io';
+
+      (getUniqsOwned as jest.Mock).mockResolvedValueOnce({
+        rows: [
+          {
+            asset_manager: 'hello',
+          },
+        ],
+      });
+
+      await ultra.getUniqsOwned(account);
+
+      expect(getUniqsOwned).toHaveBeenCalledWith({
+        account,
+        bpApiEndpoint,
+      });
+    });
+
+    it('should throw an error if getUosBalance returns null', async () => {
+      (getUniqsOwned as jest.Mock).mockResolvedValueOnce(null);
+      const account = 'ultra.io';
+
+      await expect(ultra.getUniqsOwned(account)).rejects.toThrow(
+        `Account ${account} not found`,
+      );
+    });
+  });
+  describe('getUniqDetail', () => {
+    it('should call getUniqDetail with the correct parameters', async () => {
+      const uniqId = 10;
+
+      (getUniqDetail as jest.Mock).mockResolvedValueOnce({
+        rows: [
+          {
+            asset_manager: 'hello',
+          },
+        ],
+      });
+
+      await ultra.getUniqDetail(uniqId);
+
+      expect(getUniqDetail).toHaveBeenCalledWith({
+        uniqId,
+      });
+    });
+
+    it('should throw an error if getUosBalance returns null', async () => {
+      (getUniqDetail as jest.Mock).mockResolvedValueOnce(null);
+      const uniqId = 10;
+
+      await expect(ultra.getUniqDetail(uniqId)).rejects.toThrow(
+        `Uniq ${uniqId} not found`,
+      );
     });
   });
 });

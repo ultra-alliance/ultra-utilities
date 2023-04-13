@@ -1,5 +1,3 @@
-import { type ThemeOptions } from '@mui/material';
-
 export type tUltraColors = {
   lilacLuster: string;
   orchidHaze: string;
@@ -8,7 +6,7 @@ export type tUltraColors = {
   midnightAshes: string;
 };
 
-export type tUltraTheme = ThemeOptions & {
+export type tUltraTheme = {
   dimensions: {
     drawerWidth: number;
   };

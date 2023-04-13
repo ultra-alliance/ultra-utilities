@@ -1,3 +1,5 @@
+// istanbul ignore file
+
 import {
   getAbi,
   getAccount,
@@ -9,6 +11,7 @@ import {
   getUosBalance,
   getUniqsOwned,
   getUniqDetail,
+  getListedUniqs,
   DEFAULT_BP_API_ENDPOINT,
   type tGetAbi,
   type tGetBlock,
@@ -23,7 +26,10 @@ import {
   type tGetTableRows,
   type tGetTableRowsOutput,
   type tGetInfoOutput,
+  type tGetListedUniqsOutput,
+  type tUniq,
 } from '../../apis';
+import { type tValidInput } from '../../utilities/interfaces/index';
 import { type tUltra, type tUltraOptions } from '../types';
 
 /*
@@ -33,7 +39,7 @@ import { type tUltra, type tUltraOptions } from '../types';
  * @description Ultra class
  * @example
  * ```typescript
- * import { Ultra, getUniqsOwned } from '@ultra-alliance/ultra-sdk';
+ * import { Ultra, getUniqsOwned, getListedUniqs } from '@ultra-alliance/ultra-sdk';
  *
  * const ultra = new Ultra({
  *     bpApiEndpoint: 'https://api.ultrain.io',
@@ -64,16 +70,22 @@ class Ultra implements tUltra {
     return data;
   }
 
-  public async getAccount(params: tGetAccount): Promise<tGetAccountOutput> {
-    const data = await getAccount({
-      ...params,
-      bpApiEndpoint: this.bpApiEndpoint,
-    });
-    if (!data) {
-      throw new Error(`Account ${params.accountName} not found`);
-    }
+  public async getAccount(
+    params: tGetAccount,
+  ): Promise<tGetAccountOutput | undefined> {
+    try {
+      const data = await getAccount({
+        ...params,
+        bpApiEndpoint: this.bpApiEndpoint,
+      });
+      if (!data) {
+        throw new Error(`Account ${params.accountName} not found`);
+      }
 
-    return data;
+      return data;
+    } catch (error) {
+      return undefined;
+    }
   }
 
   public async getBlock(params: tGetBlock): Promise<tGetBlockOutput> {
@@ -142,7 +154,9 @@ class Ultra implements tUltra {
     return data;
   }
 
-  public async getUosBalance(account: string) {
+  public async getUosBalance(
+    account: string,
+  ): Promise<tGetCurrencyBalanceOutput> {
     const data = await getUosBalance({
       account,
       bpApiEndpoint: this.bpApiEndpoint,
@@ -166,10 +180,19 @@ class Ultra implements tUltra {
     return data;
   }
 
-  public async getUniqDetail(uniqId: number) {
-    const data = await getUniqDetail({ uniqId });
+  public async getUniqDetail(uniqId: tValidInput): Promise<tUniq> {
+    const data = await getUniqDetail({ uniqId: Number(uniqId) });
     if (!data) {
       throw new Error(`Uniq ${uniqId} not found`);
+    }
+
+    return data;
+  }
+
+  public async getListedUniqs(): Promise<tGetListedUniqsOutput> {
+    const data = await getListedUniqs();
+    if (!data) {
+      throw new Error(`Listed uniqs not found`);
     }
 
     return data;

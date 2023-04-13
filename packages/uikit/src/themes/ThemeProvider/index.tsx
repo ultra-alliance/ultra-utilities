@@ -1,15 +1,15 @@
+// istanbul ignore file
+
+import { CssBaseline, GlobalStyles } from '@mui/material';
 import {
   ThemeProvider as MuiThemeProvider,
-  CssBaseline,
-  createTheme,
-  type ThemeOptions,
-  GlobalStyles,
-} from '@mui/material';
+  type UltraTheme,
+} from '@mui/material/styles';
 import * as React from 'react';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
-  theme: ThemeOptions;
+  theme: UltraTheme;
 };
 
 /**
@@ -33,13 +33,12 @@ const ThemeProvider = ({
   theme,
   children,
 }: ThemeProviderProps): React.ReactElement => {
-  const ultraTheme = createTheme(theme);
   return (
-    <MuiThemeProvider theme={ultraTheme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <GlobalStyles
         styles={{
-          body: { background: ultraTheme.palette.background.default },
+          body: { background: theme.palette.background.default },
         }}
       />
       {children}

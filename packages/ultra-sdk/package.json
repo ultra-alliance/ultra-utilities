@@ -1,10 +1,20 @@
 {
-  "name": "ultra-sdk",
+  "name": "@ultra-alliance/ultra-sdk",
   "version": "0.0.1",
   "description": "Ultra Typescript SDK to interact with the Ultra blockchain",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./src": {
+      "require": "./src/index.js",
+      "import": "./src/index.js"
+    }
+  },
   "scripts": {
     "clean": "cd ../.. && npx rimraf packages/ultra-sdk/dist",
     "lint": "cd ../.. && eslint packages/ultra-sdk/src/**/*.ts",
@@ -18,6 +28,7 @@
   },
   "author": "",
   "dependencies": {
+    "jszip": "^3.10.1",
     "moment": "^2.29.4",
     "numeral": "^2.0.6"
   },

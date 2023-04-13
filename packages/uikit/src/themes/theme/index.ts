@@ -1,13 +1,21 @@
-import '@fontsource/inter/300.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/inter/800.css';
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
+import {
+  createTheme,
+  type Theme as MuiTheme,
+  type ThemeOptions as MuiThemeOptions,
+} from '@mui/material/styles';
 import ultraColors from '../colors';
 import { type tUltraTheme } from '../types';
 
-const ultraTheme: tUltraTheme = {
+declare module '@mui/material/styles' {
+  export interface UltraTheme extends MuiTheme, tUltraTheme {}
+  export interface UltraThemeOptions extends MuiThemeOptions, tUltraTheme {}
+
+  export function createTheme(options?: UltraThemeOptions): UltraTheme;
+  export function useTheme<T = UltraTheme>(): T;
+}
+
+export const ultraTheme = createTheme({
   ultra: ultraColors,
   dimensions: {
     drawerWidth: 60,
@@ -113,6 +121,4 @@ const ultraTheme: tUltraTheme = {
       },
     },
   },
-};
-
-export default ultraTheme;
+});

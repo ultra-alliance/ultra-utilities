@@ -1,0 +1,45 @@
+{
+  "name": "@ultra-alliance/react-ultra",
+  "version": "0.0.1",
+  "description": "React based SDK to build an Ultra dApp",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./src": {
+      "require": "./src/index.js",
+      "import": "./src/index.js"
+    }
+  },
+  "ignore": [
+    "**/.*.test.tsx"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "clean": "cd ../.. && npx rimraf packages/react-ultra/dist",
+    "lint": "cd ../.. && eslint packages/react-ultra/src/**/*.ts",
+    "check:types": "npm run build -- --noEmit",
+    "prebuild": "npm run clean",
+    "build": "cd ../.. && tsc -p packages/react-ultra/tsconfig.json && tsc -p packages/react-ultra/tsconfig.json --module esnext --outDir ./packages/react-ultra/dist/cjs",
+    "test": "cd ../.. && npm run test packages/react-ultra",
+    "coverage": "cd ../.. && npm run coverage packages/react-ultra",
+    "commit": "cd ../.. && npm run commit",
+    "prepublishOnly": "npm run build",
+    "update:sdk": "cd ../ultra-sdk && npm run build && cd ../react-ultra && npm link ../ultra-sdk"
+  },
+  "author": "oscarmac",
+  "dependencies": {
+    "@ultra-alliance/ultra-sdk": "file:../ultra-sdk",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@ultra-alliance/ultra-sdk": "file:../ultra-sdk"
+  }
+}

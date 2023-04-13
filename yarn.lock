@@ -4231,6 +4231,35 @@
     "@typescript-eslint/types" "5.57.0"
     "eslint-visitor-keys" "^3.3.0"
 
+"@ultra-alliance/react-ultra@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/react-ultra":
+  "resolved" "file:packages/react-ultra"
+  "version" "0.0.1"
+  dependencies:
+    "@ultra-alliance/ultra-sdk" "file:../ultra-sdk"
+    "react" "^18.2.0"
+    "react-dom" "^18.2.0"
+
+"@ultra-alliance/uikit@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/uikit":
+  "resolved" "file:packages/uikit"
+  "version" "0.0.1"
+  dependencies:
+    "@emotion/react" "^11.10.6"
+    "@emotion/styled" "^11.10.6"
+    "@fontsource/inter" "^4.5.15"
+    "@mui/icons-material" "^5.11.11"
+    "@mui/material" "^5.11.15"
+
+"@ultra-alliance/ultra-sdk@file:../ultra-sdk":
+  "resolved" "file:packages/ultra-sdk/src/index.ts"
+
+"@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
+  "resolved" "file:packages/ultra-sdk"
+  "version" "0.0.1"
+  dependencies:
+    "jszip" "^3.10.1"
+    "moment" "^2.29.4"
+    "numeral" "^2.0.6"
+
 "@webassemblyjs/ast@1.11.1":
   "integrity" "sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw=="
   "resolved" "https://registry.npmjs.org/@webassemblyjs/ast/-/ast-1.11.1.tgz"
@@ -7627,9 +7656,7 @@
   "version" "8.8.0"
 
 "eslint-config-xo-typescript@^0.55.0":
-  "integrity" "sha512-iXua+7n9fOp7LzGzvXlcZG0w6cdtscjASGTrAHMj0Rn9voayxF2oRoMIK1QS6ZJb4fMVEQZdU2D6gTKmWhcCQQ=="
-  "resolved" "https://registry.npmjs.org/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.55.1.tgz"
-  "version" "0.55.1"
+  "version" "0.55.0"
 
 "eslint-config-xo-typescript@^0.56.0":
   "integrity" "sha512-JOuV9M6R0BphdWome5SiolbsZFpw5DX83HgUaIUoEZwkk0hDv+fmPoHNc3KwmoON5QEkuBxlIbW0o3PifzPCuw=="
@@ -9696,6 +9723,11 @@
   "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.2.4.tgz"
   "version" "5.2.4"
 
+"immediate@~3.0.5":
+  "integrity" "sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ=="
+  "resolved" "https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz"
+  "version" "3.0.6"
+
 "import-fresh@^3.0.0", "import-fresh@^3.1.0", "import-fresh@^3.2.1":
   "integrity" "sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw=="
   "resolved" "https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.0.tgz"
@@ -11210,6 +11242,16 @@
     "array-includes" "^3.1.5"
     "object.assign" "^4.1.3"
 
+"jszip@^3.10.1":
+  "integrity" "sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g=="
+  "resolved" "https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz"
+  "version" "3.10.1"
+  dependencies:
+    "lie" "~3.3.0"
+    "pako" "~1.0.2"
+    "readable-stream" "~2.3.6"
+    "setimmediate" "^1.0.5"
+
 "junk@^3.1.0":
   "integrity" "sha512-pBxcB3LFc8QVgdggvZWyeys+hnrNWg4OcZIU/1X59k5jQdLBlCsYGRQaz234SqoRLTCgMH00fY0xRJH+F9METQ=="
   "resolved" "https://registry.npmjs.org/junk/-/junk-3.1.0.tgz"
@@ -11405,6 +11447,13 @@
     "npm-registry-fetch" "^13.0.0"
     "semver" "^7.3.7"
     "ssri" "^9.0.0"
+
+"lie@~3.3.0":
+  "integrity" "sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ=="
+  "resolved" "https://registry.npmjs.org/lie/-/lie-3.3.0.tgz"
+  "version" "3.3.0"
+  dependencies:
+    "immediate" "~3.0.5"
 
 "lilconfig@2.1.0":
   "integrity" "sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ=="
@@ -13794,7 +13843,7 @@
     "ssri" "^10.0.0"
     "tar" "^6.1.11"
 
-"pako@~1.0.5":
+"pako@~1.0.2", "pako@~1.0.5":
   "integrity" "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="
   "resolved" "https://registry.npmjs.org/pako/-/pako-1.0.11.tgz"
   "version" "1.0.11"
@@ -15771,7 +15820,7 @@
     "is-plain-object" "^2.0.3"
     "split-string" "^3.0.1"
 
-"setimmediate@^1.0.4":
+"setimmediate@^1.0.4", "setimmediate@^1.0.5":
   "integrity" "sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA=="
   "resolved" "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz"
   "version" "1.0.5"
@@ -17063,31 +17112,15 @@
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   "version" "4.9.5"
 
-"typescript@^4.6.4 || ^5.0.0", "typescript@^5.0.3", "typescript@>= 2.7", "typescript@>= 3.x", "typescript@>= 4.3.x", "typescript@>= 4.x", "typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3", "typescript@>=4.3", "typescript@>=4.4", "typescript@4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x":
+"typescript@^4.6.4 || ^5.0.0", "typescript@^4.9.3", "typescript@^5.0.3", "typescript@>= 2.7", "typescript@>= 3.x", "typescript@>= 4.3.x", "typescript@>= 4.x", "typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3", "typescript@>=4.3", "typescript@>=4.4", "typescript@4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x":
   "integrity" "sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-5.0.3.tgz"
   "version" "5.0.3"
-
-"typescript@^4.9.3":
-  "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
-  "version" "4.9.5"
 
 "uglify-js@^3.1.4":
   "integrity" "sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g=="
   "resolved" "https://registry.npmjs.org/uglify-js/-/uglify-js-3.17.4.tgz"
   "version" "3.17.4"
-
-"uikit@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/uikit":
-  "resolved" "file:packages/uikit"
-  "version" "0.0.1"
-
-"ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
-  "resolved" "file:packages/ultra-sdk"
-  "version" "0.0.1"
-  dependencies:
-    "moment" "^2.29.4"
-    "numeral" "^2.0.6"
 
 "unbox-primitive@^1.0.2":
   "integrity" "sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw=="

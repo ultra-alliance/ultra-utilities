@@ -6,3 +6,7 @@ node_modules/
 package-lock.json
 *.env
 docs/
+.DS_Store
+*/.DS_Store
+*/.env
+*/.en

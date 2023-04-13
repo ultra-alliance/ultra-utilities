@@ -6,6 +6,7 @@
   "private": true,
   "command": {
     "publish": {
+      "scope": "@ultra-alliance",
       "allowBranch": ["main"],
       "commitHooks": false,
       "conventionalCommits": true,

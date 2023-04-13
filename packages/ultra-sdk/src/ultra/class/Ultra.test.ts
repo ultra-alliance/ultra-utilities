@@ -1,3 +1,5 @@
+// istanbul ignore file
+
 import {
   DEFAULT_BP_API_ENDPOINT,
   getAbi,
@@ -69,9 +71,10 @@ describe('Ultra', () => {
     it('should throw an error if getAccount returns null', async () => {
       (getAccount as jest.Mock).mockResolvedValueOnce(null);
 
-      await expect(
-        ultra.getAccount({ accountName: 'nonexistingaccount' }),
-      ).rejects.toThrow('Account nonexistingaccount not found');
+      const account = await ultra.getAccount({
+        accountName: 'nonexistingaccount',
+      });
+      expect(account).toBeUndefined();
     });
   });
 

@@ -1,10 +1,20 @@
 {
-  "name": "uikit",
+  "name": "@ultra-alliance/uikit",
   "version": "0.0.1",
   "description": "Mui based them kit for Ultra dApps",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./src": {
+      "require": "./src/index.js",
+      "import": "./src/index.js"
+    }
+  },
   "ignore": [
     "**/.*.test.tsx"
   ],
@@ -20,10 +30,16 @@
     "commit": "cd ../.. && npm run commit",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "@emotion/styled": "^11.10.6",
+    "@emotion/react": "^11.10.6",
+    "@fontsource/inter": "^4.5.15",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15"
+  },
   "author": "",
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@fontsource/inter": "^4.5.15",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",

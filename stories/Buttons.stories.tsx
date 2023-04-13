@@ -1,7 +1,6 @@
 import { Button, Box, Divider, Stack } from '@mui/material';
 import { type Meta, type Story } from '@storybook/react/types-7-0';
 import * as React from 'react';
-import { useBreakPoint } from '../packages/uikit/src';
 
 export default {
   title: 'Atoms/Button',

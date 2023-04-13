@@ -14,7 +14,7 @@ import { type tUltraError } from '../types/commons';
  * This function is used to handle errors returned by the Ultra API. It will throw an error if the promise is rejected.
  * If the promise is rejected with an error that has a code of 404, it will throw an error with a message of "The resource you requested was not found.".
  * If the promise is rejected with an error that has a code of 401, it will throw an error with a message of "You are not authorized to access this resource.".
- * If the promise is rejected with an error that has a code that is not 404 or 401, it will throw an error with a message of "An error occurred: {error.message}".
+ * If the promise is rejected with an error that has a code that is not 404 or 401, it will throw an error with a message".
  * ```
  */
 

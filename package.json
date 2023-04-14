@@ -14,13 +14,13 @@
     "test:watch": "jest --watch",
     "coverage:pre": "rimraf coverage",
     "coverage": "jest --coverage",
-    "commit": "npm run make:docs && git-cz",
+    "commit": "git-cz",
     "release:check": "lerna changed",
     "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
     "release:canary": "lerna publish --canary --ignore-scripts",
     "make:docs": "npx typedoc --out docs",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "make:stories": "build-storybook",
+    "storybook": "start-storybook -p 6006"
   },
   "workspaces": [
     "packages/*"
@@ -47,6 +47,9 @@
     "*.{json,md,yaml}": [
       "prettier --write"
     ]
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",

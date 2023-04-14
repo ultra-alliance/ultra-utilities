@@ -1,11 +1,15 @@
-/*
- * Default provider endpoint
+/**
+ * @category Ultra Queries
+ * @description
+ * The default endpoint for the block producers API.
  */
 
 export const DEFAULT_BP_API_ENDPOINT = 'https://api.ultra.eossweden.org';
 
-/*
- * Block producers endpoints
+/**
+ * @category Ultra Queries
+ * @description
+ * The endpoints for the block producers API available in mainnet and testnet.
  */
 
 export const BP_API_ENDPOINTS = {

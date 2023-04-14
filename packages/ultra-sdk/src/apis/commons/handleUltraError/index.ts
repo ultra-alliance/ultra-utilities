@@ -2,6 +2,7 @@ import { type tUltraError } from '../types/commons';
 
 /**
  * @name handleUltraError - Handle errors returned by the Ultra API
+ * @category API Commons
  * @param {Promise} promise - A promise that may return an error
  * @returns {Promise} - A promise that will return the result of the original promise or throw an error
  * @example

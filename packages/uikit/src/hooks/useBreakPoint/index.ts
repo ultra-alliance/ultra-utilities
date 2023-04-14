@@ -1,12 +1,12 @@
 // istanbul ignore file
 
 /**
+ * @beta
  * @file useBreakPoint
- * @description useBreakPoint hook
+ * @category Hooks
+ * @description A hook to get the current breakpoint of the screen size using MUI media query hook and return a boolean value for each breakpoint.
  * @author @ultra-alliance
  * @license MIT
- * @version 1.0.0
- * @since 1.0.0
  * @example
  * ```typescript
  * const { isXs, isSm, isMd, isLg } = useBreakPoint();

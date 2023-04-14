@@ -5,6 +5,11 @@ import {
   type tListedUniq,
 } from '../commons';
 
+/**
+ * Represents output for `getAccount` function.
+ * @category API Outputs
+ */
+
 export type tGetAccountOutput = {
   account_name: string;
   head_block_num: number;
@@ -47,6 +52,10 @@ export type tGetAccountOutput = {
   refund_request: null;
 };
 
+/**
+ * Represents output for `getBlock` function.
+ * @category API Outputs
+ */
 export type tGetBlockOutput = {
   timestamp: string;
   producer: string;
@@ -63,13 +72,25 @@ export type tGetBlockOutput = {
   ref_block_prefix: number;
 };
 
+/**
+ * Represents output for `getAbi` function.
+ * @category API Outputs
+ */
 export type tGetAbiOutput = {
   account_name: string;
   abi: tAbi;
 };
 
+/**
+ * Represents output for `getCurrencyBalance` function.
+ * @category API Outputs
+ */
 export type tGetCurrencyBalanceOutput = string[];
 
+/**
+ * Represents output for `getInfo` function.
+ * @category API Outputs
+ */
 export type tGetInfoOutput = {
   server_version: string;
   chain_id: string;
@@ -88,6 +109,9 @@ export type tGetInfoOutput = {
   server_full_version_string: string;
 };
 
+/**
+ * @category API Outputs
+ */
 export type tGetTableByScopeOutput = {
   rows: Array<{
     [key: string]: unknown;
@@ -100,18 +124,30 @@ export type tGetTableByScopeOutput = {
   more: string;
 };
 
+/**
+ * Represents output for `getTableRows` function.
+ * @category API Outputs
+ */
 export type tGetTableRowsOutput = {
   rows: tTableRow[];
   more: boolean;
   next_key: string;
 };
 
+/**
+ * Represents output for `getUniqOwned` function.
+ * @category API Outputs
+ */
 export type tGetUniqOwnedOutput = {
   rows: tTokenA[];
   more: boolean;
   next_key: string;
 };
 
+/**
+ * Represents output for `getListedUniqs` function.
+ * @category API Outputs
+ */
 export type tGetListedUniqsOutput = {
   rows: tListedUniq[];
   more: boolean;

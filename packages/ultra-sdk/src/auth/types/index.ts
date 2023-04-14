@@ -1,6 +1,9 @@
 import { type tGetAccountOutput } from '../../apis';
 import { type eAuthState } from '../constants';
 
+/**
+ * @category Auth
+ */
 export type tAuth =
   | {
       state: eAuthState.UNDEFINED;
@@ -27,6 +30,9 @@ export type tAuth =
       error: null;
     };
 
+/**
+ * @category Auth
+ */
 export type tAuthOptions = {
   onError?: (error: Error) => void;
   onSuccess?: (account: tGetAccountOutput) => void;
@@ -34,6 +40,9 @@ export type tAuthOptions = {
   throwOnError?: boolean;
 };
 
+/**
+ * @category Auth
+ */
 export type tLoginOptions = {
   onError?: (error: Error) => void;
   onSuccess?: (user: tGetAccountOutput) => void;
@@ -41,6 +50,9 @@ export type tLoginOptions = {
   throwOnError?: boolean;
 };
 
+/**
+ * @category Auth
+ */
 export type tLogoutOptions = {
   onError?: (error: Error) => void;
   onSuccess?: () => void;
@@ -48,6 +60,9 @@ export type tLogoutOptions = {
   throwOnError?: boolean;
 };
 
+/**
+ * @category Auth
+ */
 export type tLogin = (
   accountName: string,
   options?: tLoginOptions,

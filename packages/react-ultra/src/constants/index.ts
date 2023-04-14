@@ -1,4 +1,4 @@
 // istanbul ignore file
 
-export { default as currencies } from './currencies';
-export { default as languages } from './languages';
+export { default as CURRENCIES } from './currencies';
+export { default as LANGUAGES } from './languages';

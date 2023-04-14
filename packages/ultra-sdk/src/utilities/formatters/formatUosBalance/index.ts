@@ -10,7 +10,7 @@ import numeral from 'numeral';
  * Formats a UOS balance to a human readable format
  * @example
  * ```typescript
- * import { formatUosBalance } from '@ultraio/sdk';
+ * import { formatUosBalance } from '@ultra-alliance/ultra-sdk';
  *
  * const formattedBalance = formatUosBalance('10000000');
  * // formattedBalance = '10.00 K'

@@ -7,6 +7,7 @@ import { type tGetTableRows } from '../types';
 
 /**
  * @name getTableRows
+ * @category Ultra Queries
  * @param {tGetTableRows} params  - code, table, scope, json, limit, lowerBound, upperBound and bp api endpoint
  * @returns {Promise<tGetTableRowsOutput>} - Rows in a table.
  * @description

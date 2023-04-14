@@ -10,6 +10,8 @@ import { type tFormatName } from '../../interfaces';
  * Format a name to a specified length
  * @example
  * ```typescript
+ * import { formatName } from '@ultra-alliance/ultra-sdk';
+ *
  * const args = {
  *    name: 'accountname',
  *    num: 3

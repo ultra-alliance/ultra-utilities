@@ -4,6 +4,7 @@ import { type tGetUosBalance } from '../types';
 
 /**
  * @name getUosBalance (query) - Get the balance of UOS for a given account
+ * @category Ultra Queries
  * @param {string} account - The account to get the balance for
  * @param {string} bpApiEndpoint - The API endpoint of the blockchain provider
  * @returns {Promise<tGetCurrencyBalanceOutput>} - The balance of UOS for the given account

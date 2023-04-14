@@ -7,6 +7,7 @@ import { type tGetCurrencyBalance } from '../types';
 
 /**
  * @name getCurrencyBalance
+ * @category Ultra Queries
  * @param {tGetCurrencyBalance} params - code, account, symbol and bp api endpoint
  * @returns {Promise<tGetAbiOutput>} - get currency balance
  * @description Returns the current currency balance for a given token contract, account, and a token symbol.

@@ -14,6 +14,13 @@ import React from 'react';
 import { UltraContext } from '../../contexts';
 import LocalisationProvider from '../LocalisationProvider';
 import { type tUltraProvider } from '../types';
+/**
+ * The `UltraProvider` component provides authentication and account management functionality using the Ultra SDK
+ * @category Providers
+ * @param children The child components to wrap with the provider.
+ * @param bpApiEndpoint The base URL for the Block Producer API endpoint.
+ * @returns A React component that provides an `UltraContext` containing the Ultra SDK object, authentication state, and related methods.
+ */
 
 const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
   const [ultra, setUltra] = React.useState<tUltra | undefined>(

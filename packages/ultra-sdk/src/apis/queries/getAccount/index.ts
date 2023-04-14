@@ -7,6 +7,7 @@ import { type tGetAccount } from '../types';
 
 /**
  * @name getAccount
+ * @category Ultra Queries
  * @param {tGetAccount} params - account name and bp api endpoint
  * @returns {Promise<tGetAccountOutput>} - account information
  * @description Get account information

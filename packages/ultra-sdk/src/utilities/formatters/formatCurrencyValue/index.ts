@@ -11,7 +11,7 @@ import { type tFormatCurrencyValue } from '../../interfaces';
  * Formats a currency value to a string with a ticker
  * @example
  * ```typescript
- * import { formatCurrencyValue } from '@ultra-utilities/formatters';
+ * import { formatCurrencyValue } from '@ultra-alliance/ultra-sdk';
  *
  * const formattedValue = formatCurrencyValue({
  *  value: 1000.55,

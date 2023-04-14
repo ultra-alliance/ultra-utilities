@@ -1,5 +1,11 @@
 {
   "out": "docs/",
   "exclude": ["**/node_modules/**"],
-  "customCss": "./theme/index.css"
+  "customCss": "./theme/index.css",
+  "entryPoints": [
+    "packages/ultra-sdk/src/index.ts",
+    "packages/react-ultra/src/index.ts",
+    "packages/uikit/src/index.ts"
+  ],
+  "name": "ᕫ | ultra-utilities"
 }

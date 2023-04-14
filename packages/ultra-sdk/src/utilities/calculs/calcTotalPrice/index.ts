@@ -2,9 +2,8 @@ import { type tCalcTotalPrice } from '../../interfaces';
 
 /**
  * @alpha
- * @category Calculs
- * @groupe Utilities
  * @name calcTotalPrice
+ * @category Calculations
  * @param {tCalcTotalPrice} args
  * @returns `number` - The total value price of the user token balance.
  * @description

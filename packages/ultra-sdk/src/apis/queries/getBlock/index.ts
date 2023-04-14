@@ -7,6 +7,7 @@ import { type tGetBlock } from '../types';
 
 /**
  * @name getBlock
+ * @category Ultra Queries
  * @param {tGetBlock} params - block num or id and bp api endpoint
  * @returns {Promise<tGetAccountOutput>} - account information
  * @description Get block information

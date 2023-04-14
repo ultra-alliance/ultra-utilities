@@ -1,6 +1,5 @@
 import { create } from '@storybook/theming';
 import { addDecorator } from '@storybook/react';
-//import logo from '../stories/assets/colors.svg';
 import { ultraColors, ThemeProvider, ultraTheme } from '../packages/uikit/src';
 //import { UltraProvider } from '../src/ultrakit';
 
@@ -54,7 +53,8 @@ export const parameters = {
 
       brandTitle: 'Ultra UI Kit',
       brandUrl: 'https://ultra.io',
-      // brandImage: logo,
+      brandImage:
+        'https://pbs.twimg.com/profile_images/1641936450428993538/3GQFhNyC_200x200.jpg',
       brandTarget: '_self',
     }),
   },

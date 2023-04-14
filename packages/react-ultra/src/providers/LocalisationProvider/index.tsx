@@ -1,14 +1,24 @@
 // istanbul ignore file
 
 import React from 'react';
-import { currencies, languages } from '../../constants';
+import { CURRENCIES, LANGUAGES } from '../../constants';
 import { LocalisationContext } from '../../contexts';
 import { type tCurrency, type tLanguage } from '../../models';
 import { type tLocalisationProvider } from '../types';
 
+/**
+ * A custom React component that provides a `LocalisationContext` with `baseCurrency`, `baseLanguage`, `updateCurrency`, and `updateLanguage` properties.
+ * This component is used inside the {@link UltraProvider} component.
+ *
+ * @category Providers
+ * @param children - Child components to render.
+ *
+ * @returns A `LocalisationContext` provider.
+ */
+
 const LocalisationProvider = ({ children }: tLocalisationProvider) => {
-  const [baseCurrency, setBaseCurrency] = React.useState(currencies[0]);
-  const [baseLanguage, setBaseLanguage] = React.useState(languages[0]);
+  const [baseCurrency, setBaseCurrency] = React.useState(CURRENCIES[0]);
+  const [baseLanguage, setBaseLanguage] = React.useState(LANGUAGES[0]);
 
   React.useEffect(() => {
     const currency = window.localStorage.getItem('baseCurrency');

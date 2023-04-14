@@ -1,4 +1,11 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
+
+/**
+ * Custom Ultra theme module using MUI (Material-UI) library. This module exports an Ultra Theme object with custom theme specifications, including the Ultra color palette, breakpoints, typography, shape, and other MUI components with style overrides.
+ *
+ * @packageDocumentation
+ */
+
 import {
   createTheme,
   type Theme as MuiTheme,
@@ -7,16 +14,43 @@ import {
 import ultraColors from '../colors';
 import { type tUltraTheme } from '../types';
 
+/**
+ * Extends the MuiTheme interface with the custom tUltraTheme interface.
+ *
+ * @category Theme
+ */
 declare module '@mui/material/styles' {
   export interface UltraTheme extends MuiTheme, tUltraTheme {}
   export interface UltraThemeOptions extends MuiThemeOptions, tUltraTheme {}
 
+  /**
+   * Overrides the default `createTheme` function and returns an UltraTheme object.
+   *
+   * @param options - Optional UltraThemeOptions object to customize the UltraTheme.
+   *
+   * @returns An UltraTheme object.
+   *
+   * @category Theme
+   */
   export function createTheme(options?: UltraThemeOptions): UltraTheme;
+
+  /**
+   * Overrides the default `useTheme` function and returns a typed UltraTheme object.
+   *
+   * @returns A typed UltraTheme object.
+   *
+   * @category Theme
+   */
+  export function useTheme<T = UltraTheme>(): T;
   export function useTheme<T = UltraTheme>(): T;
 }
-
+/**
+ * The Ultra Theme object with custom theme specifications.
+ *
+ * @category Theme
+ */
 export const ultraTheme = createTheme({
-  ultra: ultraColors,
+  ultra: ultraColors, // Ultra color palette
   dimensions: {
     drawerWidth: 60,
   },

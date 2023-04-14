@@ -3,6 +3,7 @@ import getTableRows from '../getTableRows';
 
 /**
  * @name getListedUniqs - Get all listed uniqs
+ * @category Ultra Queries
  * @param {string} bpApiEndpoint - BP API endpoint
  * @returns {Promise<tGetListedUniqsOutput>} - Listed uniqs
  * @description

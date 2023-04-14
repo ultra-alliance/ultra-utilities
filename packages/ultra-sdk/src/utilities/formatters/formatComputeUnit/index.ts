@@ -10,6 +10,8 @@ import numeral from 'numeral';
  * Formats a number to a human readable compute unit
  * @example
  * ```typescript
+ * import { formatComputeUnit } from '@ultra-alliance/ultra-sdk';
+ *
  * formatComputeUnit(1048576) // 1.05 MB
  * formatComputeUnit(1073741824) // 1.07 GB
  * ```

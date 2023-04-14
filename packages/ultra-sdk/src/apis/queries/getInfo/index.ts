@@ -7,6 +7,7 @@ import { type tGetInfo } from '../types';
 
 /**
  * @name getInfo
+ * @category Ultra Queries
  * @param {tGetInfo} params  - bp api endpoint
  * @returns {Promise<tGetInfoOutput>} - some chain information
  * @description

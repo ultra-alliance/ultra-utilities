@@ -1,48 +1,84 @@
+/**
+ * Represents a generic object for http request.
+ * @category API Commons
+ */
 export type tHttp = {
   path: string;
   config: RequestInit;
 };
 
+/**
+ * Represents a generic object for http get request.
+ * @category API Commons
+ */
 export type tGet = {
   path: string;
   config?: RequestInit;
 };
 
+/**
+ * Represents a generic object for http post request.
+ * @category API Commons
+ */
 export type tPost<T> = {
   path: string;
   body: T;
   config?: RequestInit;
 };
 
+/**
+ * Represents a generic object for http put request.
+ * @category API Commons
+ */
 export type tPut<T> = {
   path: string;
   body: T;
   config?: RequestInit;
 };
 
+/**
+ * represets a generic object
+ * @category API Commons
+ */
 export type tRoute<T> = {
   path: string;
   method: string;
   args?: T;
 };
 
+/**
+ * Represents an ABI field.
+ * @category Ultra Commons
+ */
 export type tAbiField = {
   name: string;
   type: string;
 };
 
+/**
+ * Represents an ABI struct.
+ * @category Ultra Commons
+ */
 export type tAbiStruct = {
   name: string;
   base: string;
   fields: tAbiField[];
 };
 
+/**
+ * Represents an ABI action.
+ * @category Ultra Commons
+ */
 export type tAbiAction = {
   name: string;
   type: string;
   ricardian_contract: string;
 };
 
+/**
+ * Represents an ABI table.
+ * @category Ultra Commons
+ */
 export type tAbiTable = {
   name: string;
   index_type: string;
@@ -51,6 +87,10 @@ export type tAbiTable = {
   type: string;
 };
 
+/**
+ * Represents an ABI.
+ * @category Ultra Commons
+ */
 export type tAbi = {
   version: string;
   types: unknown[];
@@ -63,16 +103,28 @@ export type tAbi = {
   variants: unknown[];
 };
 
+/**
+ * Represents a Table Row.
+ * @category Ultra Commons
+ */
 export type tTableRow = {
   [key: string]: unknown;
   id: number;
   asset_manager: string;
 };
 
+/**
+ * Represents an Ultra error.
+ * @category API Commons
+ */
 export type tUltraError = Error & {
   code?: number;
 };
 
+/**
+ * Represents a token.
+ * @category Ultra Commons
+ */
 export type tTokenA = {
   id: number;
   token_factory_id: number;
@@ -80,11 +132,19 @@ export type tTokenA = {
   serial_number: number;
 };
 
+/**
+ * Represents the resale share details of an uniq.
+ * @category Ultra Commons
+ */
 export type tResaleShare = {
   receiver: string;
   basis_point: number;
 };
 
+/**
+ * Represents an Uniq.
+ * @category Ultra Commons
+ */
 export type tUniq = {
   id: number;
   asset_manager: string;
@@ -111,6 +171,10 @@ export type tUniq = {
   account_minting_limit: null;
 };
 
+/**
+ * Represents a listed uniq.
+ * @category Ultra Commons
+ */
 export type tListedUniq = {
   token_id: number;
   owner: string;

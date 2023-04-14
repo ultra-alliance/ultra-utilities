@@ -1,6 +1,22 @@
 import JSZip from 'jszip';
 import { type tManifest } from '../types';
 
+/**
+ * @category Utilities
+ * @param {string} url - URL of the ZIP file
+ * @returns {Promise<{ manifest: tManifest }>} - manifest.json and image urls
+ * @description
+ * Retrieve manifest.json and image urls from a ZIP file
+ * @example
+ * ```typescript
+ * import { getZipContent } from '@ultra-alliance/ultra-sdk';
+ *
+ * const url = 'https://example.com/zip-file.zip';
+ *
+ * const { manifest } = await getZipContent(url);
+ * ```
+ */
+
 async function getZipContent(url: string): Promise<{
   manifest: tManifest;
 }> {

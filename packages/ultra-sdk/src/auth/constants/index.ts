@@ -1,5 +1,12 @@
 import { type tAuth } from '../types';
 
+/**
+ * Defines the different authentication states and initial authentication object.
+ */
+
+/**
+ * @category Auth
+ */
 export enum eAuthState {
   UNDEFINED = 'undefined',
   UNAUTHENTICATED = 'unauthenticated',
@@ -9,7 +16,18 @@ export enum eAuthState {
   ERROR = 'error',
 }
 
+/**
+ * The initial authentication object.
+ *
+ * @category Auth
+ */
 export const INITIAL_AUTH: tAuth = {
+  /**
+   * The authentication state.
+   */
   state: eAuthState.UNDEFINED,
+  /**
+   * The authentication error.
+   */
   error: null,
 };

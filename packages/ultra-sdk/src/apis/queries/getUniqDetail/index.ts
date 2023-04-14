@@ -4,6 +4,7 @@ import { type tGetUniqDetail } from '../types';
 
 /**
  * @name getUniqDetail - Get uniq detail
+ * @category Ultra Queries
  * @param {tGetUniqDetail} params - uniqId and bp api endpoint
  * @returns {Promise<tUniq>} - Uniq detail
  * @example

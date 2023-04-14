@@ -2,7 +2,7 @@ import { type tHttp } from '../../types/commons';
 
 /**
  * @name http
- * @category API
+ * @category API Commons
  * @param {string} path - The path to the resource.
  * @param {object} config - The configuration object.
  * @returns {Promise} - The response object.

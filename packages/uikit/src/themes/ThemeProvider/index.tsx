@@ -14,6 +14,7 @@ export type ThemeProviderProps = {
 
 /**
  * @name ThemeProvider
+ * @caterory Providers
  * @param  {ThemeProviderProps} - props for ThemeProvider
  * @returns {React.ReactElement} - React component
  * @constructor ThemeProvider - React component

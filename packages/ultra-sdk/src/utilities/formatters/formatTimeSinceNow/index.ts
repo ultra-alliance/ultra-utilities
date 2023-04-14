@@ -10,7 +10,7 @@ import moment from 'moment';
  * Formats a date to show how many days ago it was
  * @example
  * ```typescript
- * import { formatTimeSinceNow } from '@ultra-utilities/formatters';
+ * import { formatTimeSinceNow } from '@ultra-alliance/ultra-sdk';
  * import moment from 'moment';
  *
  * const now = moment().toISOString();

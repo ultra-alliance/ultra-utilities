@@ -3,7 +3,7 @@ import http from '../http';
 
 /**
  * @name get
- * @category API
+ * @category API Commons
  * @param {string} path - The path to the API endpoint
  * @param {object} config - The config object to pass to the fetch API
  * @returns {Promise} - The response from the API

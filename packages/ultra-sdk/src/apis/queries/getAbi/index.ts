@@ -7,6 +7,7 @@ import { type tGetAbi } from '../types';
 
 /**
  * @name getAbi
+ * @category Ultra Queries
  * @param {tGetAbi} params -account name and bp api endpoint
  * @returns {Promise<tGetAbiOutput>} - abi information
  * @description Returns information about a smart contract’s available actions, tables, etc.

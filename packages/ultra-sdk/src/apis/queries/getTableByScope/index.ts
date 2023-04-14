@@ -7,6 +7,7 @@ import { type tGetTableByScope } from '../types';
 
 /**
  * @name getTableByScope
+ * @category Ultra Queries
  * @param {tGetTableByScope} params  - code, limit, lowerBound, upperBound and bp api endpoint
  * @returns {Promise<tGetInfoOutput>} - Tables available and their scopes.
  * @description

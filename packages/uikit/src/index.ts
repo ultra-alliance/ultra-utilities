@@ -1,4 +1,44 @@
 // istanbul ignore file
 
+/**
+ * <img alt='' src='https://img.shields.io/badge/NOT PUBLISHED-100000?style=for-the-badge&logo=&logoColor=e57373&labelColor=FFFFFF&color=e57373'/>
+ * @license MIT
+ * @module uikit
+ * @description
+ * UI kit provides {@link https://material-ui.com/ | Material UI (MUI)} theme and a set of
+ * React hooks and components for building performant, scalable, and accessible
+ * applications connected to the UOS.
+ *
+ * ## ⚙️ Quick Start
+ *
+ * Make sure to have `@mui/material`, `@emotion/react`, ` @emotion/styled`  installed as dependencies. We also need to import `@fontsource/inter` and `@mui/icons-material` for the fonts and icon, then install `@ultra-alliance/uikit`.
+ *
+ * In short (or not):
+ * ```bash
+ * npm install @mui/material @emotion/react @emotion/styled  @fontsource/inter @mui/icons-material @ultra-alliance/uikit
+ * ```
+ *
+ * Then you can use the {@link ultraTheme} inside your MUI theme provider:
+ *
+ * ```typescript
+ * import { ultraTheme } from '@ultra-alliance/uikit';
+ * import { ThemeProvider } from '@mui/material';
+ *
+ * React.DOM.render(
+ * <ThemeProvider theme={ultraTheme}>
+ *  <App />
+ *  </ThemeProvider>,
+ * document.getElementById('root')
+ * );
+ * ```
+ *
+ *  ## 🚀 Usage
+ *
+ * You can read more about Material UI in the {@link https://mui.com/customization/theming/ | MUI documentation}.
+ * You can also see some examples in the storybook.
+ *
+ * <a href='' target="_blank"><img alt='' src='https://img.shields.io/badge/uikit storybook-100000?style=for-the-badge&logo=&logoColor=A481F0&labelColor=FFFFFF&color=A481F0'/></a>
+ */
+
 export * from './themes';
 export * from './hooks';

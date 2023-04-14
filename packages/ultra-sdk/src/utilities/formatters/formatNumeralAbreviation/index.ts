@@ -10,7 +10,7 @@ import numeral from 'numeral';
  * Formats a number to a short form with a letter abreviation
  * @example
  * ```typescript
- * import { formatNumeralAbreviation } from '@ultra-tech-alliance/ultra-sdk';
+ * import { formatNumeralAbreviation } from '@/ult-alliance/ultra-sdk';
  *
  * formatNumeralAbreviation(1000); // 1K
  * formatNumeralAbreviation(1000000); // 1M

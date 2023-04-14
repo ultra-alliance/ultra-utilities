@@ -2,8 +2,9 @@ import { type tGetUniqOwnedOutput } from '../../commons';
 import getTableRows from '../getTableRows';
 import { type tGetUniqOwned } from '../types';
 
-/*
+/**
  * @function getUniqsOwned - Get all uniqs owned by an account
+ * @category Ultra Queries
  * @param {tGetUniqOwned} params - account name and bp api endpoint
  * @returns {Promise<tGetUniqOwnedOutput>} - uniqs owned by an account
  * @description Returns all uniqs owned by an account

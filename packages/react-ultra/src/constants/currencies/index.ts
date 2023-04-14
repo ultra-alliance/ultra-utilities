@@ -5,15 +5,16 @@ import { type tCurrency } from '../../models';
 /**
  * @description
  * List of currencies supported by the app.
+ * @category Constants
  * @type {tCurrency[]}
  * @memberof Constants
  * @constant
- * @name currencies
+ * @name CURRENCIES
  * @example
- * import { currencies } from '@ultra-utilities/react-ultra';
+ * import { CURRENCIES } from '@ultra-utilities/react-ultra';
  */
 
-const currencies: tCurrency[] = [
+const CURRENCIES: tCurrency[] = [
   {
     id: 0,
     symbol: 'ᕫ',
@@ -44,4 +45,4 @@ const currencies: tCurrency[] = [
   },
 ];
 
-export default currencies;
+export default CURRENCIES;

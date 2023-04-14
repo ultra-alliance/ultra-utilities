@@ -3,7 +3,7 @@ import http from '../http';
 
 /**
  * @name put - PUT request
- * @category API
+ * @category API Commons
  * @param {tPut} params - The request parameters
  * @returns {Promise} - A promise that resolves to the response body
  * @description

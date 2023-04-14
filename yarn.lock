@@ -4235,7 +4235,7 @@
   "resolved" "file:packages/react-ultra"
   "version" "0.0.1"
   dependencies:
-    "@ultra-alliance/ultra-sdk" "file:../ultra-sdk"
+    "@ultra-alliance/ultra-sdk" "../ultra-sdk"
     "react" "^18.2.0"
     "react-dom" "^18.2.0"
 
@@ -4249,10 +4249,7 @@
     "@mui/icons-material" "^5.11.11"
     "@mui/material" "^5.11.15"
 
-"@ultra-alliance/ultra-sdk@file:../ultra-sdk":
-  "resolved" "file:packages/ultra-sdk/src/index.ts"
-
-"@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
+"@ultra-alliance/ultra-sdk@^0.0.1", "@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
   "resolved" "file:packages/ultra-sdk"
   "version" "0.0.1"
   dependencies:
@@ -17112,10 +17109,14 @@
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   "version" "4.9.5"
 
-"typescript@^4.6.4 || ^5.0.0", "typescript@^4.9.3", "typescript@^5.0.3", "typescript@>= 2.7", "typescript@>= 3.x", "typescript@>= 4.3.x", "typescript@>= 4.x", "typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3", "typescript@>=4.3", "typescript@>=4.4", "typescript@4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x":
+"typescript@^4.6.4 || ^5.0.0", "typescript@^5.0.3", "typescript@>= 2.7", "typescript@>= 3.x", "typescript@>= 4.3.x", "typescript@>= 4.x", "typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3", "typescript@>=4.3", "typescript@>=4.4", "typescript@4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x":
   "integrity" "sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-5.0.3.tgz"
   "version" "5.0.3"
+
+"typescript@^4.9.3":
+  "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
+  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
 
 "uglify-js@^3.1.4":
   "integrity" "sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g=="

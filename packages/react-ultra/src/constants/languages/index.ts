@@ -5,16 +5,16 @@ import { type tLanguage } from '../../models';
 /**
  * List of languages
  * @type {tLanguage[]}
+ * @category Constants
  * @constant
  * @default
  * @public
  * @readonly
  * @example
- * import { languages } from '@uta/react-ultra';
- *
+ * import { LANGUAGES } from '@ultra-alliance/react-ultra';
  */
 
-const languages: tLanguage[] = [
+const LANGUAGES: tLanguage[] = [
   {
     code: 'US',
     label: 'English',
@@ -29,4 +29,4 @@ const languages: tLanguage[] = [
   },
 ];
 
-export default languages;
+export default LANGUAGES;

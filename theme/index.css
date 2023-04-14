@@ -6,9 +6,26 @@
   --color-orchidHaze: #A481F0;
   --color-royalAmethyst: #7A52D1;
   --color-midnightAshes:#3C3846;
+    --color-background: #3C3846;
+    --color-background-secondary: #3C3846;
+    --color-accent: #ffffff26;
 }
 
 :root[data-theme="dark"] {
+    --color-lilalLuster: #C5ABFF;
+  --color-orchidHaze: #A481F0;
+  --color-royalAmethyst: #7A52D1;
+  --color-midnightAshes:#3C3846;
+    --color-background: #3C3846;
+    --color-background-secondary: #3C3846;
+    --color-accent: #ffffff26;
+}
+
+:root[data-theme="light"] {
+    --color-lilalLuster: #C5ABFF;
+  --color-orchidHaze: #A481F0;
+  --color-royalAmethyst: #7A52D1;
+  --color-midnightAshes:#3C3846;
     --color-background: #3C3846;
     --color-background-secondary: #3C3846;
     --color-accent: #ffffff26;
@@ -20,5 +37,18 @@ body {
 
 a {
   color: var(--color-orchidHaze);
+}
+hr {
+  opacity: 0.3;
+}
+
+.settings,
+  .tsd-navigation  .tsd-index-accordion h3
+{
+  display:none;
+}
+
+a[href*="modules.html"] {
+  display: none;
 }
 

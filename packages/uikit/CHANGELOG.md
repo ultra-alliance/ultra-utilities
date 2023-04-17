@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.3.0...@ultra-alliance/uikit@0.3.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* **ultra-sdk:** private packages unavailable ([f473d4f](https://github.com/ultra-alliance/ultra-utilities/commit/f473d4f6ef60619b70958a1a49b6f94ed9ddc775))
+
+
+
+
+
 # 0.3.0 (2023-04-17)
 
 

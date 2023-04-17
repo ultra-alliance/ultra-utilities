@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.0.2...@ultra-alliance/react-ultra@0.1.0) (2023-04-17)
+
+
+### Features
+
+* **ultra-sdk:** deployment setup ([51c97b6](https://github.com/ultra-alliance/ultra-utilities/commit/51c97b69046b21c8d3887c76c001153f8d41a14b))
+
+
+
+
+
 ## [0.0.2](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.3.7...@ultra-alliance/react-ultra@0.0.2) (2023-04-17)
 
 

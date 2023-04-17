@@ -18,6 +18,9 @@
   "ignore": [
     "**/.*.test.tsx"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "scripts": {
     "clean": "cd ../.. && npx rimraf packages/react-ultra/dist",
@@ -42,5 +45,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "gitHead": "69385171a8b23a23e988f77a4a70e8294eef1e68"
+  "gitHead": "dbaeb2087f422028bbdb907dabf48f799141cb10"
 }

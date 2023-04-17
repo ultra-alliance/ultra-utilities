@@ -27,6 +27,7 @@
     "packages/*"
   ],
   "publishConfig": {
+    "access": "public",
     "@ultra-alliance:registry": "https://npm.pkg.github.com"
   },
   "commitlint": {

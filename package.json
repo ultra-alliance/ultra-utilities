@@ -1,6 +1,5 @@
 {
   "name": "@ultra-alliance/ultra-utilities",
-  "private": false,
   "license": "MIT",
   "scripts": {
     "install:all": "lerna bootstrap",

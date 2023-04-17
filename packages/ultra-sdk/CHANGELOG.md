@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.3.5...@ultra-alliance/ultra-sdk@0.3.6) (2023-04-17)
+
+
+### Bug Fixes
+
+* **ultra-sdk:** added .npmrc ([a77f527](https://github.com/ultra-alliance/ultra-utilities/commit/a77f5270924b1be6cb5f3f334def1c6add2782cf))
+
+
+
+
+
 ## [0.3.5](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.3.4...@ultra-alliance/ultra-sdk@0.3.5) (2023-04-17)
 
 

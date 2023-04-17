@@ -3,7 +3,7 @@
   "version": "independent",
   "npmClient": "npm",
   "useWorkspaces": true,
-  "private": true,
+  "private": false,
   "command": {
     "publish": {
       "scope": "@ultra-alliance",

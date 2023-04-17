@@ -1,8 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 
-type QueryFn = () => Promise<unknown>;
+type QueryFn<T> = () => Promise<T>;
 
-type CallbackFn = (data: unknown) => void;
+type CallbackFn<T> = (data: T) => void;
+
+type ErrorFn = (error: Error) => void;
+
+type UseUltraQuery<T> = {
+  data: T | undefined;
+  isLoading: boolean;
+  error: unknown;
+  fetchData: () => Promise<void>;
+};
 
 /**
  * A custom React Hook that accepts a `queryFn` function that returns a Promise with data and a `callback` function that accepts that data as an argument.
@@ -31,17 +40,19 @@ type CallbackFn = (data: unknown) => void;
  *
  */
 
-const useUltraQuery = ({
+const useUltraQuery = <T>({
   queryFn,
   callback,
+  onError,
   autofetch = true,
 }: {
-  queryFn: QueryFn;
-  callback?: CallbackFn;
+  queryFn: QueryFn<T>;
+  callback?: CallbackFn<T>;
+  onError?: ErrorFn;
   autofetch?: boolean;
   triggers?: unknown[];
-}) => {
-  const [data, setData] = useState<unknown>(null);
+}): UseUltraQuery<T> => {
+  const [data, setData] = useState<T | undefined>(undefined);
   const [error, setError] = useState<unknown>(null);
   const [isLoading, setIsLoading] = useState(autofetch);
 
@@ -49,7 +60,7 @@ const useUltraQuery = ({
     setIsLoading(true);
     try {
       console.log(error);
-      const result: unknown = await queryFn();
+      const result: T = await queryFn();
       setData(result);
       if (callback) {
         callback(result);
@@ -57,6 +68,9 @@ const useUltraQuery = ({
     } catch (error: unknown) {
       console.log(error);
       setError(error);
+      if (onError) {
+        onError(error as Error);
+      }
     }
 
     setIsLoading(false);

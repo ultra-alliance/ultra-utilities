@@ -97,5 +97,9 @@ export type tGetUosBalance = tUltraQuery & {
  * @category Ultra Queries
  */
 export type tGetUniqDetail = tUltraQuery & {
-  uniqId: number;
+  uniqId: tValidInput;
+};
+
+export type tGetUniqManifested = tUltraQuery & {
+  uniqId: tValidInput;
 };

@@ -29,6 +29,8 @@ import {
   type tGetListedUniqsOutput,
   type tGetUniqOwnedOutput,
   type tUniq,
+  type tUniqManifested,
+  getUniqManifested,
 } from '../../apis';
 import { type tValidInput } from '../../utilities/interfaces/index';
 import { type tUltra, type tUltraOptions } from '../types';
@@ -286,6 +288,25 @@ class Ultra implements tUltra {
     const data = await getListedUniqs();
     if (!data) {
       throw new Error(`Listed uniqs not found`);
+    }
+
+    return data;
+  }
+
+  /**
+   * @type {function}
+   * @param {tValidInput} uniqId - uniq id
+   * @returns {Promise<tUniqManifested>} - uniq
+   * @description Retrieve uniq manifested.
+   * @group Uniqs
+   * */
+
+  public async getUniqManifested(
+    uniqId: tValidInput,
+  ): Promise<tUniqManifested> {
+    const data = await getUniqManifested({ uniqId: Number(uniqId) });
+    if (!data) {
+      throw new Error(`Uniq not found`);
     }
 
     return data;

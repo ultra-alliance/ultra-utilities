@@ -11,5 +11,6 @@ export { default as getUniqsOwned } from './getUniqsOwned';
 export { default as getUosBalance } from './getUosBalance';
 export { default as getUniqDetail } from './getUniqDetail';
 export { default as getListedUniqs } from './getListedUniqs';
+export { default as getUniqManifested } from './getUniqManifested';
 
 export * from './types';

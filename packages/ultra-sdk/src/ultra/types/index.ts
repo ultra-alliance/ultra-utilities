@@ -15,6 +15,7 @@ import {
   type tGetListedUniqsOutput,
   type tUniq,
   type tGetUniqOwnedOutput,
+  type tUniqManifested,
 } from '../../apis';
 import { type tValidInput } from '../../utilities/interfaces/index';
 /**
@@ -58,4 +59,5 @@ export type tUltra = {
   getUniqDetail: (uniqId: tValidInput) => Promise<tUniq>;
   getUniqsOwned: (account: string) => Promise<tGetUniqOwnedOutput>;
   getUosBalance: (account: string) => Promise<tGetCurrencyBalanceOutput>;
+  getUniqManifested: (uniqId: tValidInput) => Promise<tUniqManifested>;
 };

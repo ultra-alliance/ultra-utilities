@@ -1,8 +1,10 @@
+// istanbul ignore file
+
 import JSZip from 'jszip';
 import { type tManifest } from '../types';
 
 /**
- * @category Utilities
+ * @category Metadata
  * @param {string} url - URL of the ZIP file
  * @returns {Promise<{ manifest: tManifest }>} - manifest.json and image urls
  * @description

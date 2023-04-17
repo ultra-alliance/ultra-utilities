@@ -1,6 +1,6 @@
 ---
-NAME: "\U0001F41B Bug report"
-ABOUT: "Something is broken? \U0001F528"
+Name: "\U0001F41B Bug report"
+About: "Something is broken? \U0001F528"
 ---
 
 # Bug Report

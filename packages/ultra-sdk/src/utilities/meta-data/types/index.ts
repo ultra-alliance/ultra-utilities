@@ -1,7 +1,7 @@
 /**
  * Represents the images and gallery of a product.
  *
- * @category Utilities
+ * @category Metadata
  */
 export type tMedia = {
   /**
@@ -21,7 +21,7 @@ export type tMedia = {
 /**
  * Represents the metadata of a product manifest.
  *
- * @category Utilities
+ * @category Metadata
  */
 export type tManifest = {
   /**

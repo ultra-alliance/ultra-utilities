@@ -1,3 +1,5 @@
+import { type tManifest } from '../../../../utilities';
+
 /**
  * Represents a generic object for http request.
  * @category API Commons
@@ -180,4 +182,13 @@ export type tListedUniq = {
   owner: string;
   price: string;
   promoter_basis_point: number;
+};
+
+/**
+ * Represents a manifested uniq.
+ * @category Ultra Commons
+ */
+export type tUniqManifested = {
+  uniq: tUniq;
+  manifest: tManifest;
 };

@@ -52,3 +52,17 @@ export type tFormatName = {
    */
   num?: number;
 };
+/**
+ * Represents input for the `calcPercentFromBasisPoint` function.
+ * @category Calculations
+ */
+export type tCalcPercentFromBasisPoint = {
+  /**
+   * The basis point value to use for the calculation.
+   */
+  basis_point: number;
+  /**
+   * The value to use for the calculation.
+   */
+  value: number;
+};

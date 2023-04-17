@@ -1,4 +1,5 @@
 import numeral from 'numeral';
+import { type tValidInput } from '../../interfaces';
 
 /**
  * @alpha
@@ -17,8 +18,15 @@ import numeral from 'numeral';
  * ```
  */
 
-function formatUosBalance(balance: string): string {
-  return numeral(Math.floor(parseFloat(balance))).format('(0.00 a)');
+function formatUosBalance(balance: tValidInput): string {
+  let toFormat = 0;
+  if (typeof balance === 'string') {
+    toFormat = parseFloat(balance.split(' ')[0]);
+  } else {
+    toFormat = balance;
+  }
+
+  return numeral(toFormat).format('(0.00 a)');
 }
 
 export default formatUosBalance;

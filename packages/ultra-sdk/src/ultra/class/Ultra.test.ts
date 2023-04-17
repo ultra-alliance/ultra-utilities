@@ -12,6 +12,7 @@ import {
   getUosBalance,
   getUniqDetail,
   getUniqsOwned,
+  getUniqManifested,
 } from '../../apis';
 import Ultra from './index';
 
@@ -312,6 +313,34 @@ describe('Ultra', () => {
 
       await expect(ultra.getUniqDetail(uniqId)).rejects.toThrow(
         `Uniq ${uniqId} not found`,
+      );
+    });
+  });
+  describe('getUniqManifested', () => {
+    it('should call getUniqManifested with the correct parameters', async () => {
+      const uniqId = 10;
+
+      (getUniqManifested as jest.Mock).mockResolvedValueOnce({
+        rows: [
+          {
+            asset_manager: 'hello',
+          },
+        ],
+      });
+
+      await ultra.getUniqManifested(uniqId);
+
+      expect(getUniqManifested).toHaveBeenCalledWith({
+        uniqId,
+      });
+    });
+
+    it('should throw an error if getUniqDetail returns null', async () => {
+      (getUniqManifested as jest.Mock).mockResolvedValueOnce(null);
+      const uniqId = 10;
+
+      await expect(ultra.getUniqDetail(uniqId)).rejects.toThrow(
+        `Uniq 10 not found`,
       );
     });
   });

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.2.0...@ultra-alliance/uikit@0.2.0) (2023-04-17)
+
+
+### Features
+
+* publish config to public ([ce68290](https://github.com/ultra-alliance/ultra-utilities/commit/ce6829041cd97ae761e6fd28d58c39dcee21dce8))
+* **ultra-sdk:** updating packages JSON ([27397f3](https://github.com/ultra-alliance/ultra-utilities/commit/27397f3d46c0abc76b8a068b7f7c83adb49bf42a))
+
+
+
+
+
 # [0.1.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.2.0...@ultra-alliance/uikit@0.1.0) (2023-04-17)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.3.3...@ultra-alliance/ultra-sdk@0.3.4) (2023-04-17)
+
+
+### Bug Fixes
+
+* public lerna config ([4baf95e](https://github.com/ultra-alliance/ultra-utilities/commit/4baf95eb908e72562596077824dedf688376ca81))
+
+
+
+
+
 ## [0.3.3](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.3.2...@ultra-alliance/ultra-sdk@0.3.3) (2023-04-17)
 
 

@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "@types/numeral": "^2.0.2"
-  }
+  },
+  "gitHead": "842b60604c41e9ea175ced7a929260390882c43e"
 }

@@ -4273,15 +4273,15 @@
 
 "@ultra-alliance/react-ultra@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/react-ultra":
   "resolved" "file:packages/react-ultra"
-  "version" "0.1.0"
+  "version" "0.2.0"
   dependencies:
-    "@ultra-alliance/ultra-sdk" "^0.0.1"
+    "@ultra-alliance/ultra-sdk" "^0.1.0"
     "react" "^18.2.0"
     "react-dom" "^18.2.0"
 
 "@ultra-alliance/uikit@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/uikit":
   "resolved" "file:packages/uikit"
-  "version" "0.1.0"
+  "version" "0.2.0"
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
@@ -4289,9 +4289,9 @@
     "@mui/icons-material" "^5.11.11"
     "@mui/material" "^5.11.15"
 
-"@ultra-alliance/ultra-sdk@^0.1.0", "@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
+"@ultra-alliance/ultra-sdk@^0.2.0", "@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
   "resolved" "file:packages/ultra-sdk"
-  "version" "0.1.0"
+  "version" "0.2.0"
   dependencies:
     "jszip" "^3.10.1"
     "moment" "^2.29.4"

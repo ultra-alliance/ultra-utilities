@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.3.6...@ultra-alliance/uikit@0.3.7) (2023-04-17)
+
+
+### Bug Fixes
+
+* package release ([1acf2b9](https://github.com/ultra-alliance/ultra-utilities/commit/1acf2b91d5c4de393abbc5d9b40d3d599586729d))
+
+
+
+
+
 ## [0.3.6](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.3.5...@ultra-alliance/uikit@0.3.6) (2023-04-17)
 
 

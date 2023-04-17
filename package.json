@@ -1,6 +1,7 @@
 {
   "name": "@ultra-alliance/ultra-utilities",
   "license": "MIT",
+  "private": false,
   "scripts": {
     "install:all": "lerna bootstrap",
     "clean": "rimraf coverage && lerna exec npm run clean",

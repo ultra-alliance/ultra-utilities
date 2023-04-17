@@ -1,6 +1,6 @@
 {
   "name": "@ultra-alliance/react-ultra",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "React based SDK to build an Ultra dApp",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -33,7 +33,7 @@
   },
   "author": "oscarmac",
   "dependencies": {
-    "@ultra-alliance/ultra-sdk": "^0.1.0",
+    "@ultra-alliance/ultra-sdk": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

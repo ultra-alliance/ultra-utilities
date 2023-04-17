@@ -1,6 +1,6 @@
 {
   "name": "@ultra-alliance/uikit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Mui based them kit for Ultra dApps",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -31,8 +31,8 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@emotion/styled": "^11.10.6",
     "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fontsource/inter": "^4.5.15",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15"

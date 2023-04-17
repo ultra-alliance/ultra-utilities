@@ -2429,6 +2429,46 @@
   "resolved" "https://registry.npmjs.org/@nrwl/nx-darwin-arm64/-/nx-darwin-arm64-15.9.1.tgz"
   "version" "15.9.1"
 
+"@nrwl/nx-darwin-x64@15.9.1":
+  "integrity" "sha512-F1Pmj14xNcYlsJhDv0DOnBhGAgXTSOg6ayeCqnH3nR1IHB8ygcyBWKzaHWOJA/wyP16w+dEqCGkMVQUt2gNE3A=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-darwin-x64/-/nx-darwin-x64-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-linux-arm-gnueabihf@15.9.1":
+  "integrity" "sha512-RSt2siC4k1W0eLU658rVyGsMP1OxlkHmklapA3zfb7gASrKhZBy7HiAJjrpalqxj3D1n4c8cnpnn8NjjiLgyOg=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-linux-arm-gnueabihf/-/nx-linux-arm-gnueabihf-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-linux-arm64-gnu@15.9.1":
+  "integrity" "sha512-6T2uPk4teDLnkXhWfjmXmei3b3dC7g2OreGTwTl6jpIkhduQrQ3ipPGLkCAywjyckZtouv1mlOO0mBd7Hjst4w=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-linux-arm64-gnu/-/nx-linux-arm64-gnu-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-linux-arm64-musl@15.9.1":
+  "integrity" "sha512-K8wvm7rAsw6fgbixC5PEaY/go3uqtX4regoNpnck9zZnybQP66a9DxHzfekCLOfXnlgoVxtHmV1iVZETZNmKGg=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-linux-arm64-musl/-/nx-linux-arm64-musl-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-linux-x64-gnu@15.9.1":
+  "integrity" "sha512-7kD9J86KhmYkHIrF2YuJWM1ltdiettOQ8ej9gAnqxQRKnVPazDSg56jFBosjow1mdilvTYONbFPSDEh0IrIE3g=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-linux-x64-gnu/-/nx-linux-x64-gnu-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-linux-x64-musl@15.9.1":
+  "integrity" "sha512-WopD1Jf1CGHg/uCYfo40TEd/yawglMFCoNPc/WNFXNx9P2LMfp8cKyApdvfP32Ptaql3fJvJCHXUqcPxYy6cSg=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-linux-x64-musl/-/nx-linux-x64-musl-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-win32-arm64-msvc@15.9.1":
+  "integrity" "sha512-ZU/QuUU1WPaIFdKqCWAm5TI+/zYAXbEyZKd/OhY67Gxaca98O4YXS6GmfF7WNHvQzsYoeuuLyRzZowSp22Rung=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-win32-arm64-msvc/-/nx-win32-arm64-msvc-15.9.1.tgz"
+  "version" "15.9.1"
+
+"@nrwl/nx-win32-x64-msvc@15.9.1":
+  "integrity" "sha512-te43yJPni7VIIM5DpZnGuWwEjZNMERdBAhHeKWobwvSQ4ogdpmDbOhsdHqU3mFLaiKP1pzRo17R5tNJ5Gmw5tA=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-win32-x64-msvc/-/nx-win32-x64-msvc-15.9.1.tgz"
+  "version" "15.9.1"
+
 "@nrwl/tao@15.9.1":
   "integrity" "sha512-gb21eJ3VrZdUpg4MQ4rmOfLy+omHiXCEvWWFGYvFSxXGVeNaLzlvQ/+OOK0B/d0KTCuXKCgvVKJ3jobd+4s02A=="
   "resolved" "https://registry.npmjs.org/@nrwl/tao/-/tao-15.9.1.tgz"
@@ -4233,15 +4273,15 @@
 
 "@ultra-alliance/react-ultra@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/react-ultra":
   "resolved" "file:packages/react-ultra"
-  "version" "0.0.1"
+  "version" "0.1.0"
   dependencies:
-    "@ultra-alliance/ultra-sdk" "../ultra-sdk"
+    "@ultra-alliance/ultra-sdk" "^0.0.1"
     "react" "^18.2.0"
     "react-dom" "^18.2.0"
 
 "@ultra-alliance/uikit@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/uikit":
   "resolved" "file:packages/uikit"
-  "version" "0.0.1"
+  "version" "0.1.0"
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
@@ -4249,9 +4289,9 @@
     "@mui/icons-material" "^5.11.11"
     "@mui/material" "^5.11.15"
 
-"@ultra-alliance/ultra-sdk@^0.0.1", "@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
+"@ultra-alliance/ultra-sdk@^0.1.0", "@ultra-alliance/ultra-sdk@file:/Users/oscarmac/Desktop/ultra-alliance/ultra-utilities/packages/ultra-sdk":
   "resolved" "file:packages/ultra-sdk"
-  "version" "0.0.1"
+  "version" "0.1.0"
   dependencies:
     "jszip" "^3.10.1"
     "moment" "^2.29.4"
@@ -17117,6 +17157,7 @@
 "typescript@^4.9.3":
   "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
+  "version" "4.9.5"
 
 "uglify-js@^3.1.4":
   "integrity" "sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g=="

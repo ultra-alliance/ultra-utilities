@@ -51,7 +51,7 @@ UI Kit based on a [Material UI](https://mui.com/) theme.
 
 ## Utilities
 
-<a href='https://resilient-selkie-d35d93.netlify.app' target="_blank"><img alt='' src='https://img.shields.io/badge/live dApp demo-100000?style=for-the-badge&logo=&logoColor=A481F0&labelColor=FFFFFF&color=A481F0'/></a>
+<a href='https://interface-ultra-alliance.vercel.app' target="_blank"><img alt='' src='https://img.shields.io/badge/live dApp demo-100000?style=for-the-badge&logo=&logoColor=A481F0&labelColor=FFFFFF&color=A481F0'/></a>
 
 <a href='https://profound-tanuki-c1ce1a.netlify.app/?path=/story/atoms-uniqs--example' target="_blank"><img alt='' src='https://img.shields.io/badge/uikit storybook-100000?style=for-the-badge&logo=&logoColor=A481F0&labelColor=FFFFFF&color=A481F0'/></a>
 

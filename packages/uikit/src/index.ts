@@ -37,7 +37,7 @@
  * You can read more about Material UI in the {@link https://mui.com/customization/theming/ | MUI documentation}.
  * You can also see some examples in the storybook.
  *
- * <a href='' target="_blank"><img alt='' src='https://img.shields.io/badge/uikit storybook-100000?style=for-the-badge&logo=&logoColor=A481F0&labelColor=FFFFFF&color=A481F0'/></a>
+ * <a href='https://profound-tanuki-c1ce1a.netlify.app/?path=/story/atoms-uniqs--example' target="_blank"><img alt='' src='https://img.shields.io/badge/uikit storybook-100000?style=for-the-badge&logo=&logoColor=A481F0&labelColor=FFFFFF&color=A481F0'/></a>
  */
 
 export * from './themes';

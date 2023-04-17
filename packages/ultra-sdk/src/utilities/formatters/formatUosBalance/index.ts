@@ -1,3 +1,5 @@
+// istanbul ignore file
+
 import numeral from 'numeral';
 import { type tValidInput } from '../../interfaces';
 

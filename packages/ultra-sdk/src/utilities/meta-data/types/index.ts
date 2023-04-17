@@ -1,3 +1,5 @@
+// istanbul ignore file
+
 /**
  * Represents the images and gallery of a product.
  *

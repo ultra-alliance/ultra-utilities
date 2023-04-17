@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.3.4...@ultra-alliance/react-ultra@0.3.5) (2023-04-17)
+
+
+### Bug Fixes
+
+* **ultra-sdk:** public package failing ([17132b9](https://github.com/ultra-alliance/ultra-utilities/commit/17132b9bff6cf9c03c8226c72db17b7b5e71192e))
+
+
+
+
+
 ## [0.3.4](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.3.3...@ultra-alliance/react-ultra@0.3.4) (2023-04-17)
 
 

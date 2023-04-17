@@ -1,6 +1,6 @@
 {
   "name": "@ultra-alliance/uikit",
-  "version": "0.3.7",
+  "version": "0.0.1",
   "description": "Mui based them kit for Ultra dApps",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -46,5 +46,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "gitHead": "bf99ff75cb97df4d1777a6e75a093300fc34fedf"
+  "gitHead": "c138f3f9b2b926fb25c1c94dd2a596a40274a519"
 }

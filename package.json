@@ -18,7 +18,7 @@
     "release:check": "lerna changed",
     "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
     "release:canary": "lerna publish --canary --ignore-scripts",
-    "release": "lerna run tsc && lerna publish",
+    "release": "npm run build && lerna publish",
     "make:docs": "npx typedoc --out docs",
     "make:stories": "build-storybook",
     "storybook": "start-storybook -p 6006"

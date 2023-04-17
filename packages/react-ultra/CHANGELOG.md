@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.2.0...@ultra-alliance/react-ultra@0.1.0) (2023-04-17)
+
+
+### Bug Fixes
+
+* **ultra-sdk:** fix packages version ([fa01a7e](https://github.com/ultra-alliance/ultra-utilities/commit/fa01a7efc7a502028a21a586305ff7a5eb82ddbe))
+
+
+### Features
+
+* publish config to public ([ce68290](https://github.com/ultra-alliance/ultra-utilities/commit/ce6829041cd97ae761e6fd28d58c39dcee21dce8))
+* **ultra-sdk:** changed packages ([2cbbb7e](https://github.com/ultra-alliance/ultra-utilities/commit/2cbbb7e23c65028e6b29147b204dc433b5df4188))
+* **ultra-sdk:** packages versioning ([3ce41a0](https://github.com/ultra-alliance/ultra-utilities/commit/3ce41a028c32919e87d6d9f7dcb822f5cecef8d3))
+* **ultra-sdk:** updating packages JSON ([27397f3](https://github.com/ultra-alliance/ultra-utilities/commit/27397f3d46c0abc76b8a068b7f7c83adb49bf42a))
+
+
+
+
+
 # [0.2.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.2.0...@ultra-alliance/react-ultra@0.2.0) (2023-04-17)
 
 

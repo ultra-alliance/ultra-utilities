@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.2.0...@ultra-alliance/ultra-sdk@0.3.0) (2023-04-19)
+
+
+### Features
+
+* **ultra-sdk:** added typing for ultra account total_ressources ([8d0a5d0](https://github.com/ultra-alliance/ultra-utilities/commit/8d0a5d01bc07bd32a5a8bc120136c4bd339abecf))
+
+
+
+
+
 # 0.2.0 (2023-04-18)
 
 

@@ -47,7 +47,12 @@ export type tGetAccountOutput = {
       }>;
     }>;
   }>;
-  total_resources: null;
+  total_resources: {
+    owner: string;
+    power_weight: string;
+    ram_bytes: number;
+    flags: number;
+  } | null;
   self_delegated_bandwidth: null;
   refund_request: null;
 };

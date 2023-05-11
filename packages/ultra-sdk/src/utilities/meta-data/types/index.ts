@@ -10,9 +10,9 @@ export type tMedia = {
    * URLs of the product images in different sizes.
    */
   images: {
-    product: string;
-    square: string;
-    hero: string;
+    product?: string;
+    square?: string;
+    hero?: string;
   };
   /**
    * URLs of the images in the product gallery.
@@ -54,4 +54,22 @@ export type tManifest = {
    * The default locale of the product.
    */
   defaultLocale: string;
+};
+
+/**
+ * @category Metadata
+ * @param {string} url - URL of the ZIP file
+ * @returns {Promise<{ manifest: tManifest }>} - manifest.json and image urls
+ * @description
+ * Retrieve manifest.json and image urls from a ZIP file
+ */
+
+export type tGetZipContent = {
+  url: string;
+  contentToUnzip: {
+    product?: boolean;
+    square?: boolean;
+    hero?: boolean;
+    gallery?: boolean;
+  };
 };

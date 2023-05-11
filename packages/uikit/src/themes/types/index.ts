@@ -23,6 +23,18 @@ export type tUltraColors = {
    * Midnight Ashes color
    */
   midnightAshes: string;
+  /**
+   * Dark Slate color
+   */
+  darkSlate: string;
+  /**
+   * Charcoal Black color
+   */
+  charcoalBlack: string;
+  /**
+   * Eclipse Twilight color
+   */
+  eclipseTwilight: string;
 };
 
 /**

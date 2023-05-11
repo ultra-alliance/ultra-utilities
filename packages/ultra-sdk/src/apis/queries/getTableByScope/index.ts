@@ -32,10 +32,8 @@ import { type tGetTableByScope } from '../types';
 
 const getTableByScope = async ({
   code,
-  limit,
-  lowerBound,
-  upperBound,
   bpApiEndpoint,
+  config,
 }: tGetTableByScope): Promise<tGetTableByScopeOutput> =>
   post({
     path: `${
@@ -44,9 +42,8 @@ const getTableByScope = async ({
     config: {},
     body: {
       code,
-      limit,
-      lower_bound: lowerBound,
-      upper_bound: upperBound,
+      limit: config?.limit ?? 1000,
+      ...config,
     },
   });
 

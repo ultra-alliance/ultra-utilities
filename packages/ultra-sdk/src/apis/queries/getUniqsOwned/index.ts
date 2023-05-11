@@ -1,4 +1,4 @@
-import { type tGetUniqOwnedOutput } from '../../commons';
+import { type tGetTableRowsOutput, type tTokenA } from '../../commons';
 import getTableRows from '../getTableRows';
 import { type tGetUniqOwned } from '../types';
 
@@ -27,14 +27,17 @@ import { type tGetUniqOwned } from '../types';
 async function getUniqsOwned({
   account,
   bpApiEndpoint,
-}: tGetUniqOwned): Promise<tGetUniqOwnedOutput> {
-  return getTableRows({
+  config,
+}: tGetUniqOwned): Promise<tGetTableRowsOutput<tTokenA>> {
+  return getTableRows<tTokenA>({
     bpApiEndpoint,
     code: 'eosio.nft.ft',
     scope: account,
     table: 'token.a',
-    limit: 1000,
-  }) as unknown as Promise<tGetUniqOwnedOutput>;
+    config: {
+      ...config,
+    },
+  });
 }
 
 export default getUniqsOwned;

@@ -30,7 +30,7 @@ performant, scalable, and accessible applications connected to the UOS.</p>
 <p>In short:</p>
 <pre><code class="language-bash"><span class="hl-0">npm </span><span class="hl-1">install</span><span class="hl-0"> </span><span class="hl-1">react</span><span class="hl-0"> </span><span class="hl-1">react-dom</span><span class="hl-0"> </span><span class="hl-1">@ultra-alliance/ultra-sdk</span><span class="hl-0"> </span><span class="hl-1">@ultra-alliance/react-ultra</span>
 </code></pre>
-<p>Then wrap your app in a <code>&lt;UltraProvider&gt;</code>, and provide a <code>bpApiEndpoint</code> (default will be <code>DEFAULT_BP_API_ENDPOINT</code> from <a href="ultra_sdk.html">ultra-sdk</a>)}):</p>
+<p>Then wrap your app in a <code>&lt;UltraProvider&gt;</code>, and provide a <code>bpApiEndpoint</code> (default will be <code>DEFAULT_BP_API_ENDPOINT</code> from <a href="ultra_sdk.html">ultra-sdk</a>):</p>
 <pre><code class="language-typescript"><span class="hl-2">import</span><span class="hl-0"> { </span><span class="hl-3">UltraProvider</span><span class="hl-0"> } </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-1">&#39;@ultra-alliance/react-ultra&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-3">React</span><span class="hl-0">.</span><span class="hl-4">DOM</span><span class="hl-0">.</span><span class="hl-5">render</span><span class="hl-0">(</span><br/><span class="hl-0">&lt;</span><span class="hl-3">UltraProvider</span><span class="hl-0"> </span><span class="hl-3">bpApiEndpoint</span><span class="hl-0">=</span><span class="hl-1">&#39;ANY_PUBLIC_ULTRA_ENDPOINT&#39;</span><span class="hl-0">&gt;</span><br/><span class="hl-0"> &lt;</span><span class="hl-3">App</span><span class="hl-0"> /&gt;</span><br/><span class="hl-0">&lt;/</span><span class="hl-3">UltraProvider</span><span class="hl-0">&gt;,</span><br/><span class="hl-3">document</span><span class="hl-0">.</span><span class="hl-5">getElementById</span><span class="hl-0">(</span><span class="hl-1">&#39;root&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">);</span>
 </code></pre>
 <p>And call the hooks inside your app:</p>
@@ -59,7 +59,7 @@ performant, scalable, and accessible applications connected to the UOS.</p>
 </ul>
 </div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/ultra-alliance/ultra-utilities/blob/419d619/packages/react-ultra/src/index.ts#L74">react-ultra/src/index.ts:74</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/ultra-alliance/ultra-utilities/blob/265aa1a/packages/react-ultra/src/index.ts#L74">react-ultra/src/index.ts:74</a></li></ul></aside>
 <section class="tsd-panel-group">
 <section class="tsd-panel tsd-typography"></section></section>
 <section class="tsd-panel-group tsd-index-group">
@@ -105,9 +105,13 @@ performant, scalable, and accessible applications connected to the UOS.</p>
 <a href="../functions/react_ultra.useUltraQuery.html" class="tsd-index-link tsd-kind-function tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>use<wbr/>Ultra<wbr/>Query</span></a>
 </div></section>
 <section class="tsd-index-section">
+<h3 class="tsd-index-heading">Functions - Other</h3>
+<div class="tsd-index-list"><a href="../functions/react_ultra.UltraProvider.html" class="tsd-index-link tsd-kind-function tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>Ultra<wbr/>Provider</span></a>
+<a href="../functions/react_ultra.useTransferUos.html" class="tsd-index-link tsd-kind-function tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>use<wbr/>Transfer<wbr/>Uos</span></a>
+</div></section>
+<section class="tsd-index-section">
 <h3 class="tsd-index-heading">Functions - Providers</h3>
 <div class="tsd-index-list"><a href="../functions/react_ultra.LocalisationProvider.html" class="tsd-index-link tsd-kind-function tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>Localisation<wbr/>Provider</span></a>
-<a href="../functions/react_ultra.UltraProvider.html" class="tsd-index-link tsd-kind-function tsd-parent-kind-module"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>Ultra<wbr/>Provider</span></a>
 </div></section></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
@@ -153,6 +157,7 @@ performant, scalable, and accessible applications connected to the UOS.</p>
 <li class="tsd-kind-function tsd-parent-kind-module"><a href="../functions/react_ultra.LocalisationProvider.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Localisation<wbr/>Provider</a></li>
 <li class="tsd-kind-function tsd-parent-kind-module"><a href="../functions/react_ultra.UltraProvider.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Ultra<wbr/>Provider</a></li>
 <li class="tsd-kind-function tsd-parent-kind-module"><a href="../functions/react_ultra.useLocalisation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>use<wbr/>Localisation</a></li>
+<li class="tsd-kind-function tsd-parent-kind-module"><a href="../functions/react_ultra.useTransferUos.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>use<wbr/>Transfer<wbr/>Uos</a></li>
 <li class="tsd-kind-function tsd-parent-kind-module"><a href="../functions/react_ultra.useUltra.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>use<wbr/>Ultra</a></li>
 <li class="tsd-kind-function tsd-parent-kind-module"><a href="../functions/react_ultra.useUltraQuery.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>use<wbr/>Ultra<wbr/>Query</a></li></ul></nav></div></div>
 <div class="container tsd-generator">

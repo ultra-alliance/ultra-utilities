@@ -27,35 +27,38 @@ import { type tUseUltraQueryParams, type tUseUltraQuery } from '../types';
  *
  */
 
-const useUltraQuery = <T>({
+const useUltraQuery = <tArgs, tRes>({
   queryFn,
   callback,
   onError,
   autofetch,
-}: tUseUltraQueryParams<T>): tUseUltraQuery<T> => {
-  const [data, setData] = useState<T | undefined>(undefined);
+}: tUseUltraQueryParams<tArgs, tRes>): tUseUltraQuery<tArgs, tRes> => {
+  const [data, setData] = useState<tRes | undefined>(undefined);
   const [error, setError] = useState<unknown>(null);
   const [isLoading, setIsLoading] = useState(autofetch ?? true);
 
-  const fetchData = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      console.log(error);
-      const result: T = await queryFn();
-      setData(result);
-      if (callback) {
-        callback(result);
+  const fetchData = useCallback(
+    async (args?: tArgs) => {
+      setIsLoading(true);
+      try {
+        console.log(error);
+        const result: tRes = await queryFn(args);
+        setData(result);
+        if (callback) {
+          callback(result);
+        }
+      } catch (error: unknown) {
+        console.log(error);
+        setError(error);
+        if (onError) {
+          onError(error as Error);
+        }
       }
-    } catch (error: unknown) {
-      console.log(error);
-      setError(error);
-      if (onError) {
-        onError(error as Error);
-      }
-    }
 
-    setIsLoading(false);
-  }, [callback, error, queryFn]);
+      setIsLoading(false);
+    },
+    [callback, error, queryFn],
+  );
 
   useEffect(() => {
     if (autofetch) {

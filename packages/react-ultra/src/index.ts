@@ -19,7 +19,7 @@
  * npm install react react-dom @ultra-alliance/ultra-sdk @ultra-alliance/react-ultra
  * ```
  *
- * Then wrap your app in a `<UltraProvider>`, and provide a `bpApiEndpoint` (default will be `DEFAULT_BP_API_ENDPOINT` from {@link ultra-sdk})}):
+ * Then wrap your app in a `<UltraProvider>`, and provide a `bpApiEndpoint` (default will be `DEFAULT_BP_API_ENDPOINT` from {@link ultra-sdk}):
  *
  * ```typescript
  * import { UltraProvider } from '@ultra-alliance/react-ultra';

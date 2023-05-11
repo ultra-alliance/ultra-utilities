@@ -1,4 +1,16 @@
-import { type tValidInput } from '../../../utilities';
+import { type tGetZipContent, type tValidInput } from '../../../utilities';
+
+export type tQueryConfig = {
+  json?: boolean;
+  lowerBound?: tValidInput;
+  upperBound?: tValidInput;
+  reverse?: boolean;
+  limit?: number;
+  key?: tValidInput;
+  index_position?: tValidInput;
+  show_payer?: boolean;
+  key_type?: tValidInput;
+};
 
 /**
  * Arguments passed for each ultra query
@@ -6,6 +18,7 @@ import { type tValidInput } from '../../../utilities';
  */
 export type tUltraQuery = {
   bpApiEndpoint?: string;
+  config?: tQueryConfig;
 };
 
 /**
@@ -56,9 +69,6 @@ export type tGetInfo = tUltraQuery;
  */
 export type tGetTableByScope = tUltraQuery & {
   code: string;
-  limit: number;
-  lowerBound?: tValidInput;
-  upperBound?: tValidInput;
 };
 
 /**
@@ -69,10 +79,7 @@ export type tGetTableRows = tUltraQuery & {
   code: string;
   scope: string;
   table: string;
-  limit: number;
-  json?: boolean;
-  lowerBound?: tValidInput;
-  upperBound?: tValidInput;
+  key?: tValidInput;
 };
 
 /**
@@ -85,7 +92,7 @@ export type tGetUniqOwned = tUltraQuery & {
 };
 
 /**
- * Arguments passed for getUniqDetail
+ * Arguments passed for getUosBalance
  * @category Ultra Queries
  */
 export type tGetUosBalance = tUltraQuery & {
@@ -93,13 +100,22 @@ export type tGetUosBalance = tUltraQuery & {
 };
 
 /**
- * Arguments passed for getUniqDetail
+ * Arguments passed for getFactoryDetail
  * @category Ultra Queries
  */
-export type tGetUniqDetail = tUltraQuery & {
-  uniqId: tValidInput;
+export type tGetFactoryDetail = tUltraQuery & {
+  factoryId: tValidInput;
 };
 
-export type tGetUniqManifested = tUltraQuery & {
-  uniqId: tValidInput;
+export type tGetFactoryManifested = tUltraQuery & {
+  factoryId: tValidInput;
+  contentToUnzip?: tGetZipContent['contentToUnzip'];
 };
+
+export type tMarketPrices =
+  | {
+      USD: number;
+      EUR: number;
+      GBP: number;
+    }
+  | undefined;

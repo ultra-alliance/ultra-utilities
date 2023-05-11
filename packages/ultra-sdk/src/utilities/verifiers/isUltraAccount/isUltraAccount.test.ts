@@ -14,4 +14,7 @@ describe('isUltraAccount', () => {
   test('empty string returns false', () => {
     expect(isUltraAccount('')).toBe(false);
   });
+  test('undefined returns false', () => {
+    expect(isUltraAccount()).toBe(false);
+  });
 });

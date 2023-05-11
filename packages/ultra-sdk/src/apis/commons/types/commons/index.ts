@@ -106,16 +106,6 @@ export type tAbi = {
 };
 
 /**
- * Represents a Table Row.
- * @category Ultra Commons
- */
-export type tTableRow = {
-  [key: string]: unknown;
-  id: number;
-  asset_manager: string;
-};
-
-/**
  * Represents an Ultra error.
  * @category API Commons
  */
@@ -144,10 +134,10 @@ export type tResaleShare = {
 };
 
 /**
- * Represents an Uniq.
+ * Represents an Factory.
  * @category Ultra Commons
  */
-export type tUniq = {
+export type tFactory = {
   id: number;
   asset_manager: string;
   asset_creator: string;
@@ -185,10 +175,10 @@ export type tListedUniq = {
 };
 
 /**
- * Represents a manifested uniq.
+ * Represents a manifested factory.
  * @category Ultra Commons
  */
-export type tUniqManifested = {
-  uniq: tUniq;
+export type tFactoryManifested = {
+  data: tFactory;
   manifest: tManifest;
 };

@@ -1,63 +1,25 @@
-import {
-  type tGetAbi,
-  type tGetAbiOutput,
-  type tGetAccount,
-  type tGetAccountOutput,
-  type tGetBlock,
-  type tGetBlockOutput,
-  type tGetCurrencyBalance,
-  type tGetCurrencyBalanceOutput,
-  type tGetTableByScope,
-  type tGetTableByScopeOutput,
-  type tGetTableRows,
-  type tGetTableRowsOutput,
-  type tGetInfoOutput,
-  type tGetListedUniqsOutput,
-  type tUniq,
-  type tGetUniqOwnedOutput,
-  type tUniqManifested,
-} from '../../apis';
-import { type tValidInput } from '../../utilities/interfaces/index';
+import { type Account } from '../../account';
+import { type tExt } from '../../account';
+import { type Api } from '../../apis';
+
 /**
  * Defines the options object for the `Ultra` object.
  */
 export type tUltraOptions = {
   bpApiEndpoint?: string;
+  extension?: tExt;
 };
 
 /**
  * Defines the interface for the `Ultra` object.
  *
  * @category Ultra
- * @property {string} bpApiEndpoint - The URL for the BP API endpoint.
- * @property {Function} getAbi - The method to get ABI.
- * @property {Function} getAccount - The method to get account.
- * @property {Function} getBlock - The method to get block.
- * @property {Function} getCurrencyBalance - The method to get currency balance.
- * @property {Function} getInfo - The method to get info.
- * @property {Function} getTableByScope - The method to get table by scope.
- * @property {Function} getTableRows - The method to get table rows.
- * @property {Function} getListedUniqs - The method to get listed uniques.
- * @property {Function} getUniqDetail - The method to get unique detail.
- * @property {Function} getUniqsOwned - The method to get owned uniques.
- * @property {Function} getUosBalance - The method to get UOS balance.
+ * @property {Api} api - The API object.
+ * @property {Account} Account - The Account object.
+
  */
 export type tUltra = {
-  bpApiEndpoint: string;
-  getAbi: (params: tGetAbi) => Promise<tGetAbiOutput>;
-  getAccount: (params: tGetAccount) => Promise<tGetAccountOutput | undefined>;
-  getBlock: (params: tGetBlock) => Promise<tGetBlockOutput>;
-  getCurrencyBalance: (
-    params: tGetCurrencyBalance,
-  ) => Promise<tGetCurrencyBalanceOutput>;
-  getInfo: () => Promise<tGetInfoOutput>;
-  getTableByScope: (
-    params: tGetTableByScope,
-  ) => Promise<tGetTableByScopeOutput>;
-  getTableRows: (params: tGetTableRows) => Promise<tGetTableRowsOutput>;
-  getListedUniqs: () => Promise<tGetListedUniqsOutput>;
-  getUniqDetail: (uniqId: tValidInput) => Promise<tUniq>;
-  getUniqsOwned: (account: string) => Promise<tGetUniqOwnedOutput>;
-  getUosBalance: (account: string) => Promise<tGetCurrencyBalanceOutput>;
-  getUniqManifested: (uniqId: tValidInput) => Promise<tUniqManifested>;
+  api: Api;
+  account: Account;
+  init(options: tUltraOptions): void;
 };

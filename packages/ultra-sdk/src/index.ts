@@ -30,12 +30,16 @@
  *  bpApiEndpoint: 'https://api.ultra.eossweden.org',
  * });
  *
- * ultra.getAccount("aaa1bbb2ccc3").then((account) => {
+ * ultra.api.getAccount("aaa1bbb2ccc3").then((account) => {
  *   console.log(account);
  * });
+ *
  * ```
  *
  * This SDK provides a set of functions, formatters and utils that allow you to interact with the blockchain, among others:
+ *
+ * ### Classes
+ * - {@link Ultra} to instantiate a new Ultra instance implementing instances of {@link Api} and {@link Account}
  *
  * ### APIs
  * - {@link getUosBalance} to get the UOS balance of an account
@@ -43,7 +47,7 @@
  * - {@link getAccount} to get an account-detail by its name
  * - {@link getAbi} to get the ABI of a smart contract
  * - {@link getTableRows} to get the rows of a table
- * - {@link getUniqDetail} to get the details of a uniq
+ * - {@link getFactoryDetail} to get the details of a factory
  * - {@link getUniqsOwned} to get the uniqs owned by an account
  * - {@link getInfo} to get the blockchain info
  * - {@link getListedUniqs} to get the uniqs listed on the marketplace
@@ -65,3 +69,4 @@ export * from './apis';
 export * from './ultra';
 export * from './auth';
 export * from './constants';
+export * from './account';

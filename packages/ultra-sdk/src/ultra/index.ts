@@ -1,4 +1,4 @@
 /* istanbul ignore file */
 
 export * from './types';
-export { default as Ultra } from './class';
+export { default as Ultra } from './class/Ultra';

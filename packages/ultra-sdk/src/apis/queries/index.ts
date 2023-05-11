@@ -9,8 +9,9 @@ export { default as getTableByScope } from './getTableByScope';
 export { default as getTableRows } from './getTableRows';
 export { default as getUniqsOwned } from './getUniqsOwned';
 export { default as getUosBalance } from './getUosBalance';
-export { default as getUniqDetail } from './getUniqDetail';
+export { default as getFactoryDetail } from './getFactoryDetail';
 export { default as getListedUniqs } from './getListedUniqs';
-export { default as getUniqManifested } from './getUniqManifested';
+export { default as getFactoryManifested } from './getFactoryManifested';
+export { default as getMarketPrices } from './getMarketPrices';
 
 export * from './types';

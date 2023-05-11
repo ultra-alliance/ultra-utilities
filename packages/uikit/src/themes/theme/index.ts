@@ -101,7 +101,7 @@ export const ultraTheme = createTheme({
     },
     background: {
       default: ultraColors.midnightAshes,
-      paper: ultraColors.midnightAshes,
+      paper: ultraColors.charcoalBlack,
     },
   },
   shape: {
@@ -121,17 +121,18 @@ export const ultraTheme = createTheme({
         },
       },
     },
+
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: ultraColors.royalAmethyst,
+          backgroundColor: ultraColors.darkSlate,
           color: 'white',
           fontWeight: 'bold',
           border: '1px solid',
-          borderColor: ultraColors.royalAmethyst,
+          borderColor: '#5e5e5e',
         },
         arrow: {
-          color: ultraColors.royalAmethyst,
+          color: '#5e5e5e',
         },
       },
     },
@@ -151,6 +152,20 @@ export const ultraTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 4,
+        },
+      },
+    },
+    MuiAvatar: {
+      defaultProps: {
+        variant: 'rounded',
+      },
+      styleOverrides: {
+        root: {
+          width: 32,
+          height: 32,
+          background: ultraColors.darkSlate,
+          color: 'white',
+          fontWeight: 'bold',
         },
       },
     },

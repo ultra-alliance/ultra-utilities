@@ -4,11 +4,12 @@
  * @category Context
  */
 import {
-  type tGetAccountOutput,
   type tUltra,
   type tAuth,
   type tLoginOptions,
   type tLogoutOptions,
+  type tUltraAccount,
+  type tMarketPrices,
 } from '@ultra-alliance/ultra-sdk';
 import { type tCurrency, type tLanguage } from '../../models';
 
@@ -59,9 +60,9 @@ export type tUltraContext = {
   auth: tAuth;
 
   /**
-   * The `tGetAccountOutput` object.
+   * The `tUltraAccount` object.
    */
-  account: tGetAccountOutput | undefined;
+  account: tUltraAccount | undefined;
 
   /**
    * A function to log in.
@@ -69,12 +70,9 @@ export type tUltraContext = {
    * @param accountName - The account name to log in with.
    * @param options - The `tLoginOptions` object.
    *
-   * @returns A promise that resolves with the `tGetAccountOutput` object or `undefined`.
+   * @returns A promise that resolves with the `tUltraAccount` object or `undefined`.
    */
-  login: (
-    accountName: string,
-    options: tLoginOptions,
-  ) => Promise<tGetAccountOutput | undefined>;
+  login: (options: tLoginOptions) => Promise<tUltraAccount | undefined>;
 
   /**
    * A function to log out.
@@ -116,9 +114,16 @@ export type tUltraContext = {
   isAuthUndefined: boolean;
 
   /**
-   * A function to update the BP API endpoint.
-   *
-   * @param bpApiEndpoint - The new BP API endpoint.
+   * A boolean value indicating whether the user has Ultra Wallet installed.
    */
-  updateBpApiEndpoint: (bpApiEndpoint: string) => void;
+  isWalletInstalled: boolean;
+
+  /**
+   * the market prices
+   */
+  marketPrices: tMarketPrices;
+
+  refreshMarketPrices: () => Promise<tMarketPrices>;
+
+  refreshAccount: () => Promise<tUltraAccount | undefined>;
 };

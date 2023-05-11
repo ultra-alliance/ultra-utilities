@@ -3,7 +3,7 @@
  * @category Hooks
  */
 
-export type tQueryFn<T> = () => Promise<T>;
+export type tQueryFn<tArgs, tRes> = (args?: tArgs) => Promise<tRes>;
 
 /**
  * A function that accepts a generic type and returns void.
@@ -22,9 +22,9 @@ export type tErrorFn = (error: Error) => void;
  * @category Hooks
  */
 
-export type tUseUltraQueryParams<T> = {
-  queryFn: tQueryFn<T>;
-  callback?: tCallbackFn<T>;
+export type tUseUltraQueryParams<tArgs, tRes> = {
+  queryFn: tQueryFn<tArgs, tRes>;
+  callback?: tCallbackFn<tRes>;
   onError?: tErrorFn;
   autofetch?: boolean;
 };
@@ -33,9 +33,9 @@ export type tUseUltraQueryParams<T> = {
  * An object with `data`, `isLoading`, `error`, and `fetchData` properties returned by the `useUltraQuery` hook.
  * @category Hooks
  */
-export type tUseUltraQuery<T> = {
-  data: T | undefined;
+export type tUseUltraQuery<tArgs, tRes> = {
+  data: tRes | undefined;
   isLoading: boolean;
   error: unknown;
-  fetchData: () => Promise<void>;
+  fetchData: (args?: tArgs) => Promise<void>;
 };

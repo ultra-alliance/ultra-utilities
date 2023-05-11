@@ -1,9 +1,4 @@
-import {
-  type tAbi,
-  type tTableRow,
-  type tTokenA,
-  type tListedUniq,
-} from '../commons';
+import { type tAbi } from '../commons';
 
 /**
  * Represents output for `getAccount` function.
@@ -133,28 +128,8 @@ export type tGetTableByScopeOutput = {
  * Represents output for `getTableRows` function.
  * @category API Outputs
  */
-export type tGetTableRowsOutput = {
-  rows: tTableRow[];
-  more: boolean;
-  next_key: string;
-};
-
-/**
- * Represents output for `getUniqOwned` function.
- * @category API Outputs
- */
-export type tGetUniqOwnedOutput = {
-  rows: tTokenA[];
-  more: boolean;
-  next_key: string;
-};
-
-/**
- * Represents output for `getListedUniqs` function.
- * @category API Outputs
- */
-export type tGetListedUniqsOutput = {
-  rows: tListedUniq[];
+export type tGetTableRowsOutput<TRow> = {
+  rows: TRow[];
   more: boolean;
   next_key: string;
 };

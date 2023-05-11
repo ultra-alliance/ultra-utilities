@@ -1,8 +1,10 @@
-import { type tGetAccountOutput } from '../../apis';
+import { type tUltraAccount } from '../../account';
 import { type eAuthState } from '../constants';
 
 /**
  * @category Auth
+ * @description The Auth object
+ *
  */
 export type tAuth =
   | {
@@ -34,8 +36,8 @@ export type tAuth =
  * @category Auth
  */
 export type tAuthOptions = {
-  onError?: (error: Error) => void;
-  onSuccess?: (account: tGetAccountOutput) => void;
+  onError?: (error: Error) => tUltraAccount;
+  onSuccess?: (account: tUltraAccount) => void;
   onComplete?: () => void;
   throwOnError?: boolean;
 };
@@ -44,8 +46,8 @@ export type tAuthOptions = {
  * @category Auth
  */
 export type tLoginOptions = {
-  onError?: (error: Error) => void;
-  onSuccess?: (user: tGetAccountOutput) => void;
+  onError?: (error: Error) => tUltraAccount;
+  onSuccess?: (user: tUltraAccount) => void;
   onComplete?: () => void;
   throwOnError?: boolean;
 };
@@ -66,4 +68,4 @@ export type tLogoutOptions = {
 export type tLogin = (
   accountName: string,
   options?: tLoginOptions,
-) => Promise<tGetAccountOutput | undefined>;
+) => Promise<tUltraAccount | undefined>;

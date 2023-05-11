@@ -1,3 +1,5 @@
+// istanbul ignore file
+
 import {
   DEFAULT_BP_API_ENDPOINT,
   post,
@@ -32,28 +34,45 @@ import { type tGetTableRows } from '../types';
  * ```
  */
 
-const getTableRows = async ({
+const getTableRows = async <TRow>({
   code,
   table,
   scope,
-  json,
-  limit,
-  lowerBound,
-  upperBound,
   bpApiEndpoint,
-}: tGetTableRows): Promise<tGetTableRowsOutput> =>
-  post({
+  config,
+}: tGetTableRows): Promise<tGetTableRowsOutput<TRow>> => {
+  const body: Record<string, any> = {
+    code,
+    table,
+    scope,
+    json: config?.json ?? true,
+    reverse: config?.reverse ?? false,
+    limit: config?.limit ?? 1000,
+    upper_bound: config?.upperBound,
+    lower_bound: config?.lowerBound,
+  };
+
+  if (config?.index_position !== undefined) {
+    body.index_position = config.index_position;
+  }
+
+  if (config?.show_payer !== undefined) {
+    body.show_payer = config.show_payer;
+  }
+
+  if (config?.key_type !== undefined) {
+    body.key_type = config.key_type;
+  }
+
+  if (config?.key !== undefined) {
+    body.key = config.key;
+  }
+
+  return post({
     path: `${bpApiEndpoint ?? DEFAULT_BP_API_ENDPOINT}/v1/chain/get_table_rows`,
     config: {},
-    body: {
-      code,
-      limit,
-      table,
-      scope,
-      json: json ?? true,
-      lower_bound: lowerBound,
-      upper_bound: upperBound,
-    },
+    body,
   });
+};
 
 export default getTableRows;

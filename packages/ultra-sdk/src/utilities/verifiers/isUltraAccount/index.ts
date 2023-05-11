@@ -7,7 +7,8 @@ import { eUltraAccount } from '../constants';
  * @param account - The account string to check.
  * @returns `true` if the account string is a valid ultra account, `false` otherwise.
  */
-function isUltraAccount(account: string): boolean {
+function isUltraAccount(account?: string): boolean {
+  if (!account) return false;
   if (account.includes('ultra')) {
     return true;
   }

@@ -76,7 +76,9 @@ describe('getTableRows', () => {
       code: 'eosio.nft.ft',
       table: 'factory.a',
       scope: 'eosio.nft.ft',
-      limit: 5,
+      config: {
+        limit: 5,
+      },
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
@@ -85,10 +87,11 @@ describe('getTableRows', () => {
         method: 'POST',
         body: JSON.stringify({
           code: 'eosio.nft.ft',
-          limit: 5,
           table: 'factory.a',
           scope: 'eosio.nft.ft',
           json: true,
+          reverse: false,
+          limit: 5,
         }),
       },
     );

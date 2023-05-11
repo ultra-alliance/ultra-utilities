@@ -26,14 +26,18 @@ describe('getListedUniqs', () => {
       }),
     ) as jest.Mock;
 
-    const result = await getListedUniqs(bpApiEndpoint);
+    const result = (
+      await getListedUniqs({
+        bpApiEndpoint,
+      })
+    ).rows;
 
-    expect(result.rows[0].token_id).toEqual(10);
+    expect(result[0].token_id).toEqual(10);
     expect(result).toBeDefined();
   });
 
   it('should return an error if fails', async () => {
-    await expect(getListedUniqs(bpApiEndpoint)).rejects.toThrowError();
+    await expect(getListedUniqs({ bpApiEndpoint })).rejects.toThrowError();
   });
   it("should use default endpoint if it's not provided", async () => {
     global.fetch = jest.fn(async () =>
@@ -42,7 +46,7 @@ describe('getListedUniqs', () => {
         json: async () => Promise.resolve(expectedResult),
       }),
     ) as jest.Mock;
-    const result = await getListedUniqs();
+    const result = await getListedUniqs({ bpApiEndpoint });
 
     expect(result.rows[0].token_id).toEqual(10);
     expect(result).toBeDefined();

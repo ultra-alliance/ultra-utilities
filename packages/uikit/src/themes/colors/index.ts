@@ -21,7 +21,10 @@ const ultraColors: tUltraColors = {
   orchidHaze: '#A481F0',
   royalAmethyst: '#7A52D1',
   irishEnchantment: '#5F4B8B',
-  midnightAshes: '#3C3846',
+  midnightAshes: '#302C36',
+  darkSlate: '#3C3846',
+  charcoalBlack: '#28262c',
+  eclipseTwilight: `linear-gradient(180deg, rgba(150,150,150,0.1) 0%, rgba(150,150,150,0) 100%), linear-gradient(180deg, #3c3846 0%,  #3c3846 100%)`,
 };
 
 export default ultraColors;

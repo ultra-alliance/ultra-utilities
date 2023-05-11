@@ -1,5 +1,6 @@
-import { type tGetListedUniqsOutput } from '../../commons';
+import { type tListedUniq, type tGetTableRowsOutput } from '../../commons';
 import getTableRows from '../getTableRows';
+import { type tUltraQuery } from '../types';
 
 /**
  * @name getListedUniqs - Get all listed uniqs
@@ -18,16 +19,17 @@ import getTableRows from '../getTableRows';
  **/
 
 async function getListedUniqs(
-  bpApiEndpoint?: string,
-): Promise<tGetListedUniqsOutput> {
-  return getTableRows({
-    bpApiEndpoint,
+  props: tUltraQuery,
+): Promise<tGetTableRowsOutput<tListedUniq>> {
+  return getTableRows<tListedUniq>({
+    bpApiEndpoint: props.bpApiEndpoint,
     code: 'eosio.nft.ft',
     scope: 'eosio.nft.ft',
     table: 'resale.a',
-    json: true,
-    limit: 1000,
-  }) as unknown as Promise<tGetListedUniqsOutput>;
+    config: {
+      ...props.config,
+    },
+  });
 }
 
 export default getListedUniqs;

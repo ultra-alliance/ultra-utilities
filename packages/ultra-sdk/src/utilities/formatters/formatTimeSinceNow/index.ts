@@ -24,11 +24,23 @@ function formatTimeSinceNow(date: string | undefined): string {
     return 'Unknown';
   }
 
-  const momentCreatedDate = moment(date);
-  const momentNow = moment();
-  const diffInDays = momentNow.diff(momentCreatedDate, 'days');
+  const now = moment();
+  const diff = now.diff(date);
+  const duration = moment.duration(diff);
 
-  return `${diffInDays} day(s) ago`;
+  if (duration.asDays() >= 1) {
+    return `${Math.floor(duration.asDays())} day(s) ago`;
+  }
+
+  if (duration.asHours() >= 1) {
+    return `${Math.floor(duration.asHours())} hour(s) ago`;
+  }
+
+  if (duration.asMinutes() >= 1) {
+    return `${Math.floor(duration.asMinutes())} minute(s) ago`;
+  }
+
+  return 'Just now';
 }
 
 export default formatTimeSinceNow;

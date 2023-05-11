@@ -10,7 +10,13 @@ export const LINKS = {
   /**
    * Link to download the Ultra wallet extension.
    */
+
   DOWNLOAD_WALLET:
+    'https://chrome.google.com/webstore/detail/ultra-wallet/kjjebdkfeagdoogagbhepmbimaphnfln',
+  /**
+   * Link to download the Ultra Dev wallet extension.
+   */
+  DOWNLOAD_DEV_WALLET:
     'https://docs.ultra.io/blockchain/#/docs/ultra-wallet-extension/000_installing-extension',
   /**
    * Link to Ultra Download page.
@@ -40,4 +46,10 @@ export const LINKS = {
    * Link to Ultra Block Explorer
    */
   ULTRA_EXPLORER: 'https://explorer.mainnet.ultra.io',
+
+  /**
+   * Link to Ultra Faucet
+   */
+
+  ULTRA_FAUCET: 'https://faucet.testnet.app.ultra.io',
 };

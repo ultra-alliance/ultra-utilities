@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // istanbul ignore file
 
 import {
   type tUltra,
-  type tGetAccountOutput,
   type tAuth,
   type tLogoutOptions,
   type tLoginOptions,
+  type tMarketPrices,
+  eAuthState,
   Ultra,
   INITIAL_AUTH,
-  eAuthState,
+  type tUltraAccount,
+  getMarketPrices,
 } from '@ultra-alliance/ultra-sdk';
 import React from 'react';
 import { UltraContext } from '../../contexts';
@@ -22,32 +25,74 @@ import { type tUltraProvider } from '../types';
  * @returns A React component that provides an `UltraContext` containing the Ultra SDK object, authentication state, and related methods.
  */
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  interface Window {
+    ultra: any;
+  }
+}
+
 const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
-  const [ultra, setUltra] = React.useState<tUltra | undefined>(
+  const [ultra, _setUltra] = React.useState<tUltra | undefined>(
     new Ultra({
       bpApiEndpoint,
     }),
   );
   const [auth, setAuth] = React.useState<tAuth>(INITIAL_AUTH);
-  const [account, setAccount] = React.useState<tGetAccountOutput | undefined>(
+  const [account, setAccount] = React.useState<tUltraAccount | undefined>(
     undefined,
   );
+  const [marketPrices, setMarketPrices] =
+    React.useState<tMarketPrices>(undefined);
+
+  const refreshMarketPrices =
+    React.useCallback(async (): Promise<tMarketPrices> => {
+      try {
+        const res = await getMarketPrices();
+        setMarketPrices(res);
+        return marketPrices;
+      } catch (error) {
+        console.error(error);
+        return undefined;
+      }
+    }, [ultra?.account]);
+
+  const refreshAccount = React.useCallback(async (): Promise<
+    tUltraAccount | undefined
+  > => {
+    try {
+      const account = await ultra?.account.refetchAccountData();
+      if (!account) {
+        throw new Error('Account not found');
+      }
+
+      setAccount(account);
+      return account;
+    } catch (error) {
+      console.error(error);
+      return undefined;
+    }
+  }, [ultra]);
 
   const login = React.useCallback(
-    async (
-      accountName: string,
-      { throwOnError, onError, onSuccess, onComplete }: tLoginOptions = {},
-    ): Promise<tGetAccountOutput | undefined> => {
+    async ({
+      throwOnError,
+      onError,
+      onSuccess,
+      onComplete,
+    }: tLoginOptions = {}): Promise<tUltraAccount | undefined> => {
       setAuth({
         state: eAuthState.AUTHENTICATING,
         error: null,
       });
       try {
-        const account = await ultra?.getAccount({ accountName });
+        const account = await ultra?.account?.connect();
+
         if (!account) {
           throw new Error('Account not found');
         }
 
+        localStorage.setItem('eagerlyConnection', 'true');
         setAuth({
           state: eAuthState.AUTHENTICATED,
           error: null,
@@ -75,7 +120,7 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
         }
       }
     },
-    [],
+    [ultra?.account],
   );
 
   const logout = React.useCallback(
@@ -91,6 +136,7 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
       });
 
       try {
+        await ultra?.account?.disconnect();
         setAuth({ state: eAuthState.UNAUTHENTICATED, error: null });
         setAccount(undefined);
         if (onSuccess) {
@@ -115,33 +161,51 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
     [],
   );
 
-  const updateBpApiEndpoint = React.useCallback(async () => {
-    setUltra(
-      new Ultra({
-        bpApiEndpoint,
-      }),
-    );
-  }, [bpApiEndpoint]);
-
   React.useEffect(() => {
-    try {
-      const currentAccount = account;
-      if (currentAccount) {
+    const init = async () => {
+      try {
+        const eagerlyConnection = localStorage.getItem('eagerlyConnection');
+        if (eagerlyConnection !== 'true') throw new Error('Let it catch');
+        const currentAccount = await ultra?.account?.connect({
+          onlyIfTrusted: true,
+        });
+        if (currentAccount) {
+          setAuth({
+            state: eAuthState.AUTHENTICATED,
+            error: null,
+          });
+          setAccount(currentAccount);
+        } else {
+          throw new Error('Let it catch');
+        }
+      } catch (error) {
         setAuth({
-          state: eAuthState.AUTHENTICATED,
+          state: eAuthState.UNAUTHENTICATED,
           error: null,
         });
-        setAccount(currentAccount);
-      } else {
-        throw new Error('Let it catch');
+        setAccount(undefined);
       }
-    } catch (error) {
-      setAuth({
-        state: eAuthState.UNAUTHENTICATED,
-        error: null,
+    };
+
+    init().catch(() => {
+      console.error('Init failed');
+    });
+  }, []);
+
+  React.useEffect(() => {
+    _setUltra(
+      new Ultra({
+        bpApiEndpoint,
+        extension: window?.ultra,
+      }),
+    );
+    refreshMarketPrices()
+      .then(() => {
+        console.log('Market prices refreshed');
+      })
+      .catch(() => {
+        console.error('Market prices refresh failed');
       });
-      setAccount(undefined);
-    }
   }, []);
 
   const isAuthenticated = auth.state === eAuthState.AUTHENTICATED;
@@ -150,6 +214,7 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
   const hasAuthError = auth.state === eAuthState.ERROR;
   const isLoggingOut = auth.state === eAuthState.LOGGING_OUT;
   const isAuthUndefined = auth.state === eAuthState.UNDEFINED;
+  const isWalletInstalled = ultra?.account?.checkIsWalletInstalled() ?? false;
 
   return (
     <LocalisationProvider>
@@ -166,7 +231,10 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
           hasAuthError,
           isLoggingOut,
           isAuthUndefined,
-          updateBpApiEndpoint,
+          isWalletInstalled,
+          marketPrices,
+          refreshMarketPrices,
+          refreshAccount,
         }}
       >
         {children}

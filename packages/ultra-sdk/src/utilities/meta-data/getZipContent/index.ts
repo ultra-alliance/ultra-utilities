@@ -1,7 +1,7 @@
 // istanbul ignore file
 
 import JSZip from 'jszip';
-import { type tManifest } from '../types';
+import { type tGetZipContent, type tManifest } from '../types';
 
 /**
  * @category Metadata
@@ -15,11 +15,19 @@ import { type tManifest } from '../types';
  *
  * const url = 'https://example.com/zip-file.zip';
  *
- * const { manifest } = await getZipContent(url);
+ * const { manifest } = await getZipContent({
+ *  url,
+ *  {
+ *    product: true,
+ *  }
+ * });
  * ```
  */
 
-async function getZipContent(url: string): Promise<{
+async function getZipContent({
+  url,
+  contentToUnzip: { product, square, hero, gallery },
+}: tGetZipContent): Promise<{
   manifest: tManifest;
 }> {
   const response = await fetch(url);
@@ -42,59 +50,75 @@ async function getZipContent(url: string): Promise<{
   const galleryImages = media?.gallery ?? [];
 
   // Retrieve image urls
-  if (productImage) {
-    const productImageFile = zip.file(productImage);
-    if (productImageFile) {
-      const productImageUrl = URL.createObjectURL(
-        await productImageFile.async('blob'),
-      );
-      if (productImageUrl && manifest?.media?.images?.product) {
-        manifest.media.images.product = productImageUrl;
-      }
+  const retrieveImage = async (imageName: string) => {
+    const imageFile = zip.file(imageName);
+    if (imageFile) {
+      const imageUrl = URL.createObjectURL(await imageFile.async('blob'));
+      return imageUrl;
     }
+
+    return '';
+  };
+
+  // Retrieve image urls concurrently
+  const imagePromises = [];
+
+  if (product && productImage) {
+    imagePromises.push(
+      retrieveImage(productImage)
+        .then(url => {
+          manifest.media.images.product = url;
+        })
+        .catch(() => {
+          manifest.media.images.product = undefined;
+        }),
+    );
   }
 
-  if (squareImage) {
-    const squareImageFile = zip.file(squareImage);
-    if (squareImageFile) {
-      const squareImageUrl = URL.createObjectURL(
-        await squareImageFile.async('blob'),
-      );
-      if (squareImageUrl && manifest.media?.images?.square) {
-        manifest.media.images.square = squareImageUrl;
-      }
-    }
+  if (square && squareImage) {
+    imagePromises.push(
+      retrieveImage(squareImage)
+        .then(url => {
+          manifest.media.images.square = url;
+        })
+        .catch(() => {
+          manifest.media.images.square = undefined;
+        }),
+    );
   }
 
-  if (heroImage) {
-    const heroImageFile = zip.file(heroImage);
-    if (heroImageFile) {
-      const heroImageUrl = URL.createObjectURL(
-        await heroImageFile.async('blob'),
-      );
-      if (heroImageUrl && manifest.media?.images?.hero) {
-        manifest.media.images.hero = heroImageUrl;
-      }
-    }
+  if (hero && heroImage) {
+    imagePromises.push(
+      retrieveImage(heroImage)
+        .then(url => {
+          manifest.media.images.hero = url;
+        })
+        .catch(() => {
+          manifest.media.images.hero = undefined;
+        }),
+    );
   }
 
-  const galleryUrls = await Promise.all(
-    galleryImages.map(async galleryImage => {
-      const galleryImageFile = zip.file(galleryImage);
-      if (galleryImageFile) {
-        const galleryImageUrl = URL.createObjectURL(
-          await galleryImageFile.async('blob'),
-        );
-        if (galleryImageUrl) {
-          return galleryImageUrl;
-        }
-      }
+  if (gallery) {
+    imagePromises.push(
+      Promise.all(
+        galleryImages.map(async galleryImage => retrieveImage(galleryImage)),
+      )
+        .then(galleryUrls => {
+          manifest.media.gallery = galleryUrls;
+        })
+        .catch(() => {
+          manifest.media.gallery = [];
+        }),
+    );
+  }
 
-      return '';
-    }),
-  );
+  await Promise.all(imagePromises);
 
-  manifest.media.gallery = galleryUrls;
+  if (!product) manifest.media.images.product = undefined;
+  if (!square) manifest.media.images.square = undefined;
+  if (!hero) manifest.media.images.hero = undefined;
+  if (!gallery) manifest.media.gallery = [];
 
   return { manifest };
 }

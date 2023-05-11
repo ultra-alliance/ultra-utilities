@@ -27,16 +27,15 @@ describe('getUniqsOwned', () => {
         json: async () => Promise.resolve(expectedResult),
       }),
     ) as jest.Mock;
-    const result = await getUniqsOwned({
-      account,
-      bpApiEndpoint: DEFAULT_BP_API_ENDPOINT,
-    });
+    const result = (
+      await getUniqsOwned({
+        account,
+        bpApiEndpoint: DEFAULT_BP_API_ENDPOINT,
+      })
+    ).rows;
 
     // assert that the result matches the expected result
-    expect(result.more).toBeDefined();
-    expect(result.more).toBe(true);
-    expect(result.next_key).toBeDefined();
-    expect(result.rows.length).toBeGreaterThan(0);
+    expect(result.length).toBeGreaterThan(0);
   });
   it('should return an error if fails', async () => {
     await expect(

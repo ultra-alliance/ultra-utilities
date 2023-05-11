@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.2.1...@ultra-alliance/react-ultra@0.4.0) (2023-05-11)
+
+
+### Features
+
+* **ultra-sdk:** update documentation and refactor APIs ([5a1cbb5](https://github.com/ultra-alliance/ultra-utilities/commit/5a1cbb52c48e3a6940463bee239f5d4081a14efa))
+
+
+### BREAKING CHANGES
+
+* **ultra-sdk:** Some queries and types have been removed. Please check your usage if you were using
+these queries or types in your codebase.
+
+
+
+
+
 # [0.3.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.2.1...@ultra-alliance/react-ultra@0.3.0) (2023-05-11)
 
 

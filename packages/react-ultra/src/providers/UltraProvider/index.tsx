@@ -33,10 +33,10 @@ declare global {
 }
 
 const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
-  const [ultra, _setUltra] = React.useState<tUltra | undefined>(
+  const [ultra, _setUltra] = React.useState<Ultra>(
     new Ultra({
       bpApiEndpoint,
-    }),
+    }) as tUltra,
   );
   const [auth, setAuth] = React.useState<tAuth>(INITIAL_AUTH);
   const [account, setAccount] = React.useState<tUltraAccount | undefined>(
@@ -66,7 +66,7 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
         throw new Error('Account not found');
       }
 
-      setAccount(account);
+      setAccount(account as tUltraAccount);
       return account;
     } catch (error) {
       console.error(error);

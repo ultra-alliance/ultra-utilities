@@ -1,3 +1,4 @@
+import { type UltraTheme } from '@mui/material';
 import { render } from '@testing-library/react';
 import React from 'react';
 import ThemeProvider, { type ThemeProviderProps } from './index';
@@ -8,6 +9,9 @@ describe('ThemeProvider', () => {
     palette: {
       primary: {
         main: '#000',
+        light: '#000',
+        dark: '#000',
+        contrastText: '#fff',
       },
       secondary: {
         main: '#fff',
@@ -27,7 +31,7 @@ describe('ThemeProvider', () => {
 
   it('renders with a theme', () => {
     const { getByText } = renderThemeProvider({
-      theme: testTheme,
+      theme: testTheme as UltraTheme,
       children: undefined,
     });
     expect(getByText('Hello')).toBeInTheDocument();

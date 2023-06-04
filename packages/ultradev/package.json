@@ -1,0 +1,66 @@
+{
+  "name": "@ultra-alliance/ultradev",
+  "version": "0.0.1",
+  "description": "Unleash limitless power with our CLI for ultra projects and contract development toolkit.",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./src": {
+      "require": "./src/index.js",
+      "import": "./src/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "bin": {
+    "ultradev": "./dist/cjs/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "cd ../.. && npx rimraf packages/ultradev/dist",
+    "lint": "cd ../.. && eslint packages/ultradev/src/**/*.ts",
+    "check:types": "npm run build -- --noEmit",
+    "prebuild": "npm run clean",
+    "build:babel": "babel src --out-dir dist/cjs --extensions '.ts,.tsx' --source-maps inline",
+    "build:tsc": "tsc --declaration --emitDeclarationOnly --outDir dist/cjs",
+    "build": "npm run build:babel && npm run build:tsc && npm run build:perm",
+    "build:perm": " chmod +x dist/cjs/cli.js",
+    "link": "npm run build && npm link",
+    "test": "cd ../.. && npm run test packages/ultradev",
+    "coverage": "cd ../.. && npm run coverage packages/ultradev",
+    "commit": "cd ../.. && npm run commit",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "oscarmac",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "chalk": "^4.1.2",
+    "dockerode": "^3.3.5",
+    "download-git-repo": "^3.0.2",
+    "eosjs": "^22.1.0",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.5",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/dockerode": "^3.3.18",
+    "@types/fs-extra": "^11.0.1",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^20.2.5",
+    "typescript": "^5.0.4"
+  }
+}

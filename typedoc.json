@@ -5,7 +5,8 @@
   "entryPoints": [
     "packages/ultra-sdk/src/index.ts",
     "packages/react-ultra/src/index.ts",
-    "packages/uikit/src/index.ts"
+    "packages/uikit/src/index.ts",
+    "packages/ultradev/src/index.ts"
   ],
   "name": "ᕫ | ultra-utilities"
 }

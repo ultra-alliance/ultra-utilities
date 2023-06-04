@@ -3972,10 +3972,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@^29.5.0":
-  "integrity" "sha512-3Emr5VOl/aoBwnWcH/EFQvlSAmjV+XtV9GGu5mwdYew5vhQh0IUZx/60x0TzHDu09Bi7HMx10t/namdJw5QIcg=="
-  "resolved" "https://registry.npmjs.org/@types/jest/-/jest-29.5.0.tgz"
-  "version" "29.5.0"
+"@types/jest@*", "@types/jest@^29.5.2":
+  "integrity" "sha512-mSoZVJF5YzGVCk+FsDxzDuH7s+SCkzrgKZzf0Z0T2WudhBUPoF6ktoTPC4R0ZoCPCV5xUvuU6ias5NvxcBcMMg=="
+  "resolved" "https://registry.npmjs.org/@types/jest/-/jest-29.5.2.tgz"
+  "version" "29.5.2"
   dependencies:
     "expect" "^29.0.0"
     "pretty-format" "^29.0.0"
@@ -4446,6 +4446,7 @@
     "chalk" "^4.1.2"
     "dockerode" "^3.3.5"
     "download-git-repo" "^3.0.2"
+    "eosjs" "^22.1.0"
     "fs-extra" "^11.1.1"
     "inquirer" "^7.3.3"
     "lodash" "^4.17.21"

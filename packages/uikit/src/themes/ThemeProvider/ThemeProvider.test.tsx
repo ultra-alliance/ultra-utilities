@@ -1,11 +1,11 @@
-import { type UltraTheme } from '@mui/material';
+import { type UltraTheme, createTheme } from '@mui/material';
 import { render } from '@testing-library/react';
 import React from 'react';
 import ThemeProvider, { type ThemeProviderProps } from './index';
 import '@testing-library/jest-dom';
 
 describe('ThemeProvider', () => {
-  const testTheme = {
+  const testTheme = createTheme({
     palette: {
       primary: {
         main: '#000',
@@ -16,8 +16,11 @@ describe('ThemeProvider', () => {
       secondary: {
         main: '#fff',
       },
+      background: {
+        default: '#fff',
+      },
     },
-  };
+  });
 
   const TestComponent = () => <p>Hello</p>;
 

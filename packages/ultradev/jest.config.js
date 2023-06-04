@@ -1,8 +1,11 @@
-import sharedConfig from '../../jest.shared-config.js';
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const sharedConfig = require('../../jest.shared-config.js');
 
-export default {
+module.exports = {
   ...sharedConfig,
-  displayName: 'Ultradev CLI/CDT',
-  roots: ['<rootDir>'],
-  testEnvironment: 'node',
+  displayName: 'Ultra Dev',
+  roots: ['src'],
+  testEnvironment: 'jest-environment-jsdom',
+  testPathIgnorePatterns: ['<rootDir>/src/commands/*'],
 };

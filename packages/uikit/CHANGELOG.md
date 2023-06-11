@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.5.0...@ultra-alliance/uikit@0.6.0) (2023-06-11)
+
+
+### Features
+
+* **ultra-sdk:** ultradev tests and scripts ([58694f8](https://github.com/ultra-alliance/ultra-utilities/commit/58694f87231406e5595a4fbc17f33111f48b8050))
+
+
+
+
+
 # [0.5.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.4.0...@ultra-alliance/uikit@0.5.0) (2023-06-04)
 
 

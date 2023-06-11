@@ -1,6 +1,6 @@
 {
   "name": "@ultra-alliance/uikit",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Mui based them kit for Ultra dApps",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

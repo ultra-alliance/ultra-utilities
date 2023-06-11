@@ -1,7 +1,7 @@
+import * as crossFetch from 'cross-fetch';
 import { Api, JsonRpc } from 'eosjs';
 import { type TransactConfig } from 'eosjs/dist/eosjs-api-interfaces';
 import { type JsSignatureProvider } from 'eosjs/dist/eosjs-jssig';
-
 import { type Action } from 'eosjs/dist/eosjs-serialize';
 
 import {
@@ -22,7 +22,7 @@ class UltraService {
 
   constructor(rpcEndpoint: string) {
     this.rpcEndpoint = rpcEndpoint;
-    this.rpc = new JsonRpc(rpcEndpoint, { fetch });
+    this.rpc = new JsonRpc(rpcEndpoint, crossFetch);
   }
 
   disconnect() {
@@ -37,9 +37,10 @@ class UltraService {
     signerName,
   }: TransactionArgs<tData>) {
     // Abstract out the transaction logic
+    if (!this.api) throw new Error('api not initialized');
 
     try {
-      const result = await this.api?.transact(
+      const result = await this.api.transact(
         {
           actions: [
             {
@@ -86,7 +87,9 @@ class UltraService {
     scope,
   }: QueryArgs): Promise<QueryTableRes<Row>> {
     // Abstract out the query table logic
-    const result = await this.rpc?.get_table_rows({
+
+    if (!this.rpc) throw new Error('rpc not initialized');
+    const result = await this.rpc.get_table_rows({
       json: true,
       code: scope,
       scope,
@@ -105,8 +108,10 @@ class UltraService {
     account: string,
     symbol: string | undefined = undefined,
   ): Promise<number> {
+    if (!this.rpc) throw new Error('rpc not initialized');
+
     try {
-      const res = await this.rpc?.get_currency_balance(
+      const res = await this.rpc.get_currency_balance(
         'eosio.token',
         account,
         symbol,
@@ -137,15 +142,17 @@ class UltraService {
     newPermissionName: string;
     contractName: string;
   }) {
-    const accountInfo = await this.rpc?.get_account(account);
+    if (!this.rpc) throw new Error('rpc not initialized');
+    if (!this.api) throw new Error('api not initialized');
+    const accountInfo = await this.rpc.get_account(account);
 
-    const activePermission = accountInfo?.permissions.find(
+    const activePermission = accountInfo.permissions.find(
       permission => permission.perm_name === 'active',
     );
 
     if (!activePermission) throw new Error('Active permission not found');
 
-    const hasPermission = activePermission?.required_auth.accounts.some(
+    const hasPermission = activePermission.required_auth.accounts.some(
       acc =>
         acc.permission.actor === newPermissionName &&
         acc.permission.actor === newPermissionActor,
@@ -162,8 +169,8 @@ class UltraService {
         permission: 'active',
         parent: 'owner',
         auth: {
-          threshold: activePermission?.required_auth.threshold,
-          keys: activePermission?.required_auth.keys,
+          threshold: activePermission.required_auth.threshold,
+          keys: activePermission.required_auth.keys,
           accounts: [
             ...activePermission.required_auth.accounts,
             {
@@ -180,7 +187,7 @@ class UltraService {
     };
 
     try {
-      const result = await this.api?.transact(
+      const result = await this.api.transact(
         {
           actions: [actionData],
         },
@@ -207,6 +214,37 @@ class UltraService {
         newPermissionName: 'eosio.code',
         contractName: 'eosio',
       });
+      return res;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async transfer({
+    from,
+    to,
+    quantity,
+    memo,
+  }: {
+    from: string;
+    to: string;
+    quantity: string;
+    memo: string;
+  }) {
+    try {
+      const res = await this.signTx({
+        action: 'transfer',
+        data: {
+          from,
+          to,
+          quantity,
+          memo,
+        },
+        contractName: 'eosio.token',
+        signerName: from,
+      });
+
       return res;
     } catch (err) {
       console.error(err);

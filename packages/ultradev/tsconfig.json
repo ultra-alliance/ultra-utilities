@@ -1,20 +1,26 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "esnext",
     "outDir": "./dist/esm",
     "rootDir": "src",
     "strict": true,
+    "resolveJsonModule": true,
+    "declaration": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "isolatedModules": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types"],
-    "declarationDir": "./dist/types"
+    "lib": ["es2017", "es2018", "es2019", "es2020", "dom"],
+    "types": ["node"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "../../node_modules/@types",
+      "./src/index.d.ts "
+    ]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
-  "typeRoots": ["node_modules/@types", "dist"]
+  "exclude": ["src/**/*.test.ts", "jest.config.js"]
 }

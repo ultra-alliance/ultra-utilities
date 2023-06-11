@@ -1,4 +1,5 @@
 import { type tListedUniq, type tGetTableRowsOutput } from '../../commons';
+import { eUltraContracts, eUltraTables } from '../../constants';
 import getTableRows from '../getTableRows';
 import { type tUltraQuery } from '../types';
 
@@ -23,9 +24,9 @@ async function getListedUniqs(
 ): Promise<tGetTableRowsOutput<tListedUniq>> {
   return getTableRows<tListedUniq>({
     bpApiEndpoint: props.bpApiEndpoint,
-    code: 'eosio.nft.ft',
-    scope: 'eosio.nft.ft',
-    table: 'resale.a',
+    code: eUltraContracts.UNIQ,
+    scope: eUltraContracts.UNIQ,
+    table: eUltraTables.RESALE,
     config: {
       ...props.config,
     },

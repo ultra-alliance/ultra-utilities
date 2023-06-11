@@ -1,6 +1,6 @@
 import { getZipContent } from '../../../utilities';
 import { type tFactoryManifested } from '../../commons';
-import getFactoryDetail from '../getFactoryDetail';
+import getFactory from '../getFactory';
 import { type tGetFactoryManifested } from '../types';
 
 /**
@@ -28,7 +28,7 @@ async function getFactoryManifested({
   contentToUnzip,
   bpApiEndpoint,
 }: tGetFactoryManifested): Promise<tFactoryManifested> {
-  return getFactoryDetail({
+  return getFactory({
     factoryId,
     bpApiEndpoint,
   })
@@ -38,7 +38,7 @@ async function getFactoryManifested({
       }
 
       const { manifest } = await getZipContent({
-        url: data.meta_uris[0],
+        url: data.factory_uri,
         contentToUnzip: {
           ...contentToUnzip,
         },

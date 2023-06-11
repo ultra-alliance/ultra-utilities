@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { type tExt, Account } from '../../../account';
-import { Api } from '../../../apis';
+import { Api, DEFAULT_BP_API_ENDPOINT } from '../../../apis';
 import Ultra from './index';
 
 declare global {
@@ -34,7 +34,7 @@ describe('Ultra class', () => {
 
   it('should create an instance of Api and Account classes on constructor', () => {
     const ultra = new Ultra({
-      bpApiEndpoint: 'https://api.com',
+      bpApiEndpoint: DEFAULT_BP_API_ENDPOINT,
       extension: window?.ultra as tExt,
     });
 

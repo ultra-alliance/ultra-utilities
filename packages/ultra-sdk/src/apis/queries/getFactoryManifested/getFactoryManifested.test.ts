@@ -1,8 +1,8 @@
 import { getZipContent } from '../../../utilities';
-import getFactoryDetail from '../getFactoryDetail';
+import getFactory from '../getFactory';
 import getFactoryManifested from './index';
 
-jest.mock('../getFactoryDetail');
+jest.mock('../getFactory');
 jest.mock('../../../utilities');
 
 describe('getFactoryManifested', () => {
@@ -11,10 +11,10 @@ describe('getFactoryManifested', () => {
   });
 
   it('should return factory with manifest', async () => {
-    // Mock the response from getFactoryDetail and getZipContent
+    // Mock the response from getFactory and getZipContent
     const factory = { id: 'mock id', meta_uris: ['mock uri'] };
     const manifest = 'mock manifest';
-    (getFactoryDetail as jest.Mock).mockResolvedValueOnce(factory);
+    (getFactory as jest.Mock).mockResolvedValueOnce(factory);
     (getZipContent as jest.Mock).mockResolvedValueOnce({ manifest });
 
     const result = await getFactoryManifested({
@@ -24,13 +24,13 @@ describe('getFactoryManifested', () => {
 
     expect(result.data).toEqual(factory);
     expect(result.manifest).toEqual(manifest);
-    expect(getFactoryDetail).toHaveBeenCalledTimes(1);
+    expect(getFactory).toHaveBeenCalledTimes(1);
     expect(getZipContent).toHaveBeenCalledTimes(1);
   });
 
   it('should throw an error if factory not found', async () => {
-    // Mock the response from getFactoryDetail to return null
-    (getFactoryDetail as jest.Mock).mockResolvedValueOnce(null);
+    // Mock the response from getFactory to return null
+    (getFactory as jest.Mock).mockResolvedValueOnce(null);
 
     await expect(
       getFactoryManifested({
@@ -39,13 +39,13 @@ describe('getFactoryManifested', () => {
       }),
     ).rejects.toThrow('Factory not found');
 
-    expect(getFactoryDetail).toHaveBeenCalledTimes(1);
+    expect(getFactory).toHaveBeenCalledTimes(1);
     expect(getZipContent).toHaveBeenCalledTimes(0);
   });
 
   it('should throw an error if getZipContent fails', async () => {
-    // Mock the response from getFactoryDetail and getZipContent to throw an error
-    (getFactoryDetail as jest.Mock).mockResolvedValueOnce({
+    // Mock the response from getFactory and getZipContent to throw an error
+    (getFactory as jest.Mock).mockResolvedValueOnce({
       id: 'mock id',
       meta_uris: ['mock uri'],
     });
@@ -60,7 +60,7 @@ describe('getFactoryManifested', () => {
       }),
     ).rejects.toThrow('Factory not found');
 
-    expect(getFactoryDetail).toHaveBeenCalledTimes(1);
+    expect(getFactory).toHaveBeenCalledTimes(1);
     expect(getZipContent).toHaveBeenCalledTimes(1);
   });
 });

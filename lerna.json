@@ -9,7 +9,8 @@
       "allowBranch": ["main"],
       "commitHooks": false,
       "conventionalCommits": true,
-      "message": "chore(release): [skip ci]"
+      "message": "chore(release): [skip ci]",
+      "bootstrap": {}
     }
   }
 }

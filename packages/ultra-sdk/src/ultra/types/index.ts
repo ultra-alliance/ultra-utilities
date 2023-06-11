@@ -22,4 +22,17 @@ export type tUltra = {
   api: Api;
   account: Account;
   init(options: tUltraOptions): void;
+  changeChain(chainName: tChainName): Promise<tChain>;
 };
+
+export type tChain = {
+  id: number;
+  name: string;
+  bpApiEndpoint: string;
+  blockExplorerUrl?: string;
+  type: tChainName;
+};
+
+export type tChainName = 'MAINNET' | 'TESTNET' | 'LOCAL';
+
+export type tChainRecord = Record<tChainName, tChain>;

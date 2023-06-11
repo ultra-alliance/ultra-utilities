@@ -1,3 +1,9 @@
+import {
+  DEFAULT_TESTNET_BP_API_ENDPOINT,
+  DEFAULT_BP_API_ENDPOINT,
+} from '../apis';
+import { type tChainRecord } from '../ultra';
+
 /**
  * @category Utils
  * @description
@@ -47,9 +53,35 @@ export const LINKS = {
    */
   ULTRA_EXPLORER: 'https://explorer.mainnet.ultra.io',
 
+  ULTRA_TESTNET_EXPLORER: 'https://explorer.testnet.ultra.io',
+
   /**
    * Link to Ultra Faucet
    */
 
   ULTRA_FAUCET: 'https://faucet.testnet.app.ultra.io',
+};
+
+export const CHAINS: tChainRecord = {
+  MAINNET: {
+    id: 0,
+    name: 'mainnet',
+    bpApiEndpoint: DEFAULT_BP_API_ENDPOINT,
+    blockExplorerUrl: LINKS.ULTRA_EXPLORER,
+    type: 'MAINNET',
+  },
+  TESTNET: {
+    id: 1,
+    name: 'testnet',
+    bpApiEndpoint: DEFAULT_TESTNET_BP_API_ENDPOINT,
+    blockExplorerUrl: LINKS.ULTRA_TESTNET_EXPLORER,
+    type: 'TESTNET',
+  },
+
+  LOCAL: {
+    id: 2,
+    name: 'local',
+    bpApiEndpoint: 'http://localhost:8888',
+    type: 'LOCAL',
+  },
 };

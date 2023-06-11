@@ -10,6 +10,8 @@ import {
   type tLogoutOptions,
   type tUltraAccount,
   type tMarketPrices,
+  type tChainName,
+  type tChain,
 } from '@ultra-alliance/ultra-sdk';
 import { type tCurrency, type tLanguage } from '../../models';
 
@@ -123,7 +125,11 @@ export type tUltraContext = {
    */
   marketPrices: tMarketPrices;
 
+  chain: tChain | undefined;
+
   refreshMarketPrices: () => Promise<tMarketPrices>;
 
   refreshAccount: () => Promise<tUltraAccount | undefined>;
+
+  changeChain: (chainName: tChainName) => Promise<tChain | undefined>;
 };

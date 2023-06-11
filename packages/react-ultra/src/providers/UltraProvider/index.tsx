@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // istanbul ignore file
 
 import {
@@ -12,6 +11,10 @@ import {
   INITIAL_AUTH,
   type tUltraAccount,
   getMarketPrices,
+  type tChain,
+  CHAINS,
+  type tChainName,
+  type tExt,
 } from '@ultra-alliance/ultra-sdk';
 import React from 'react';
 import { UltraContext } from '../../contexts';
@@ -33,7 +36,7 @@ declare global {
 }
 
 const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
-  const [ultra, _setUltra] = React.useState<Ultra>(
+  const [ultra, _setUltra] = React.useState<tUltra | undefined>(
     new Ultra({
       bpApiEndpoint,
     }) as tUltra,
@@ -42,6 +45,9 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
   const [account, setAccount] = React.useState<tUltraAccount | undefined>(
     undefined,
   );
+
+  const [chain, setChain] = React.useState<tChain | undefined>(CHAINS.MAINNET);
+
   const [marketPrices, setMarketPrices] =
     React.useState<tMarketPrices>(undefined);
 
@@ -66,13 +72,31 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
         throw new Error('Account not found');
       }
 
-      setAccount(account as tUltraAccount);
+      setAccount(account);
       return account;
     } catch (error) {
       console.error(error);
       return undefined;
     }
   }, [ultra]);
+
+  const changeChain = React.useCallback(
+    async (chainName: tChainName) => {
+      setAuth({ state: eAuthState.UNAUTHENTICATED, error: null });
+      const newChain = CHAINS[chainName];
+      setChain(newChain);
+      try {
+        const res = await ultra?.changeChain(chainName);
+        setAuth({ state: eAuthState.UNAUTHENTICATED, error: null });
+        setAccount(undefined);
+        return res;
+      } catch (error) {
+        console.error(error);
+        return undefined;
+      }
+    },
+    [ultra],
+  );
 
   const login = React.useCallback(
     async ({
@@ -193,10 +217,11 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
   }, []);
 
   React.useEffect(() => {
+    setChain(CHAINS.MAINNET);
     _setUltra(
       new Ultra({
         bpApiEndpoint,
-        extension: window?.ultra,
+        extension: window?.ultra as tExt,
       }),
     );
     refreshMarketPrices()
@@ -235,6 +260,8 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
           marketPrices,
           refreshMarketPrices,
           refreshAccount,
+          changeChain,
+          chain,
         }}
       >
         {children}

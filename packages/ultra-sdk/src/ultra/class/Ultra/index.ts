@@ -2,7 +2,14 @@
 // istanbul ignore file
 import { Account, type tExt } from '../../../account';
 import { Api, DEFAULT_BP_API_ENDPOINT } from '../../../apis';
-import { type tUltra, type tUltraOptions } from '../../types';
+import { CHAINS } from '../../../constants';
+import { getNetwork } from '../../../utilities';
+import {
+  type tChain,
+  type tChainName,
+  type tUltra,
+  type tUltraOptions,
+} from '../../types';
 
 /**
  * @category Ultra
@@ -31,8 +38,14 @@ class Ultra implements tUltra {
   api: Api;
   account: Account;
 
+  private _chain: tChain;
+
   constructor(options: tUltraOptions) {
     this.init(options);
+  }
+
+  get chain(): tChain {
+    return this._chain;
   }
 
   init(options: tUltraOptions) {
@@ -43,6 +56,18 @@ class Ultra implements tUltra {
       ext: options.extension ?? (window?.ultra as tExt),
       api: this.api,
     });
+
+    this._chain = getNetwork(options.bpApiEndpoint ?? DEFAULT_BP_API_ENDPOINT);
+  }
+
+  public async changeChain(chainName: tChainName): Promise<tChain> {
+    const chain = CHAINS[chainName];
+
+    this.api.updateBpApiEndpoint(chain.bpApiEndpoint);
+    await this.account.changeChain(chainName);
+
+    this._chain = chain;
+    return chain;
   }
 }
 

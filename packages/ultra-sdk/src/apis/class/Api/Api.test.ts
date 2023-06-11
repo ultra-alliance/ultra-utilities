@@ -10,7 +10,7 @@ import {
   getTableByScope,
   getTableRows,
   getUosBalance,
-  getFactoryDetail,
+  getFactory,
   getUniqsOwned,
   getFactoryManifested,
 } from '../..';
@@ -302,11 +302,11 @@ describe('Api', () => {
       );
     });
   });
-  describe('getFactoryDetail', () => {
-    it('should call getFactoryDetail with the correct parameters', async () => {
+  describe('getFactory', () => {
+    it('should call getFactory with the correct parameters', async () => {
       const factoryId = 10;
 
-      (getFactoryDetail as jest.Mock).mockResolvedValueOnce({
+      (getFactory as jest.Mock).mockResolvedValueOnce({
         rows: [
           {
             asset_manager: 'hello',
@@ -314,19 +314,19 @@ describe('Api', () => {
         ],
       });
 
-      await api.getFactoryDetail(factoryId);
+      await api.getFactory(factoryId);
 
-      expect(getFactoryDetail).toHaveBeenCalledWith({
+      expect(getFactory).toHaveBeenCalledWith({
         factoryId,
         bpApiEndpoint,
       });
     });
 
     it('should throw an error if getUosBalance returns null', async () => {
-      (getFactoryDetail as jest.Mock).mockResolvedValueOnce(null);
+      (getFactory as jest.Mock).mockResolvedValueOnce(null);
       const factoryId = 10;
 
-      await expect(api.getFactoryDetail(factoryId)).rejects.toThrow(
+      await expect(api.getFactory(factoryId)).rejects.toThrow(
         `Factory ${factoryId} not found`,
       );
     });
@@ -351,11 +351,11 @@ describe('Api', () => {
       });
     });
 
-    it('should throw an error if getFactoryDetail returns null', async () => {
+    it('should throw an error if getFactory returns null', async () => {
       (getFactoryManifested as jest.Mock).mockResolvedValueOnce(null);
       const factoryId = 10;
 
-      await expect(api.getFactoryDetail(factoryId)).rejects.toThrow(
+      await expect(api.getFactory(factoryId)).rejects.toThrow(
         `Factory 10 not found`,
       );
     });

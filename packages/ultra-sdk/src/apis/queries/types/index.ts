@@ -103,7 +103,7 @@ export type tGetUosBalance = tUltraQuery & {
  * Arguments passed for getFactoryDetail
  * @category Ultra Queries
  */
-export type tGetFactoryDetail = tUltraQuery & {
+export type tGetFactory = tUltraQuery & {
   factoryId: tValidInput;
 };
 

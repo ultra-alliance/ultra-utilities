@@ -4,6 +4,8 @@ import { getSigners, getServices } from '../../functions';
 import { AssertService } from '../../services';
 
 import { UltraTestService } from '../../services';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+require('ts-node/register');
 
 import {
   type Keychain,
@@ -14,7 +16,7 @@ import {
   type TestBlock,
 } from './../../types';
 
-export function makeUltra<Suite = any, Services extends object = any>(
+function makeUltra<Suite = any, Services extends object = any>(
   config: MakeUltraConfig<Suite, Services>,
   callback: MakeUltra<Suite, Services>,
 ) {
@@ -47,7 +49,7 @@ export function makeUltra<Suite = any, Services extends object = any>(
     }
 
     getServices(): Services {
-      const contracts = this.config?.testing.importContracts.map(
+      const contracts = this.config.testing.importContracts.map(
         c => c.contract,
       );
       if (!contracts) {
@@ -66,18 +68,18 @@ export function makeUltra<Suite = any, Services extends object = any>(
     }
 
     loadSigners(keychain: Keychain) {
-      if (!this.config?.testing.requiredAccounts) {
+      if (!this.config.testing.requiredAccounts) {
         throw new Error('requiredAccounts not found');
       }
 
       this.signersMap = getSigners(
-        this.config?.testing.requiredAccounts,
+        this.config.testing.requiredAccounts,
         keychain,
       );
     }
 
     loadServices(_ultratest: UltraTest, _accounts: SignerMap) {
-      if (!this.config?.testing.importContracts) {
+      if (!this.config.testing.importContracts) {
         throw new Error('importContracts not found');
       }
 

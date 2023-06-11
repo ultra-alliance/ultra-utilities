@@ -136,6 +136,54 @@ class BaseService extends UltraService {
     }
   }
 
+  async transferFrom({
+    from,
+    quantity,
+    memo,
+  }: {
+    from: string;
+    quantity: string;
+    memo: string;
+  }) {
+    try {
+      const res = await this.transfer({
+        from,
+        to: this.name,
+        quantity,
+        memo,
+      });
+
+      return res;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async transferTo({
+    to,
+    quantity,
+    memo,
+  }: {
+    to: string;
+    quantity: string;
+    memo: string;
+  }) {
+    try {
+      const res = await this.transfer({
+        from: this.name,
+        to,
+        quantity,
+        memo,
+      });
+
+      return res;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
   // async addCodePermission(_account?: string): Promise<any> {
   //   if (!_account) _account = this.signer.name;
   //   const accountInfo = await this.rpc?.get_account(_account);

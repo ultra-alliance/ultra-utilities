@@ -1,7 +1,9 @@
 // istanbul ignore file
 
+import { type tChainName, CHAINS } from '../../..';
 import { type tListedUniq, type Api } from '../../../apis';
 import { eActions, eContracts, eErrors } from '../../constants';
+
 import {
   type tExt,
   type tUltraAccount,
@@ -14,6 +16,7 @@ import {
   type tTransferUniq,
   type tTransferUos,
 } from '../../types';
+
 /**
  * @category Account
  * @name Account
@@ -28,6 +31,12 @@ class Account implements tAccount {
   constructor(options: tAccountOptions) {
     this._api = options.api;
     this.extension = options.ext;
+  }
+
+  public async changeChain(chainName: tChainName) {
+    const chain = CHAINS[chainName];
+    this.current = undefined;
+    this._api.updateBpApiEndpoint(chain.bpApiEndpoint);
   }
 
   public async connect(props?: tConnect): Promise<tUltraAccount> {

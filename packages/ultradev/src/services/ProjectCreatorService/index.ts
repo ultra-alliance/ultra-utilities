@@ -104,8 +104,18 @@ class ProjectCreator {
   async createDirectory(directoryName: string) {
     // Create the directory
     const projectRootDir = `${HOME}/${WORKDIR_NAME}`; // Construct the project root directory path
+    // Check if the project root directory exists and if not, create it
+
+    if (!fileService.fileExists(projectRootDir)) {
+      fileService.createDir(projectRootDir); // add { recursive: true } here
+    }
+
     const projectDir = fileService.joinPaths(projectRootDir, directoryName);
-    fileService.createDir(projectDir);
+
+    // Check if the project directory exists and if not, create it
+    if (!fileService.fileExists(projectDir)) {
+      fileService.createDir(projectDir); // add { recursive: true } here
+    }
 
     if (this.language === 'typescript') {
       const repo = 'ultra-alliance/uos-examples';

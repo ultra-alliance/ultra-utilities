@@ -1,39 +1,46 @@
+import { readdirSync, statSync, existsSync } from 'fs';
+import { join } from 'path';
+import { getUltraConfig } from '../../functions';
 import { type UltraDevConfig } from '../../types';
-import FileService from '../FileService';
-
-const fileService = new FileService();
 
 class UltraTestService {
-  config: UltraDevConfig | undefined;
+  config: UltraDevConfig;
 
   constructor() {
     // async function to loadconfig
-    this.config = fileService.getUltraConfig();
+    this.config = getUltraConfig();
+  }
+
+  findPath(base: string, name: string): string {
+    for (const item of readdirSync(base)) {
+      const itemPath = join(base, item);
+      if (statSync(itemPath).isDirectory()) {
+        const wasmPath = join(itemPath, `${name}.wasm`);
+        if (existsSync(wasmPath)) return itemPath;
+        const nested = this.findPath(itemPath, name);
+        if (nested) return nested;
+      }
+    }
+
+    return base;
   }
 
   async initialize() {
-    this.config = fileService.getUltraConfig();
+    this.config = getUltraConfig();
   }
 
   requiresSystemContracts() {
-    return this.config?.testing.requiresSystemContracts ?? false;
+    return this.config?.testing.requiresSystemContracts;
   }
 
   importContracts() {
-    if (!this.config || this.config.directories.artifacts === undefined) {
+    if (!this.config?.directories.artifacts)
       throw new Error('artifacts directory not found');
-    }
 
     return this.config?.testing.importContracts?.map(contract => {
       const { contract: contractName, account } = contract;
-
       const path =
-        '../.' +
-        fileService.findPath(
-          this.config?.directories?.artifacts ?? 'artifacts',
-          contractName,
-        );
-      console.log(path);
+        '../.' + this.findPath(this.config.directories.artifacts, contractName);
 
       return {
         account,

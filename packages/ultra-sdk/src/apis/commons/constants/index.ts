@@ -9,6 +9,15 @@ export const DEFAULT_BP_API_ENDPOINT = 'https://api.ultra.eossweden.org';
 /**
  * @category Ultra Queries
  * @description
+ * The default testnet endpoint for the block producers API.
+ */
+
+export const DEFAULT_TESTNET_BP_API_ENDPOINT =
+  'https://api.testnet.ultra.eossweden.org';
+
+/**
+ * @category Ultra Queries
+ * @description
  * The endpoints for the block producers API available in mainnet and testnet.
  */
 
@@ -27,6 +36,6 @@ export const BP_API_ENDPOINTS = {
     'https://testnet.ultra.eosrio.io',
     'https://test.uos.eosusa.news',
     'https://api.ultra-testnet.cryptolions.io',
-    'https://api.testnet.ultra.eossweden.org',
+    DEFAULT_TESTNET_BP_API_ENDPOINT,
   ],
 };

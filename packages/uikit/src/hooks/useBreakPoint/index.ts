@@ -22,10 +22,10 @@ import { useMediaQuery, type Theme } from '@mui/material';
 import { type tUseBreakPoint } from '../types';
 
 const useBreakPoint = (): tUseBreakPoint => {
-  const isXs = useMediaQuery((theme: Theme) => theme.breakpoints.down('xs'));
-  const isSm = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-  const isMd = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
-  const isLg = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+  const isXs = useMediaQuery((theme: Theme) => theme?.breakpoints.down('xs'));
+  const isSm = useMediaQuery((theme: Theme) => theme?.breakpoints.down('sm'));
+  const isMd = useMediaQuery((theme: Theme) => theme?.breakpoints.down('md'));
+  const isLg = useMediaQuery((theme: Theme) => theme?.breakpoints.down('lg'));
 
   return { isXs, isSm, isMd, isLg };
 };

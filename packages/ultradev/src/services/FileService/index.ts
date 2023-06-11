@@ -13,22 +13,20 @@ import fsp from 'fs/promises';
 import path from 'path';
 import { type Stream } from 'stream';
 import fse from 'fs-extra';
-import { transpileModule, ModuleKind, ScriptTarget } from 'typescript';
-import LoggerService from '../LogService';
-import { type DirectoriesConfig, type UltraDevConfig } from './../../types';
-
-const log = new LoggerService();
+import getConfig from '../../functions/getConfig/index';
+import { type DirectoriesConfig } from './../../types';
 
 class FileService {
   fs = fs;
   fsp = fsp;
   path = path;
+  spawn = spawn;
 
   execCommandAndWait(
     command: string,
     opts: ExecSyncOptionsWithBufferEncoding,
   ): void {
-    execSync(command, opts ?? { stdio: 'inherit' });
+    execSync(command, opts || { stdio: 'inherit' });
   }
 
   pathExists(filePath: string): boolean {
@@ -73,6 +71,7 @@ class FileService {
       );
 
       childProcess.on('error', error => {
+        console.error(`Failed to start command: ${command} ${args.join(' ')}`);
         reject(
           new Error(`Failed to start command: ${command}. ${error.message}`),
         );
@@ -82,12 +81,13 @@ class FileService {
         if (code === 0) {
           resolve();
         } else {
-          reject(new Error(`Command ${command} exited with code ${code ?? 0}`));
+          console.error(`Command failed: ${command} ${args.join(' ')}`);
+          reject(new Error(`Command ${command} exited with code ${-1}`));
         }
       });
 
       if (shouldLog) {
-        childProcess.stdout?.on('data', (chunk: string) => {
+        childProcess.stdout.on('data', (chunk: string) => {
           process.stdout.write(chunk);
         });
       }
@@ -100,7 +100,7 @@ class FileService {
     if (error) {
       throw new Error(`Failed to start command: ${command}. ${error.message}`);
     } else if (status !== 0) {
-      throw new Error(`Command ${command} exited with code ${status ?? 0}`);
+      throw new Error(`Command ${command} exited with code ${-1}`);
     }
   }
 
@@ -181,49 +181,7 @@ class FileService {
   }
 
   getUltraConfig() {
-    try {
-      const projectPath = process.cwd();
-      let configPath;
-      let config;
-
-      // First, check if the TypeScript version exists
-      if (fs.existsSync(path.join(projectPath, 'ultradev.config.ts'))) {
-        configPath = path.join(projectPath, 'ultradev.config.ts');
-        const configSource = fs.readFileSync(configPath, { encoding: 'utf-8' });
-
-        // Transpile the TypeScript code to JavaScript
-        const transpiled = transpileModule(configSource, {
-          compilerOptions: {
-            module: ModuleKind.CommonJS,
-            target: ScriptTarget.ES2018,
-          },
-        });
-
-        // Evaluate the JavaScript code to get the config object
-        // eslint-disable-next-line no-new-func
-        const configFn = new Function('exports', transpiled.outputText);
-        config = {};
-        configFn(config);
-      } else if (fs.existsSync(path.join(projectPath, 'ultradev.config.js'))) {
-        // If TypeScript version doesn't exist, check the JavaScript version
-        configPath = path.join(projectPath, 'ultradev.config.js');
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
-        config = require(configPath);
-      } else {
-        // Throw an error if no config file is found
-        throw new Error(
-          'No ultradev.config.js/ts found in the current directory.',
-        );
-      }
-
-      return JSON.parse(JSON.stringify(config.default)) as UltraDevConfig;
-    } catch (error: unknown) {
-      log.boldError('\nError loading configuration file.');
-      if (error instanceof Error) log.lightError(error.message + '\n');
-      log.print(error);
-
-      return undefined;
-    }
+    return getConfig();
   }
 
   getDirectoryFiles() {

@@ -1,6 +1,6 @@
 import { type Signer, type SignerMap, type Keychain } from '../../types';
 
-export function getServices(accounts: string[], keychain: Keychain) {
+const getSigners = (accounts: string[], keychain: Keychain) => {
   const signers: Signer[] = [];
   for (const account of accounts) {
     const privKey = keychain.getPrivateKeyFromAccount(account);
@@ -19,6 +19,6 @@ export function getServices(accounts: string[], keychain: Keychain) {
     map[signer.name] = signer;
     return map;
   }, {});
-}
+};
 
-export default getServices;
+export default getSigners;

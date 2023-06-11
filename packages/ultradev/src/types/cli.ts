@@ -20,6 +20,7 @@ export type Services = {
 
 export type CommandProps = {
   name: string;
+  args?: string;
   title?: string;
   description: string;
   options?: CommandOption[];

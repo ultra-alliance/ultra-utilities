@@ -1,26 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type BaseService, FileService, LogService } from '../../services';
+import fs from 'fs';
+import path from 'path';
+// import { type BaseService } from '../../services';
 import {
   type ImportContractConfig,
   type SignerMap,
   type UltraTest,
 } from '../../types';
 
-const log = new LogService();
-const fileService = new FileService();
-
-export default function getServices(
+const getServices = (
   contracts: ImportContractConfig[] | undefined,
   _ultratest: UltraTest,
   _accounts: SignerMap,
-): Record<string, any> {
+): Record<string, any> => {
   if (!contracts) {
-    log.boldError('Error loading contract services.');
     throw new Error('contracts not found');
   }
 
-  const servicesPath = fileService.joinPaths(process.cwd(), 'typegen');
-  const serviceFiles = fileService.fs
+  const servicesPath = path.join(process.cwd(), 'cache/typegen');
+  const serviceFiles = fs
     .readdirSync(servicesPath)
     .filter(file => file.includes('Service'));
 
@@ -33,23 +33,25 @@ export default function getServices(
     const contract = contracts.find(
       contract => contract.contract === shortName,
     );
+
     // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-    const importedModule = require(fileService.joinPaths(
-      servicesPath,
-      file,
-    )) as unknown;
-    const ServiceClass = (importedModule as any).default as typeof BaseService;
-    const newName = contract?.contract ?? contracts[0].contract;
+    const importedModule = require(path.join(servicesPath, file));
+    const ServiceClass = importedModule.default;
 
-    const newService = new ServiceClass({
-      rpcEndpoint: _ultratest.endpoint,
-      signer: Object.values(_accounts)[0],
-      name: contract?.account ?? contracts[0].account,
-    });
+    if (contract) {
+      const newName = contract.contract;
 
-    serviceInstances[newName] = newService;
-    log.boldSuccess(`Successfully loaded ${serviceName}`);
+      const newService = new ServiceClass({
+        rpcEndpoint: _ultratest.endpoint,
+        signer: Object.values(_accounts)[0],
+        name: contract.account,
+      });
+
+      serviceInstances[newName] = newService;
+    }
   }
 
   return serviceInstances;
-}
+};
+
+export default getServices;

@@ -14,13 +14,13 @@
  * Make sure to have `@mui/material`, `@emotion/react`, ` @emotion/styled`  installed as dependencies. We also need to import `@fontsource/inter` and `@mui/icons-material` for the fonts and icon, then install `@ultra-alliance/uikit`.
  *
  * In short (or not):
- * ```bash
+ * ```shell
  * npm install @mui/material @emotion/react @emotion/styled  @fontsource/inter @mui/icons-material @ultra-alliance/uikit
  * ```
  *
- * Then you can use the {@link ultraTheme} inside your MUI theme provider:
+ * Setup the theme provider in your app:
  *
- * ```typescript
+ * ```tsx
  * import { ultraTheme } from '@ultra-alliance/uikit';
  * import { ThemeProvider } from '@mui/material';
  *
@@ -31,6 +31,8 @@
  * document.getElementById('root')
  * );
  * ```
+ *
+ * Then you can use the {@link ultraTheme} inside your MUI theme provider.
  *
  *  ## 🚀 Usage
  *

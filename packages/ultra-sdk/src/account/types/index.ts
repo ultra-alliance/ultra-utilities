@@ -9,7 +9,6 @@ import { type tValidInput } from '../../utilities';
 
 /**
  * @category Account
- * A response from the Ultra Wallet extension
  */
 export type tExtResponse<T> = {
   status: 'fail' | 'success' | 'error';
@@ -19,7 +18,6 @@ export type tExtResponse<T> = {
 
 /**
  * @category Account
- * A response from the connect method of the Ultra Wallet extension
  */
 export type tExtConnectOutput = {
   blockchainid: string;
@@ -28,13 +26,14 @@ export type tExtConnectOutput = {
 
 /**
  * @category Account
- * The interface of the methods of the Ultra Wallet extension
  */
-
 export type tConnect = {
   onlyIfTrusted?: boolean;
 };
 
+/**
+ * @category Account
+ */
 export type tExt = {
   connect: (props?: tConnect) => Promise<tExtResponse<tExtConnectOutput>>;
   disconnect: () => Promise<tExtResponse<void>>;
@@ -45,7 +44,6 @@ export type tExt = {
 
 /**
  * @category Account
- * The options ot create a Wallet instance
  */
 export type tAccountOptions = {
   ext: tExt;
@@ -54,15 +52,16 @@ export type tAccountOptions = {
 
 /**
  * @category Account
- * The interface of the UltraAccount class
  */
-
 export type tUltraAccount = {
   data: tGetAccountOutput | undefined;
   ownedUniqs: tTokenA[] | undefined;
   listedUniqs: tListedUniq[] | undefined;
 };
 
+/**
+ * @category Account
+ */
 export type tBuyUniq = {
   token_id: tValidInput;
   receiver: string;
@@ -71,6 +70,9 @@ export type tBuyUniq = {
   promoter_id?: string | null;
 };
 
+/**
+ * @category Account
+ */
 export type tResellUniq = {
   token_id: tValidInput;
   price: string;
@@ -78,17 +80,26 @@ export type tResellUniq = {
   memo: string;
 };
 
+/**
+ * @category Account
+ */
 export type tCancelResellUniq = {
   token_id: tValidInput;
   memo?: string;
 };
 
+/**
+ * @category Account
+ */
 export type tTransferUniq = {
   token_ids: tValidInput[];
   to: string;
   memo?: string;
 };
 
+/**
+ * @category Account
+ */
 export type tTransferUos = {
   memo?: string;
   to: string;

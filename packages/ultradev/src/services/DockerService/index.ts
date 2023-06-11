@@ -1,11 +1,16 @@
+// import fs from 'fs';
 import { type Stream } from 'stream';
 import Docker from 'dockerode';
+// import { ncp } from 'ncp';
+// import tar from 'tar-fs';
 import {
+  DEV_PACKAGE,
   DOCKER_CONTAINER_NAME,
   DOCKER_IMAGE_NAME,
   DOCKER_PORT,
   HOME,
   HOST,
+  PATH_TO_ULTRADEV,
   STDIN,
   WORKDIR_NAME,
 } from '../../constants';
@@ -31,7 +36,7 @@ class DockerService extends FileService {
     try {
       const containers = await this.docker.listContainers({ all: true }); // List all containers, not just running ones
       const containerInfo = containers.find(container =>
-        container.Names?.includes('/' + containerName),
+        container.Names.includes('/' + containerName),
       );
 
       if (containerInfo) {
@@ -56,9 +61,24 @@ class DockerService extends FileService {
     const customWorkdir = `/opt/${WORKDIR_NAME}`;
 
     try {
+      const Binds = [`${HOME}/${WORKDIR_NAME}:${customWorkdir}`];
+
+      if (DEV_PACKAGE && PATH_TO_ULTRADEV !== undefined) {
+        // Replace the absolute host path with the container path where the host path is being mounted
+        // const path = `${PATH_TO_ULTRADEV}:${PATH_TO_ULTRADEV}`;
+        // Binds.push(path);
+        // Binds.push(
+        //   '/Users/oscarmac/Desktop/ultra-alliance/prod/ultra-utilities:/Users/oscarmac/Desktop/ultra-alliance/prod/ultra-utilities',
+        // );
+      }
+
       container = await this.docker.createContainer({
         name: containerName,
         Image: imageName,
+        ExposedPorts: {
+          '8888/tcp': {},
+          '9876/tcp': {},
+        },
         AttachStdin: false,
         AttachStdout: true,
         AttachStderr: true,
@@ -66,10 +86,52 @@ class DockerService extends FileService {
         Cmd: ['/bin/bash', '-c', 'tail -f /dev/null'],
         OpenStdin: false,
         StdinOnce: false,
+        Volumes: {},
         HostConfig: {
-          Binds: [`${HOME}/${WORKDIR_NAME}:${customWorkdir}`],
+          Binds,
+          PortBindings: {
+            '8888/tcp': [{ HostPort: '8888' }],
+            '9876/tcp': [{ HostPort: '9876' }],
+          },
         },
+        Env: [],
       });
+
+      // const packagePath = '/usr/local/lib/node_modules/@ultra-alliance';
+      // const tempDir = this.joinPaths(
+      //   '/usr/local/lib/node_modules/@ultra-alliance',
+      //   'tempDir',
+      // );
+
+      // // Resolve symlinks and copy files to a new temporary directory
+      // ncp.ncp(packagePath, tempDir, { dereference: true }, async err => {
+      //   if (err) {
+      //     console.log(err);
+      //     return;
+      //   }
+
+      //   const containerPackagePath =
+      //     '/usr/local/lib/node_modules/@ultra-alliance';
+
+      //   // Pack the directory into a tar stream
+      //   const tarStream = tar.pack(tempDir);
+
+      //   // Upload the tar stream to the container
+      //   await this.docker.getContainer(containerName).putArchive(tarStream, {
+      //     path: containerPackagePath,
+      //   });
+
+      //   // Clean up: Delete the temporary directory after the tar file has been created and uploaded
+      //   fs.rmdirSync(tempDir, { recursive: true });
+      // });
+
+      // copy file to container
+
+      // await container.exec({
+      //   Cmd: ['pwd'],
+      //   AttachStdout: true,
+      //   AttachStderr: true,
+      // });
     } catch (err) {
       console.log(err);
       throw err;
@@ -144,8 +206,9 @@ class DockerService extends FileService {
 
   async isContainerRunning(): Promise<boolean | undefined> {
     try {
-      const containerInfo = await this.container?.inspect();
-      return containerInfo?.State.Running;
+      if (!this.container) return undefined;
+      const containerInfo = await this.container.inspect();
+      return containerInfo.State.Running;
     } catch (err) {
       return undefined;
     }
@@ -253,11 +316,12 @@ class DockerService extends FileService {
     return container.stop();
   }
 
-  async executeCommand(
-    container: Docker.Container,
-    cmd: string[],
-  ): Promise<void> {
-    const exec = await container.exec({
+  async executeCommand(cmd: string[]): Promise<void> {
+    if (!this.container) {
+      throw new Error('Container is undefined');
+    }
+
+    const exec = await this.container.exec({
       Cmd: cmd,
       AttachStdout: true,
       AttachStderr: true,
@@ -270,7 +334,12 @@ class DockerService extends FileService {
           return;
         }
 
-        container.attach(
+        if (!this.container) {
+          reject(Error('Container is undefined'));
+          return;
+        }
+
+        this.container.attach(
           { stream: true, stdout: true, stderr: true, hijack: true },
           async (err, stream) => {
             if (err) {
@@ -283,7 +352,7 @@ class DockerService extends FileService {
               return;
             }
 
-            if (!this.docker.modem?.demuxStream) {
+            if (!this.docker.modem.demuxStream) {
               reject(Error('Modem is undefined'));
               return;
             }
@@ -302,7 +371,7 @@ class DockerService extends FileService {
     }
 
     const exec = await this.container.exec({
-      Cmd: ['/bin/bash'],
+      Cmd: ['/bin/bash', '-c', `cd ${WORKDIR_NAME} && /bin/bash`],
       AttachStdout: true,
       AttachStderr: true,
       AttachStdin: true,
@@ -335,6 +404,37 @@ class DockerService extends FileService {
 
     process.on('SIGINT', () => {
       stream.end('\x03'); // this is the signal for SIGINT
+    });
+  }
+
+  getPathToProject(): string {
+    const cwd = process.cwd();
+    const absoluteCwd = this.path.resolve(cwd);
+    const splittedCwd = absoluteCwd.split('/');
+    const index = splittedCwd.indexOf(WORKDIR_NAME);
+    const pathCwd = splittedCwd.slice(index + 1).join('/');
+    return pathCwd;
+  }
+
+  async runCommand(cmd: string, log = true): Promise<void> {
+    const pathCwd = this.getPathToProject();
+    const command = `docker exec -it -w /opt/${WORKDIR_NAME}/${pathCwd} ${DOCKER_CONTAINER_NAME} ${cmd}`;
+
+    // Execute the ultratest command and display output in the container terminal
+    const child = this.spawn('sh', ['-c', command], {
+      stdio: log ? 'inherit' : 'ignore',
+    });
+
+    // Wait for the ultratest command to complete
+    await new Promise(resolve => {
+      child.on('exit', () => {
+        resolve(1);
+      });
+      child.on('error', error => {
+        console.log('error');
+        console.error(error);
+        resolve(1);
+      });
     });
   }
 

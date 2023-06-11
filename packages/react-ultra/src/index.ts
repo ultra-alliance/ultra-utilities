@@ -15,46 +15,47 @@
  * Make sure to have `react`, `react-dom`, `@ultra-alliance/ultra-sdk` installed as dependencies, then install `react-ultra`.
  *
  * In short:
- * ```bash
+ * ```shell
  * npm install react react-dom @ultra-alliance/ultra-sdk @ultra-alliance/react-ultra
  * ```
  *
  * Then wrap your app in a `<UltraProvider>`, and provide a `bpApiEndpoint` (default will be `DEFAULT_BP_API_ENDPOINT` from {@link ultra-sdk}):
  *
- * ```typescript
+ * ```tsx
  * import { UltraProvider } from '@ultra-alliance/react-ultra';
+ * import { DEFAULT_BP_API_ENDPOINT } from '@ultra-alliance/ultra-sdk';
  *
  * React.DOM.render(
- * <UltraProvider bpApiEndpoint='ANY_PUBLIC_ULTRA_ENDPOINT'>
- *  <App />
- * </UltraProvider>,
- * document.getElementById('root')
+ *  <UltraProvider bpApiEndpoint={DEFAULT_BP_API_ENDPOINT}>
+ *    <App />
+ *  </UltraProvider>,
+ *  document.getElementById('root')
  * );
  * ```
  *
  * And call the hooks inside your app:
  *
- * ```typescript
+ * ```tsx
  * import { useUltra } from '@ultra-alliance/react-ultra';
  *
  * const App = () => {
- *  const {account, isAuthenticated, login } = useUltra();
+ *  const { account, isAuthenticated, login } = useUltra();
  *
- *  if (!isAuthenticated) {
+ *  if (!isAuthenticated || !account) {
  *    return <button onClick={login}>Login</button>;
  *  }
  *
- *  return <div>UOS BALANCE: {account.core_liquid_balance}</div>;
+ *  return <div>UOS BALANCE: {account.data.core_liquid_balance}</div>;
  * };
  * ```
  *
  * ## 🚀 Usage
  *
- * ### Wrap your app in a `<UltraProvider>`
+ * ### Wrap your app in a {@link UltraProvider}
  *
- * In order to use the hooks, you need to wrap your app in a `<UltraProvider>`, and provide a `bpApiEndpoint`.:
+ * In order to use the hooks, you need to wrap your app in a `<UltraProvider>`, and provide a `bpApiEndpoint` :
  *
- * ```typescript
+ * ```tsx
  * <UltraProvider bpApiEndpoint='ANY_PUBLIC_ULTRA_ENDPOINT'>
  *    <App />
  * </UltraProvider>
@@ -65,9 +66,7 @@
  * Now you can use the hooks inside your app:
  *
  * - {@link useUltra} for account data and authentication.
- *
  * - {@link useUltraQuery} for easily querying the UOS.
- *
  * - {@link useLocalisation} for utils about languages and base currency.
  */
 

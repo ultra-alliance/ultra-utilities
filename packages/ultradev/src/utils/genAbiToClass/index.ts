@@ -24,9 +24,8 @@ const genAbiToClass = async (
   name: string,
   account: string,
 ): Promise<string> => {
-  let output =
-    "import { BaseService, Signer } from '@ultra-alliance/ultradev'\n\n";
-
+  let output = `import  BaseService  from '@ultra-alliance/ultradev/dist/esm/services/BaseService'\n
+  import { Signer } from '@ultra-alliance/ultradev'\n\n`;
   for (const struct of abi.structs) {
     output += `type ${formatType(struct.name)} = {\n`;
     for (const field of struct.fields) {

@@ -1,4 +1,6 @@
+import * as dotenv from 'dotenv';
 import { type Question } from '../types/cli';
+dotenv.config();
 
 export const HOST = 'http://127.0.0.1';
 export const DOCKER_PORT = 2375;
@@ -7,8 +9,10 @@ export const IS_LINUX = OPERATING_SYSTEM !== 'win32';
 export const DOCKER_CONTAINER_NAME = 'ultra-dev';
 export const DOCKER_IMAGE_NAME = 'quay.io/ultra.io/3rdparty-devtools:latest';
 export const HOME = String(process.env.HOME);
-export const WORKDIR_NAME = 'workdir';
+export const WORKDIR_NAME = 'uos_workdir';
 export const STDIN = process.stdin;
+export const DEV_PACKAGE = Boolean(process.env.DEV_PACKAGE) || false;
+export const PATH_TO_ULTRADEV = String(process.env.PATH_TO_ULTRADEV);
 
 export enum eQuestions {
   ASK_PROJECT_TYPE = 'ASK_PROJECT_TYPE',

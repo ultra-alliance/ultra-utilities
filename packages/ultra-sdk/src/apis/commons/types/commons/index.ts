@@ -141,8 +141,6 @@ export type tFactory = {
   id: number;
   asset_manager: string;
   asset_creator: string;
-  conversion_rate_oracle_contract: string;
-  chosen_rate: never[];
   minimum_resell_price: string;
   resale_shares: tResaleShare[];
   mintable_window_start: null;
@@ -154,8 +152,10 @@ export type tFactory = {
   lockup_time: number;
   conditionless_receivers: string[];
   stat: number;
-  meta_uris: string[];
-  meta_hash: string;
+  factory_uri: string;
+  factory_hash: string;
+  default_token_hash: string;
+  default_token_uri: string;
   max_mintable_tokens: number;
   minted_tokens_no: number;
   existing_tokens_no: number;

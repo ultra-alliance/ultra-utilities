@@ -64,10 +64,11 @@ export type tApi = {
   getListedUniqs: (
     params: tUltraQuery,
   ) => Promise<tGetTableRowsOutput<tListedUniq>>;
-  getFactoryDetail: (factoryId: tValidInput) => Promise<tFactory>;
+  getFactory: (factoryId: tValidInput) => Promise<tFactory>;
   getUniqsOwned: (account: string) => Promise<tGetTableRowsOutput<tTokenA>>;
   getUosBalance: (account: string) => Promise<tGetCurrencyBalanceOutput>;
   getFactoryManifested: (factoryId: tValidInput) => Promise<tFactoryManifested>;
   updateBpApiEndpoint: (bpApiEndpoint: string) => void;
   getMarketPrices: () => Promise<tMarketPrices>;
+  getFactories: (config: tUltraQuery['config']) => Promise<tFactory[]>;
 };

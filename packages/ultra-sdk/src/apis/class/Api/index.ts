@@ -10,10 +10,11 @@ import {
   getTableRows,
   getUosBalance,
   getUniqsOwned,
-  getFactoryDetail,
+  getFactory,
   getListedUniqs,
   getFactoryManifested,
   getMarketPrices,
+  getFactories,
   DEFAULT_BP_API_ENDPOINT,
   type tGetAbi,
   type tGetBlock,
@@ -34,6 +35,7 @@ import {
   type tMarketPrices,
   type tTokenA,
   type tListedUniq,
+  type tQueryConfig,
 } from '../../../apis';
 import { type tGetZipContent, type tValidInput } from '../../../utilities';
 import { type tApi, type tApiOptions } from '../../types';
@@ -264,8 +266,8 @@ class Api implements tApi {
    * Retrieve factory.
    * */
 
-  public async getFactoryDetail(factoryId: tValidInput): Promise<tFactory> {
-    const data = await getFactoryDetail({
+  public async getFactory(factoryId: tValidInput): Promise<tFactory> {
+    const data = await getFactory({
       factoryId: Number(factoryId),
       bpApiEndpoint: this.bpApiEndpoint,
     });
@@ -342,6 +344,19 @@ class Api implements tApi {
     const data = await getMarketPrices();
     if (!data) {
       throw new Error(`Market prices not found`);
+    }
+
+    return data;
+  }
+
+  public async getFactories(config?: tQueryConfig): Promise<tFactory[]> {
+    const data = await getFactories({
+      bpApiEndpoint: this.bpApiEndpoint,
+      config,
+    });
+
+    if (!data) {
+      throw new Error(`Factories not found`);
     }
 
     return data;

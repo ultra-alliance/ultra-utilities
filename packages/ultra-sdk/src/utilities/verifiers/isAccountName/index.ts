@@ -4,6 +4,13 @@
  * @param str string to verify
  * @returns true if string is an account name
  * @example
+ * ```typescript
+ * import { isAccountName } from '@ultra-alliance/ultra-sdk';
+ *
+ * const result = isAccountName('ultra');
+ *
+ * console.log('result', result);
+ * ```
  */
 
 function isAccountName(str: string): boolean {

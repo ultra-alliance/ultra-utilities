@@ -35,6 +35,16 @@ export type tUltraColors = {
    * Eclipse Twilight color
    */
   eclipseTwilight: string;
+
+  /**
+   * Blue Local color
+   */
+  blueExperimental: string;
+
+  /**
+   * Pink Staging color
+   */
+  pinkStaging: string;
 };
 
 /**

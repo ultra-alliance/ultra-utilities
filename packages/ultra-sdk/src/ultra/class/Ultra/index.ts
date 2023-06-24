@@ -69,6 +69,10 @@ class Ultra implements tUltra {
     this._chain = chain;
     return chain;
   }
+
+  public async getNetwork(): Promise<tChain> {
+    return this.chain;
+  }
 }
 
 export default Ultra;

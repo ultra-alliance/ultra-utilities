@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.6.0...@ultra-alliance/uikit@0.7.0) (2023-06-24)
+
+
+### Features
+
+* **ultra-sdk:** added colors for staging and experimental chains ([5998f55](https://github.com/ultra-alliance/ultra-utilities/commit/5998f55378f663e4954fdf4fc187bbf5cf52ebbe))
+
+
+
+
+
 # [0.6.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/uikit@0.5.0...@ultra-alliance/uikit@0.6.0) (2023-06-11)
 
 

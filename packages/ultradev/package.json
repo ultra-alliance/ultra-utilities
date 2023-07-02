@@ -1,6 +1,6 @@
 {
   "name": "@ultra-alliance/ultradev",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Unleash limitless power with our CLI for ultra projects and contract development toolkit.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

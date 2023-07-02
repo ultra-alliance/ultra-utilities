@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultradev@0.2.0...@ultra-alliance/ultradev@0.2.1) (2023-07-02)
+
+
+### Bug Fixes
+
+* **ultradev:** typegen namespaces ([1df7d37](https://github.com/ultra-alliance/ultra-utilities/commit/1df7d37f962d5bf2d9cfda2d41e0f047e06e4a5b))
+
+
+
+
+
 # [0.2.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultradev@0.1.0...@ultra-alliance/ultradev@0.2.0) (2023-06-11)
 
 

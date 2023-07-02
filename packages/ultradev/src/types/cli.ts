@@ -59,5 +59,6 @@ export type Abi = {
   structs: Struct[];
   actions: Action[];
   tables: Table[];
-  name?: string;
+  name: string;
+  account: string;
 };

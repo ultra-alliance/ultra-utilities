@@ -1,3 +1,5 @@
+import { type SpawnOptionsWithoutStdio, spawn } from 'child_process';
+import findConfig from 'find-config';
 import { FileService, LogService } from '..';
 import { type ImportContractConfig, type Abi } from '../../types';
 import { genAbiToClass } from '../../utils';
@@ -10,6 +12,30 @@ class TypegenService {
   generatedFiles: string[] = [];
   contractServices: Record<string, string> = {};
 
+  async spawnAsync(
+    command: string,
+    args: string[],
+    options: any,
+  ): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const child = spawn(command, args, options as SpawnOptionsWithoutStdio);
+
+      child.on('error', error => {
+        reject(error);
+      });
+
+      child.on('exit', code => {
+        if (code === 0) {
+          resolve();
+        } else {
+          reject(
+            new Error(`Command ${command} exited with code ${code ?? -1}`),
+          );
+        }
+      });
+    });
+  }
+
   async processABIFile(
     filePath: string,
     importContracts: ImportContractConfig[],
@@ -17,11 +43,23 @@ class TypegenService {
   ) {
     const contractName = fileService.path.basename(filePath, '.abi');
 
+    const importedContract = importContracts.find(
+      contract => contract.contract === contractName,
+    );
+
+    if (!importedContract) {
+      log.warn(
+        `Contract ${contractName} not found in importContracts config. Skipping...`,
+      );
+      return;
+    }
+
     const spinner = log.start(`Reading file: ${contractName}.abi`);
 
     const abiData = fileService.readFile(filePath);
     const contract = JSON.parse(abiData) as Abi;
     contract.name = contractName;
+    contract.account = importedContract?.account;
 
     const serviceClassName =
       contractName.charAt(0).toUpperCase() + contractName.slice(1);
@@ -30,18 +68,7 @@ class TypegenService {
       `typing ${contractName}.cpp contract to ${serviceClassName} class `,
     );
 
-    // Extract contract name from the file name
-
-    const contractAccountName =
-      importContracts.find(contract => contract.contract === contractName)
-        ?.account ??
-      (contract.name || 'smrtcntract1');
-
-    const typings = await genAbiToClass(
-      contract,
-      serviceClassName,
-      contractAccountName,
-    );
+    const typings = await genAbiToClass(contract, serviceClassName);
 
     // Write TypeScript typings to a file in the "typechain" folder
     const typingsFileName = `${serviceClassName}Service.ts`;
@@ -59,9 +86,7 @@ class TypegenService {
 
     const indexFilePath = fileService.joinPaths(outdir, 'index.ts');
     let indexContent = this.generatedFiles
-      .map(
-        filename => `export { default as ${filename} } from './${filename}';`,
-      )
+      .map(filename => `export * from './${filename}';`)
       .join('\n');
 
     indexContent += "\n\n export * from './services';";
@@ -117,20 +142,33 @@ class TypegenService {
 
   async generateType() {
     log.title('Generating Contracts Services');
+    await fileService.prepareDirectory('cache');
+
     try {
-      const config = fileService.getUltraConfig();
-      if (!config) {
-        log.error('No config file found');
-        return;
+      const path = findConfig('ultradev.config.ts');
+      if (path) {
+        // Compile the TypeScript file using the TypeScript compiler (tsc)
+        const compileCommand = `tsc ${path} --module commonjs --outDir cache --moduleResolution node --esModuleInterop true --target es2017 --strict true`;
+        await this.spawnAsync('sh', ['-c', compileCommand], {
+          stdio: 'inherit',
+        });
+      } else {
+        throw new Error('ultradev config not found');
       }
 
-      const { importContracts } = config.testing;
-      const { outdir } = config.typegen;
+      const ultraDevConfig = fileService.getUltraConfig();
+
+      if (!ultraDevConfig) {
+        throw new Error('ultradev config not found');
+      }
+
+      const { importContracts } = ultraDevConfig.testing;
+      const { outdir } = ultraDevConfig.typegen;
 
       await fileService.prepareDirectory(outdir);
       await this.processFolder(
         importContracts,
-        config.directories.artifacts,
+        ultraDevConfig.directories.artifacts,
         outdir,
       );
       this.generateIndexFile(outdir);

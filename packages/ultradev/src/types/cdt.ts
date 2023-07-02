@@ -34,6 +34,14 @@ export type UpdateAuthArgs = {
   };
 };
 
+export type tGetTable = {
+  index?: string;
+  keyType?: string;
+  lowerBound?: string;
+  upperBound?: string;
+  limit?: number;
+};
+
 export type QueryTableRes<Row> = {
   more: boolean;
   next_key: string;

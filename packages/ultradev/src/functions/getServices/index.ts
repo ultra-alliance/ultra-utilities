@@ -36,7 +36,7 @@ const getServices = (
 
     // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
     const importedModule = require(path.join(servicesPath, file));
-    const ServiceClass = importedModule.default;
+    const ServiceClass = importedModule[serviceName];
 
     if (contract) {
       const newName = contract.contract;

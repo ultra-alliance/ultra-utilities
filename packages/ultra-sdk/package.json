@@ -31,6 +31,10 @@
   },
   "author": "",
   "dependencies": {
+    "@apollo/client": "^3.8.0",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "jszip": "^3.10.1",
     "moment": "^2.29.4",
     "numeral": "^2.0.6"

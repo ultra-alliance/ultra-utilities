@@ -1,0 +1,4 @@
+schema:
+  - "https://api.ultra.io/graphql":
+      headers:
+        Authorization: Bearer YO

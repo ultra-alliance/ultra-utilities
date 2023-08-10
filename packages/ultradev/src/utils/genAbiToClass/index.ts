@@ -8,6 +8,11 @@ enum eNamespaces {
   Contract = 'ContractNames',
 }
 
+// write a function to set the first letter of a string to uppercase
+const getCapitalizedContractName = (abi: Abi): string => {
+  return abi.name.charAt(0).toUpperCase() + abi.name.slice(1);
+};
+
 const getType = (fieldType: string): string => {
   switch (fieldType) {
     case 'name':
@@ -26,30 +31,38 @@ const formatType = (type: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-const genActionName = (actionName: string): string => {
-  return `${eNamespaces.Action}.${actionName.toUpperCase()}`;
+const genActionName = (actionName: string, abi: Abi): string => {
+  return `${getCapitalizedContractName(abi)}${
+    eNamespaces.Action
+  }.${actionName.toUpperCase()}`;
 };
 
-const genTableName = (tableName: string): string => {
-  return `${eNamespaces.Table}.${tableName.toUpperCase()}`;
+const genTableName = (tableName: string, abi: Abi): string => {
+  return `${getCapitalizedContractName(abi)}${
+    eNamespaces.Table
+  }.${tableName.toUpperCase()}`;
 };
 
-const genDataType = (type: string): string => {
-  return `${eNamespaces.Data}.${formatType(type)}Struct`;
+const genDataType = (type: string, abi: Abi): string => {
+  return `${getCapitalizedContractName(abi)}${eNamespaces.Data}.${formatType(
+    type,
+  )}Struct`;
 };
 
-const genContractType = (type: 'account' | 'name'): string => {
+const genContractType = (type: 'account' | 'name', abi: Abi): string => {
   if (type === 'account') {
-    return `${eNamespaces.Contract}.ACCOUNT`;
+    return `${getCapitalizedContractName(abi)}${eNamespaces.Contract}.ACCOUNT`;
   }
 
-  return `${eNamespaces.Contract}.NAME`;
+  return `${getCapitalizedContractName(abi)}${eNamespaces.Contract}.NAME`;
 };
 
 const genContractNamespaces = (abi: Abi): string => {
   let output = '';
 
-  output += `export declare namespace ${eNamespaces.Contract} {\n\n`;
+  output += `export  namespace ${getCapitalizedContractName(abi)}${
+    eNamespaces.Contract
+  } {\n\n`;
 
   output += `export const NAME = '${abi.name}';\n`;
   output += `export const ACCOUNT = '${abi.account}';\n`;
@@ -61,7 +74,9 @@ const genContractNamespaces = (abi: Abi): string => {
 
 const genActionNamespaces = (abi: Abi): string => {
   let output = '';
-  output += `export declare namespace ${eNamespaces.Action} {\n\n`;
+  output += `export  namespace ${getCapitalizedContractName(abi)}${
+    eNamespaces.Action
+  } {\n\n`;
 
   for (const action of abi.actions) {
     output += `export const ${action.name.toUpperCase()} = '${action.name}';\n`;
@@ -74,7 +89,9 @@ const genActionNamespaces = (abi: Abi): string => {
 
 const genTableNamespaces = (abi: Abi): string => {
   let output = '';
-  output += `export declare namespace ${eNamespaces.Table} {\n\n`;
+  output += `export  namespace ${getCapitalizedContractName(abi)}${
+    eNamespaces.Table
+  } {\n\n`;
 
   for (const table of abi.tables) {
     output += `export const ${table.name.toUpperCase()} = '${table.name}';\n`;
@@ -87,7 +104,9 @@ const genTableNamespaces = (abi: Abi): string => {
 
 const genDataTypes = (abi: Abi): string => {
   let output = '';
-  output += `export declare namespace ${eNamespaces.Data} {\n\n`;
+  output += `export  namespace ${getCapitalizedContractName(abi)}${
+    eNamespaces.Data
+  } {\n\n`;
   for (const struct of abi.structs) {
     output += `export type ${formatType(struct.name)}Struct = {\n`;
     for (const field of struct.fields) {
@@ -119,16 +138,21 @@ const genAbiToClass = async (abi: Abi, name: string): Promise<string> => {
   output += `  name: string;\n\n`;
 
   output += `  constructor({ rpcEndpoint, signer, name }: { rpcEndpoint: string, signer: Signer, name?:string }) {
-    super({ rpcEndpoint, signer, name: name || ${genContractType('account')} });
-    this.name = name || ${genContractType('account')};
+    super({ rpcEndpoint, signer, name: name || ${genContractType(
+      'account',
+      abi,
+    )} });
+    this.name = name || ${genContractType('account', abi)};
   }\n\n`;
 
   for (const action of abi.actions) {
     output += `  async ${camelCase(action.name)}(data: ${genDataType(
       action.type,
+      abi,
     )}) {
       return this.sendTransaction({ action: ${genActionName(
         action.name,
+        abi,
       )}, data });
     }\n\n`;
   }
@@ -136,9 +160,11 @@ const genAbiToClass = async (abi: Abi, name: string): Promise<string> => {
   for (const action of abi.actions) {
     output += `  ${camelCase(action.name)}Raw(data: ${genDataType(
       action.type,
+      abi,
     )}) {
       return this.populateTransaction({ action: ${genActionName(
         action.name,
+        abi,
       )}, data });
     }\n\n`;
   }
@@ -153,8 +179,10 @@ const genAbiToClass = async (abi: Abi, name: string): Promise<string> => {
     }: tGetTable) {
       return this.queryTable<${genDataType(
         table.type,
+        abi,
       )}>({ table: ${genTableName(
       table.name,
+      abi,
     )}, index, lowerBound, upperBound, keyType, limit });
     }\n\n`;
   }

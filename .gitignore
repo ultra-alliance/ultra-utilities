@@ -8,3 +8,18 @@ node_modules/
 */.DS_Store
 */.env
 .npmrc
+*.txt
+
+
+#############
+# MACOS
+#############
+*.icloud
+*.DS_Store
+.DS_Store
+.AppleDouble
+.LSOverride
+.cloud
+
+
+

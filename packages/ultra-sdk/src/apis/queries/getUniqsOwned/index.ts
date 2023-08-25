@@ -1,4 +1,4 @@
-import { type tGetTableRowsOutput, type tTokenA } from '../../commons';
+import { type tTokenA, type tGetUniqOwnedOutput } from '../../commons';
 import { eUltraContracts, eUltraTables } from '../../constants';
 import getTableRows from '../getTableRows';
 import { type tGetUniqOwned } from '../types';
@@ -29,7 +29,7 @@ async function getUniqsOwned({
   account,
   bpApiEndpoint,
   config,
-}: tGetUniqOwned): Promise<tGetTableRowsOutput<tTokenA>> {
+}: tGetUniqOwned): Promise<tGetUniqOwnedOutput> {
   return getTableRows<tTokenA>({
     bpApiEndpoint,
     code: eUltraContracts.UNIQ,

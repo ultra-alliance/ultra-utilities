@@ -51,7 +51,6 @@ describe('getAccount', () => {
     const result = await getAccount({
       accountName,
     });
-    // assert that the result matches the expected result
     expect(result.account_name).toEqual(accountName);
     expect(result.core_liquid_balance).toBeDefined();
   });

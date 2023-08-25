@@ -15,6 +15,8 @@ import {
   type tCancelResellUniq,
   type tTransferUniq,
   type tTransferUos,
+  type tSetAvatar,
+  type tfetchAccountData,
 } from '../../types';
 
 /**
@@ -47,7 +49,10 @@ class Account implements tAccount {
       }
 
       const accountName = response.data.blockchainid.split('@')[0];
-      this.current = await this.refetchAccountData(accountName);
+      this.current = await this.fetchAccountData({
+        account: accountName,
+        withAvatarManifest: props?.withAvatarManifest ?? false,
+      });
       return this.current;
     } catch (err) {
       throw new Error("Couldn't connect to Ultra");
@@ -63,14 +68,32 @@ class Account implements tAccount {
     }
   }
 
-  public async refetchAccountData(account?: string): Promise<tUltraAccount> {
+  public async fetchAccountData({
+    account,
+    withAvatarManifest,
+  }: tfetchAccountData): Promise<tUltraAccount> {
+    if (!withAvatarManifest) {
+      withAvatarManifest = false;
+    }
+
     if (!account) {
       account = this.current?.data?.account_name ?? '';
     }
 
-    const data = await this._api.getAccount({ accountName: account });
-    const ownedUniqs = (await this._api.getUniqsOwned(account)).rows;
-    const listedUniqs = (
+    const ultraAccount: tUltraAccount = {
+      data: undefined,
+      ownedUniqs: undefined,
+      listedUniqs: undefined,
+      avatar: {
+        nft_id: undefined,
+        factory_id: undefined,
+        manifest: undefined,
+      },
+    };
+
+    ultraAccount.data = await this._api.getAccount({ accountName: account });
+    ultraAccount.ownedUniqs = (await this._api.getUniqsOwned(account)).rows;
+    ultraAccount.listedUniqs = (
       await this._api.getListedUniqs({
         config: {
           limit: 10000,
@@ -78,11 +101,22 @@ class Account implements tAccount {
       })
     ).rows?.filter((uniq: tListedUniq) => uniq.owner === account);
 
-    return {
-      data,
-      ownedUniqs,
-      listedUniqs,
+    const avatarFactoryId = ultraAccount.ownedUniqs?.find(
+      uniq => uniq.id === ultraAccount.data?.avatar_id,
+    )?.token_factory_id;
+
+    ultraAccount.avatar = {
+      nft_id: ultraAccount.data?.avatar_id,
+      factory_id: avatarFactoryId,
+      manifest:
+        withAvatarManifest && avatarFactoryId
+          ? await this._api.getFactoryManifested(avatarFactoryId, {
+              square: true,
+            })
+          : undefined,
     };
+
+    return ultraAccount;
   }
 
   public checkIsWalletInstalled(): boolean {
@@ -235,6 +269,47 @@ class Account implements tAccount {
       return res as TRes;
     } catch (err) {
       throw new Error(eErrors.TRANSFER_UOS);
+    }
+  }
+
+  public async setAvatar<TRes>({ nft_id }: tSetAvatar) {
+    try {
+      const res = await this.signTransaction({
+        action: eActions.SET_AVATAR,
+        contract: eContracts.AVATAR,
+        data: {
+          user: this.current?.data?.account_name,
+          nft_id,
+        },
+      });
+
+      if (!res) {
+        throw new Error(eErrors.SET_AVATAR);
+      }
+
+      return res as TRes;
+    } catch (err) {
+      throw new Error(eErrors.SET_AVATAR);
+    }
+  }
+
+  public async clearAvatar<TRes>() {
+    try {
+      const res = await this.signTransaction({
+        action: eActions.CLEAR_AVATAR,
+        contract: eContracts.AVATAR,
+        data: {
+          user: this.current?.data?.account_name,
+        },
+      });
+
+      if (!res) {
+        throw new Error(eErrors.CLEAR_AVATAR);
+      }
+
+      return res as TRes;
+    } catch (err) {
+      throw new Error(eErrors.CLEAR_AVATAR);
     }
   }
 }

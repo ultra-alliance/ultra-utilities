@@ -9,6 +9,15 @@ const body = {
 
 describe('getCurrencyBalance', () => {
   it('should return the currency balance', async () => {
+    const mockResponse = ['1.0000 UOS'];
+
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({
+        ok: true,
+        json: async () => Promise.resolve(mockResponse),
+      }),
+    ) as jest.Mock;
+
     const result = await getCurrencyBalance({
       bpApiEndpoint: DEFAULT_BP_API_ENDPOINT,
       ...body,
@@ -18,6 +27,8 @@ describe('getCurrencyBalance', () => {
     expect(result[0]).toBeDefined();
   });
   it('should return an error if fails', async () => {
+    jest.resetAllMocks();
+
     await expect(
       getCurrencyBalance({
         bpApiEndpoint: 'hello-world',
@@ -26,6 +37,15 @@ describe('getCurrencyBalance', () => {
     ).rejects.toThrowError();
   });
   it("should use default endpoint if it's not provided", async () => {
+    const mockResponse = ['1.0000 UOS'];
+
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({
+        ok: true,
+        json: async () => Promise.resolve(mockResponse),
+      }),
+    ) as jest.Mock;
+
     const result = await getCurrencyBalance({
       ...body,
     });

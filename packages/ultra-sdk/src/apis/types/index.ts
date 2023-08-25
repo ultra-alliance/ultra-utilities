@@ -11,6 +11,7 @@ import {
   type tGetTableByScopeOutput,
   type tGetTableRows,
   type tGetTableRowsOutput,
+  type tGetAvatarOutput,
   type tGetInfoOutput,
   type tFactory,
   type tFactoryManifested,
@@ -71,4 +72,5 @@ export type tApi = {
   updateBpApiEndpoint: (bpApiEndpoint: string) => void;
   getMarketPrices: () => Promise<tMarketPrices>;
   getFactories: (config: tUltraQuery['config']) => Promise<tFactory[]>;
+  getAvatar(account: string): Promise<tGetAvatarOutput>;
 };

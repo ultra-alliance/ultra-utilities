@@ -1,5 +1,5 @@
 // istanbul ignore file
-import { type Api } from '../../apis';
+import { type tFactoryManifested, type Api } from '../../apis';
 import {
   type tListedUniq,
   type tGetAccountOutput,
@@ -29,6 +29,7 @@ export type tExtConnectOutput = {
  */
 export type tConnect = {
   onlyIfTrusted?: boolean;
+  withAvatarManifest?: boolean;
 };
 
 /**
@@ -57,6 +58,11 @@ export type tUltraAccount = {
   data: tGetAccountOutput | undefined;
   ownedUniqs: tTokenA[] | undefined;
   listedUniqs: tListedUniq[] | undefined;
+  avatar: {
+    nft_id: number | undefined;
+    factory_id: number | undefined;
+    manifest: tFactoryManifested | undefined;
+  };
 };
 
 /**
@@ -109,12 +115,29 @@ export type tTransferUos = {
 /**
  * @category Account
  */
+
+export type tSetAvatar = {
+  nft_id: number;
+};
+
+/**
+ * @category Account
+ */
+
+export type tfetchAccountData = {
+  account?: string;
+  withAvatarManifest?: boolean;
+};
+
+/**
+ * @category Account
+ */
 export type tAccount = {
   extension: tExt;
   current: tUltraAccount | undefined;
   connect: (props?: tConnect) => Promise<tUltraAccount>;
   disconnect: () => Promise<void>;
-  refetchAccountData: (account?: string) => Promise<tUltraAccount>;
+  fetchAccountData: (props: tfetchAccountData) => Promise<tUltraAccount>;
   checkIsWalletInstalled: () => boolean;
   signTransaction: <TAction, TRes>(txObject: TAction) => Promise<TRes>;
   buyUniq: <TRes>(props: tBuyUniq) => Promise<tExtResponse<TRes>>;

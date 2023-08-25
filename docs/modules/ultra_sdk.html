@@ -56,7 +56,7 @@
 <li><a href="../classes/ultra_sdk.Account.html#changeChain" class="tsd-kind-method">changeChain</a> to change the chain (testnet/mainnet/local)</li>
 <li><a href="../classes/ultra_sdk.Account.html#connect" class="tsd-kind-method">connect</a> to connect to the Ultra Chrome extension</li>
 <li><a href="../classes/ultra_sdk.Account.html#disconnect" class="tsd-kind-method">disconnect</a> to disconnect from the Ultra Chrome extension</li>
-<li><a href="../classes/ultra_sdk.Account.html#refetchAccountData" class="tsd-kind-method">refetchAccountData</a> to refetch the account data</li>
+<li><a href="../classes/ultra_sdk.Account.html#fetchAccountData" class="tsd-kind-method">fetchAccountData</a> to refetch the account data</li>
 </ul>
 <p>Transactions:</p>
 <ul>
@@ -66,6 +66,8 @@
 <li><a href="../classes/ultra_sdk.Account.html#transferUos" class="tsd-kind-method">transferUos</a> to transfer UOS</li>
 <li><a href="../classes/ultra_sdk.Account.html#resellUniq" class="tsd-kind-method">resellUniq</a> to list a uniq on the marketplace</li>
 <li><a href="../classes/ultra_sdk.Account.html#buyUniq" class="tsd-kind-method">buyUniq</a> to buy a uniq from the marketplace</li>
+<li><a href="../classes/ultra_sdk.Account.html#setAvatar" class="tsd-kind-method">setAvatar</a> to set the avatar of an account</li>
+<li><a href="../classes/ultra_sdk.Account.html#clearAvatar" class="tsd-kind-method">clearAvatar</a> to clear the avatar of an account</li>
 </ul>
 <a id="md:utilities" class="tsd-anchor"></a><h3><a href="#md:utilities">Utilities</a></h3><ul>
 <li><a href="../functions/ultra_sdk.getZipContent.html" class="tsd-kind-function">getZipContent</a> to get the content of a zip file and read the Uniq manifest</li>
@@ -81,7 +83,7 @@
 </ul>
 </div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/ultra-alliance/ultra-utilities/blob/7870842/packages/ultra-sdk/src/index.ts#L1">ultra-sdk/src/index.ts:1</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/ultra-alliance/ultra-utilities/blob/2a103fc/packages/ultra-sdk/src/index.ts#L1">ultra-sdk/src/index.ts:1</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -139,11 +141,13 @@
 <h3 class="tsd-index-heading">Type Aliases - API Outputs</h3>
 <div class="tsd-index-list"><a href="../types/ultra_sdk.tGetAbiOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Abi<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tGetAccountOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Account<wbr/>Output</span></a>
+<a href="../types/ultra_sdk.tGetAvatarOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Avatar<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tGetBlockOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Block<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tGetCurrencyBalanceOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Currency<wbr/>Balance<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tGetInfoOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Info<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tGetTableByScopeOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Table<wbr/>By<wbr/>Scope<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tGetTableRowsOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Table<wbr/>Rows<wbr/>Output</span></a>
+<a href="../types/ultra_sdk.tGetUniqOwnedOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Uniq<wbr/>Owned<wbr/>Output</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Type Aliases - Account</h3>
@@ -156,9 +160,11 @@
 <a href="../types/ultra_sdk.tExtConnectOutput.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Ext<wbr/>Connect<wbr/>Output</span></a>
 <a href="../types/ultra_sdk.tExtResponse.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Ext<wbr/>Response</span></a>
 <a href="../types/ultra_sdk.tResellUniq.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Resell<wbr/>Uniq</span></a>
+<a href="../types/ultra_sdk.tSetAvatar.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Set<wbr/>Avatar</span></a>
 <a href="../types/ultra_sdk.tTransferUniq.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Transfer<wbr/>Uniq</span></a>
 <a href="../types/ultra_sdk.tTransferUos.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Transfer<wbr/>Uos</span></a>
 <a href="../types/ultra_sdk.tUltraAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Ultra<wbr/>Account</span></a>
+<a href="../types/ultra_sdk.tfetchAccountData.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>tfetch<wbr/>Account<wbr/>Data</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Type Aliases - Auth</h3>
@@ -190,7 +196,6 @@
 <a href="../types/ultra_sdk.tChain.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Chain</span></a>
 <a href="../types/ultra_sdk.tChainName.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Chain<wbr/>Name</span></a>
 <a href="../types/ultra_sdk.tChainRecord.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Chain<wbr/>Record</span></a>
-<a href="../types/ultra_sdk.tGetFactoryManifested.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Factory<wbr/>Manifested</span></a>
 <a href="../types/ultra_sdk.tMarketPrices.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Market<wbr/>Prices</span></a>
 <a href="../types/ultra_sdk.tQueryConfig.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Query<wbr/>Config</span></a>
 <a href="../types/ultra_sdk.tUltraOptions.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Ultra<wbr/>Options</span></a>
@@ -216,9 +221,11 @@
 <h3 class="tsd-index-heading">Type Aliases - Ultra Queries</h3>
 <div class="tsd-index-list"><a href="../types/ultra_sdk.tGetAbi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Abi</span></a>
 <a href="../types/ultra_sdk.tGetAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Account</span></a>
+<a href="../types/ultra_sdk.tGetAvatar.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Avatar</span></a>
 <a href="../types/ultra_sdk.tGetBlock.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Block</span></a>
 <a href="../types/ultra_sdk.tGetCurrencyBalance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Currency<wbr/>Balance</span></a>
 <a href="../types/ultra_sdk.tGetFactory.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Factory</span></a>
+<a href="../types/ultra_sdk.tGetFactoryManifested.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Factory<wbr/>Manifested</span></a>
 <a href="../types/ultra_sdk.tGetInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Info</span></a>
 <a href="../types/ultra_sdk.tGetTableByScope.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Table<wbr/>By<wbr/>Scope</span></a>
 <a href="../types/ultra_sdk.tGetTableRows.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Table<wbr/>Rows</span></a>
@@ -287,6 +294,7 @@
 <h3 class="tsd-index-heading">Functions - Ultra Queries</h3>
 <div class="tsd-index-list"><a href="../functions/ultra_sdk.getAbi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Abi</span></a>
 <a href="../functions/ultra_sdk.getAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Account</span></a>
+<a href="../functions/ultra_sdk.getAvatar.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Avatar</span></a>
 <a href="../functions/ultra_sdk.getBlock.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Block</span></a>
 <a href="../functions/ultra_sdk.getCurrencyBalance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Currency<wbr/>Balance</span></a>
 <a href="../functions/ultra_sdk.getFactories.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Factories</span></a>
@@ -384,6 +392,8 @@
 <li><a href="../types/ultra_sdk.tGetAccount.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Account</span></a></li>
 <li><a href="../types/ultra_sdk.tGetAccountInput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Account<wbr/>Input</span></a></li>
 <li><a href="../types/ultra_sdk.tGetAccountOutput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Account<wbr/>Output</span></a></li>
+<li><a href="../types/ultra_sdk.tGetAvatar.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Avatar</span></a></li>
+<li><a href="../types/ultra_sdk.tGetAvatarOutput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Avatar<wbr/>Output</span></a></li>
 <li><a href="../types/ultra_sdk.tGetBlock.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Block</span></a></li>
 <li><a href="../types/ultra_sdk.tGetBlockInput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Block<wbr/>Input</span></a></li>
 <li><a href="../types/ultra_sdk.tGetBlockOutput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Block<wbr/>Output</span></a></li>
@@ -401,6 +411,7 @@
 <li><a href="../types/ultra_sdk.tGetTableRowsInput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Table<wbr/>Rows<wbr/>Input</span></a></li>
 <li><a href="../types/ultra_sdk.tGetTableRowsOutput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Table<wbr/>Rows<wbr/>Output</span></a></li>
 <li><a href="../types/ultra_sdk.tGetUniqOwned.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Uniq<wbr/>Owned</span></a></li>
+<li><a href="../types/ultra_sdk.tGetUniqOwnedOutput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Uniq<wbr/>Owned<wbr/>Output</span></a></li>
 <li><a href="../types/ultra_sdk.tGetUosBalance.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Uos<wbr/>Balance</span></a></li>
 <li><a href="../types/ultra_sdk.tGetZipContent.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Get<wbr/>Zip<wbr/>Content</span></a></li>
 <li><a href="../types/ultra_sdk.tHttp.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Http</span></a></li>
@@ -417,6 +428,7 @@
 <li><a href="../types/ultra_sdk.tResaleShare.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Resale<wbr/>Share</span></a></li>
 <li><a href="../types/ultra_sdk.tResellUniq.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Resell<wbr/>Uniq</span></a></li>
 <li><a href="../types/ultra_sdk.tRoute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Route</span></a></li>
+<li><a href="../types/ultra_sdk.tSetAvatar.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Set<wbr/>Avatar</span></a></li>
 <li><a href="../types/ultra_sdk.tTokenA.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>TokenA</span></a></li>
 <li><a href="../types/ultra_sdk.tTransferUniq.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Transfer<wbr/>Uniq</span></a></li>
 <li><a href="../types/ultra_sdk.tTransferUos.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Transfer<wbr/>Uos</span></a></li>
@@ -426,6 +438,7 @@
 <li><a href="../types/ultra_sdk.tUltraOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Ultra<wbr/>Options</span></a></li>
 <li><a href="../types/ultra_sdk.tUltraQuery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Ultra<wbr/>Query</span></a></li>
 <li><a href="../types/ultra_sdk.tValidInput.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>t<wbr/>Valid<wbr/>Input</span></a></li>
+<li><a href="../types/ultra_sdk.tfetchAccountData.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>tfetch<wbr/>Account<wbr/>Data</span></a></li>
 <li><a href="../variables/ultra_sdk.BP_API_ENDPOINTS.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg><span>BP_<wbr/>API_<wbr/>ENDPOINTS</span></a></li>
 <li><a href="../variables/ultra_sdk.CHAINS.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg><span>CHAINS</span></a></li>
 <li><a href="../variables/ultra_sdk.DEFAULT_BP_API_ENDPOINT.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg><span>DEFAULT_<wbr/>BP_<wbr/>API_<wbr/>ENDPOINT</span></a></li>
@@ -445,6 +458,7 @@
 <li><a href="../functions/ultra_sdk.get.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get</span></a></li>
 <li><a href="../functions/ultra_sdk.getAbi.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Abi</span></a></li>
 <li><a href="../functions/ultra_sdk.getAccount.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Account</span></a></li>
+<li><a href="../functions/ultra_sdk.getAvatar.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Avatar</span></a></li>
 <li><a href="../functions/ultra_sdk.getBlock.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Block</span></a></li>
 <li><a href="../functions/ultra_sdk.getCurrencyBalance.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Currency<wbr/>Balance</span></a></li>
 <li><a href="../functions/ultra_sdk.getFactories.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>get<wbr/>Factories</span></a></li>

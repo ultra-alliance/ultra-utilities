@@ -4,6 +4,8 @@ import {
   type tGetAccountOutput,
   type tListedUniq,
   type tGetTableRowsOutput,
+  type tGetUniqOwnedOutput,
+  type tFactoryManifested,
 } from '../../../apis';
 import { type tAccountOptions, type tExt } from '../../types';
 import Account from './index';
@@ -60,19 +62,24 @@ describe('Account', () => {
         },
       });
 
-      const mockRefetchAccountData = jest
-        .spyOn(account, 'refetchAccountData')
+      const mockFetchAccountData = jest
+        .spyOn(account, 'fetchAccountData')
         .mockResolvedValue({
           data: {
             account_name: 'test',
           } as unknown as tGetAccountOutput,
           ownedUniqs: [] as tTokenA[],
           listedUniqs: [] as tListedUniq[],
+          avatar: {
+            nft_id: undefined,
+            factory_id: undefined,
+            manifest: undefined,
+          },
         });
 
       await account.connect();
       expect(mockConnect).toHaveBeenCalled();
-      expect(mockRefetchAccountData).toHaveBeenCalled();
+      expect(mockFetchAccountData).toHaveBeenCalled();
       expect(account.current).toBeDefined();
     });
   });
@@ -93,9 +100,10 @@ describe('Account', () => {
     });
   });
 
-  describe('refetchAccountData', () => {
+  describe('fetchAccountData', () => {
     it('should return account data for the current account if no account is provided', async () => {
       const accountName = 'test';
+
       const mockGetAccount = jest.spyOn(api, 'getAccount').mockResolvedValue({
         account_name: accountName,
       } as unknown as tGetAccountOutput);
@@ -104,7 +112,7 @@ describe('Account', () => {
         .spyOn(api, 'getUniqsOwned')
         .mockResolvedValue({
           rows: [],
-        } as unknown as tGetTableRowsOutput<tTokenA>);
+        } as unknown as tGetUniqOwnedOutput);
 
       const mockGetListedUniqs = jest
         .spyOn(api, 'getListedUniqs')
@@ -112,19 +120,27 @@ describe('Account', () => {
           rows: [],
         } as unknown as tGetTableRowsOutput<tListedUniq>);
 
-      await account.refetchAccountData();
+      const mockGetFactoryManifested = jest
+        .spyOn(api, 'getFactoryManifested')
+        .mockResolvedValue({
+          data: {},
+          manifest: {},
+        } as unknown as tFactoryManifested);
 
-      expect(mockGetAccount).toHaveBeenCalledWith({
-        accountName: account.current?.data?.account_name ?? '',
+      await account.fetchAccountData({
+        account: undefined,
+        withAvatarManifest: false,
       });
-      expect(mockGetUniqsOwned).toHaveBeenCalledWith(
-        account.current?.data?.account_name ?? '',
-      );
+
+      expect(mockGetAccount).toHaveBeenCalled();
+      expect(mockGetUniqsOwned).toHaveBeenCalled();
       expect(mockGetListedUniqs).toHaveBeenCalledWith({
         config: {
           limit: 10000,
         },
       });
+
+      expect(mockGetFactoryManifested).not.toHaveBeenCalled();
     });
 
     it('should return account data for the specified account if provided', async () => {
@@ -137,7 +153,7 @@ describe('Account', () => {
         .spyOn(api, 'getUniqsOwned')
         .mockResolvedValue({
           rows: [],
-        } as unknown as tGetTableRowsOutput<tTokenA>);
+        } as unknown as tGetUniqOwnedOutput);
 
       const mockGetListedUniqs = jest
         .spyOn(api, 'getListedUniqs')
@@ -145,7 +161,9 @@ describe('Account', () => {
           rows: [],
         } as unknown as tGetTableRowsOutput<tListedUniq>);
 
-      await account.refetchAccountData(accountName);
+      await account.fetchAccountData({
+        account: accountName,
+      });
 
       expect(mockGetAccount).toHaveBeenCalledWith({
         accountName,

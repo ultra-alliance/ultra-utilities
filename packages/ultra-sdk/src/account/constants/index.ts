@@ -9,11 +9,14 @@ export enum eErrors {
   CANCEL_RESELL_UNIQ = "Couldn't cancel resell uniq",
   TRANSFER_UNIQ = "Couldn't transfer uniq",
   TRANSFER_UOS = "Couldn't transfer UOS",
+  SET_AVATAR = "Couldn't set avatar",
+  CLEAR_AVATAR = "Couldn't clear avatar",
 }
 
 export enum eContracts {
   TOKEN = 'eosio.token',
   NFT = 'eosio.nft.ft',
+  AVATAR = 'ultra.avatar',
 }
 
 export enum eActions {
@@ -21,4 +24,6 @@ export enum eActions {
   BUY = 'buy',
   RESELL = 'resell',
   CANCEL_RESELL = 'cancelresell',
+  SET_AVATAR = 'setavatar',
+  CLEAR_AVATAR = 'clearavatar',
 }

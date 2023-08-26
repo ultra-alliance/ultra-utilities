@@ -9,7 +9,7 @@ node_modules/
 */.env
 .npmrc
 *.txt
-
+generated/
 
 #############
 # MACOS

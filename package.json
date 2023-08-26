@@ -4,13 +4,14 @@
   "private": false,
   "scripts": {
     "install:all": "lerna bootstrap",
-    "clean": "rimraf coverage && lerna exec npm run clean",
+    "clean:make": "rm -rf generated",
+    "clean": "npm run make:clean && rimraf coverage && lerna exec npm run clean",
     "lint": "lerna exec npm run lint",
     "lint:fix": "lerna exec npm run lint -- --fix",
     "lint:staged": "lint-staged",
     "check:types": "lerna exec npm run check:types",
     "build": "lerna exec npm run build",
-    "test": "jest",
+    "test": "npm run make:all && jest",
     "test:watch": "jest --watch",
     "coverage:pre": "rimraf coverage",
     "coverage": "jest --coverage",
@@ -19,8 +20,9 @@
     "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
     "release:canary": "lerna publish --canary --ignore-scripts",
     "release": "npm run build && lerna publish",
-    "make:docs": "npx typedoc --out docs",
-    "make:stories": "build-storybook",
+    "make:docs": "npx typedoc --out generated/typedoc",
+    "make:stories": "build-storybook -o generated/storybook-static",
+    "make:all": "npm run clean:make && npm run make:docs && npm run make:stories",
     "storybook": "start-storybook -p 6006"
   },
   "workspaces": [

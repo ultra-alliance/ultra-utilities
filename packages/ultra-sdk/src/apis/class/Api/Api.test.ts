@@ -373,4 +373,10 @@ describe('Api', () => {
       expect(api.getMarketPrices).toBeDefined();
     });
   });
+
+  describe('getAvatar', () => {
+    it('api class should have getAvatar method', () => {
+      expect(api.getAvatar).toBeDefined();
+    });
+  });
 });

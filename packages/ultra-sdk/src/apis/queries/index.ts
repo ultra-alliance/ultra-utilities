@@ -14,5 +14,6 @@ export { default as getListedUniqs } from './getListedUniqs';
 export { default as getFactoryManifested } from './getFactoryManifested';
 export { default as getMarketPrices } from './getMarketPrices';
 export { default as getFactories } from './getFactories';
+export { default as getAvatar } from './getAvatar';
 
 export * from './types';

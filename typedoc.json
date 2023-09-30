@@ -1,5 +1,5 @@
 {
-  "out": "docs/",
+  "out": "generated/typedoc",
   "exclude": ["**/node_modules/**"],
   "customCss": "./theme/index.css",
   "entryPoints": [

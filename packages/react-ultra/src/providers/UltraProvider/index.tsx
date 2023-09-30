@@ -6,15 +6,15 @@ import {
   type tLogoutOptions,
   type tLoginOptions,
   type tMarketPrices,
+  type tUltraAccount,
+  type tChain,
+  type tChainName,
+  type tExt,
   eAuthState,
   Ultra,
   INITIAL_AUTH,
-  type tUltraAccount,
   getMarketPrices,
-  type tChain,
   CHAINS,
-  type tChainName,
-  type tExt,
 } from '@ultra-alliance/ultra-sdk';
 import React from 'react';
 import { UltraContext } from '../../contexts';
@@ -67,7 +67,11 @@ const UltraProvider = ({ children, bpApiEndpoint }: tUltraProvider) => {
     tUltraAccount | undefined
   > => {
     try {
-      const account = await ultra?.account.refetchAccountData();
+      const account = await ultra?.account.fetchAccountData({
+        account: undefined,
+        withAvatarManifest: true,
+      });
+
       if (!account) {
         throw new Error('Account not found');
       }

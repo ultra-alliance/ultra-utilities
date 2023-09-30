@@ -39,6 +39,15 @@ export type tGetBlock = tUltraQuery & {
 };
 
 /**
+ * Arguments passed for getAvatar
+ * @category Ultra Queries
+ */
+
+export type tGetAvatar = tUltraQuery & {
+  account: string;
+};
+
+/**
  * Arguments passed for getAbi
  * @category Ultra Queries
  */
@@ -106,6 +115,11 @@ export type tGetUosBalance = tUltraQuery & {
 export type tGetFactory = tUltraQuery & {
   factoryId: tValidInput;
 };
+
+/**
+ * Arguments passed for getFactoryManifested
+ * @category Ultra Queries
+ */
 
 export type tGetFactoryManifested = tUltraQuery & {
   factoryId: tValidInput;

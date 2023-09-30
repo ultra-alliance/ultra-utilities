@@ -15,6 +15,7 @@ import {
   getFactoryManifested,
   getMarketPrices,
   getFactories,
+  getAvatar,
   DEFAULT_BP_API_ENDPOINT,
   type tGetAbi,
   type tGetBlock,
@@ -29,6 +30,7 @@ import {
   type tGetTableRows,
   type tGetTableRowsOutput,
   type tGetInfoOutput,
+  type tGetAvatarOutput,
   type tFactory,
   type tFactoryManifested,
   type tUltraQuery,
@@ -349,6 +351,12 @@ class Api implements tApi {
     return data;
   }
 
+  /**
+   * @type {function} - getFactories
+   * @description Retrieve factories.
+   * @returns {Promise<tFactory[]>} - factories
+   * */
+
   public async getFactories(config?: tQueryConfig): Promise<tFactory[]> {
     const data = await getFactories({
       bpApiEndpoint: this.bpApiEndpoint,
@@ -357,6 +365,26 @@ class Api implements tApi {
 
     if (!data) {
       throw new Error(`Factories not found`);
+    }
+
+    return data;
+  }
+
+  /**
+   * @type {function}
+   * @description Get the Avatar of an account.
+   * @param {string} account - account name
+   * @returns {Promise<tGetAvatarOutput>} -
+   * */
+
+  public async getAvatar(account: string): Promise<tGetAvatarOutput> {
+    const data = await getAvatar({
+      account,
+      bpApiEndpoint: this.bpApiEndpoint,
+    });
+
+    if (!data) {
+      throw new Error(`Avatar not found`);
     }
 
     return data;

@@ -9,4 +9,5 @@ export enum eUltraTables {
   UNIQS_OWNED = 'token.b',
   FACTORY = 'factory.b',
   RESALE = 'resale.a',
+  ACCOUNT_AVATAR = 'accavatar',
 }

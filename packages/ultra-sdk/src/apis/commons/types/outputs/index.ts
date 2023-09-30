@@ -1,4 +1,4 @@
-import { type tAbi } from '../commons';
+import { type tTokenA, type tAbi } from '../commons';
 
 /**
  * Represents output for `getAccount` function.
@@ -6,6 +6,7 @@ import { type tAbi } from '../commons';
  */
 
 export type tGetAccountOutput = {
+  avatar_id?: number;
   account_name: string;
   head_block_num: number;
   head_block_time: string;
@@ -71,6 +72,20 @@ export type tGetBlockOutput = {
   block_num: number;
   ref_block_prefix: number;
 };
+
+/**
+ * Represents output for `getAvatar` function.
+ * @category API Outputs
+ */
+
+export type tGetAvatarOutput = tGetTableRowsOutput<{ nft_id: number }>;
+
+/**
+ * Represents output for `getUniqOwned` function.
+ * @category API Outputs
+ */
+
+export type tGetUniqOwnedOutput = tGetTableRowsOutput<tTokenA>;
 
 /**
  * Represents output for `getAbi` function.

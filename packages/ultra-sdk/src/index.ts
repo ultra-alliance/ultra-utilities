@@ -66,7 +66,7 @@
  * - {@link Account.changeChain} to change the chain (testnet/mainnet/local)
  * - {@link Account.connect} to connect to the Ultra Chrome extension
  * - {@link Account.disconnect} to disconnect from the Ultra Chrome extension
- * - {@link Account.refetchAccountData} to refetch the account data
+ * - {@link Account.fetchAccountData} to refetch the account data
  *
  * Transactions:
  * - {@link Account.signTransaction} to sign a transaction
@@ -75,6 +75,8 @@
  * - {@link Account.transferUos} to transfer UOS
  * - {@link Account.resellUniq} to list a uniq on the marketplace
  * - {@link Account.buyUniq} to buy a uniq from the marketplace
+ * - {@link Account.setAvatar} to set the avatar of an account
+ * - {@link Account.clearAvatar} to clear the avatar of an account
  *
  * ### Utilities
  * - {@link getZipContent} to get the content of a zip file and read the Uniq manifest

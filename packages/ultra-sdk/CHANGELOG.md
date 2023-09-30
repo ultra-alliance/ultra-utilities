@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.7.0...@ultra-alliance/ultra-sdk@0.8.0) (2023-09-30)
+
+
+### Features
+
+* clear/set avatar ([fbd9f37](https://github.com/ultra-alliance/ultra-utilities/commit/fbd9f37f56474c6b59dc06bc47b638c36b03e7a5))
+
+
+
+
+
 # [0.7.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/ultra-sdk@0.6.0...@ultra-alliance/ultra-sdk@0.7.0) (2023-06-24)
 
 

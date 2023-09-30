@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.6.1...@ultra-alliance/react-ultra@0.7.0) (2023-09-30)
+
+
+### Features
+
+* clear/set avatar ([fbd9f37](https://github.com/ultra-alliance/ultra-utilities/commit/fbd9f37f56474c6b59dc06bc47b638c36b03e7a5))
+
+
+
+
+
 ## [0.6.1](https://github.com/ultra-alliance/ultra-utilities/compare/@ultra-alliance/react-ultra@0.6.0...@ultra-alliance/react-ultra@0.6.1) (2023-06-24)
 
 **Note:** Version bump only for package @ultra-alliance/react-ultra
